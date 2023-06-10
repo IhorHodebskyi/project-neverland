@@ -1,0 +1,47 @@
+/* .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1158px;
+    padding: 0 32px;
+  } */
+
+.galery{
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.item{
+    display: flex;
+    flex-basis: 100%;
+    gap: 16px;
+    
+}
+.item-title > h3{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.19;
+/* Grey */
+    color: #111111;
+}
+.item-title > h3:first-child{
+    margin: 0 0 28px 0;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.18;
+    text-transform: uppercase;
+/* White */
+    color: #111111;
+}
+/* .item-title > span:nth-child(1){
+    color: orange;
+} */
+.month-title{
+    margin: 0 0 28px 0;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.18;
+    text-transform: uppercase;
+/* White */
+    color: black;
+}
