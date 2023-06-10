@@ -1,35 +1,38 @@
 .header_container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 8px;
-    padding-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 .logo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .header_menu_btn {
-    display: none;
+  display: none;
 }
 .navbar_list {
-    display: none;
+  display: none;
 }
 #icon_moon {
-    width: 8px;
-    height: 8px;
+  width: 8px;
+  height: 8px;
 }
 #icon_sun {
-    width: 8px;
-    height: 8px;
+  width: 8px;
+  height: 8px;
 }
 /* ----------------- tablet -------------------------------- */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
-    
-    }
-
+  .navbar_list {
+    display: block;
+  }
+}
 
 /* ----------------- descktop -------------------------------- */
 @media screen and (min-width: 1200px) {
-
-    }
+  .navbar_list {
+    display: block;
+  }
+}
