@@ -1,3 +1,18 @@
+:root {
+    --primary-brand-color: #000000;
+
+}
+
+header {
+    background: var(--primary-brand-color);
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style-type: none;
+}
+
 .header_container {
   display: flex;
   align-items: center;
@@ -5,16 +20,40 @@
   padding-top: 8px;
   padding-bottom: 8px;
 }
+
 .logo {
   display: flex;
   align-items: center;
 }
-.header_menu_btn {
-  display: none;
+
+.logo_img {
+    width: 30px;
+    height: 24px;
 }
+
+.logo_text {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    .header_menu_btn {
+        text-transform: uppercase;
+        color: #B7B7B7;
+        background-color: rgba(0,0,0,0);
+        border: none;
+        outline: none;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.16;
+        transition: color .25s cubic-bezier(.4,0,.2,1);
+        display: block;
+    }
+}
+
 .navbar_list {
   display: none;
 }
+
 #icon_moon {
   width: 8px;
   height: 8px;
@@ -23,8 +62,22 @@
   width: 8px;
   height: 8px;
 }
+
+.mobile_menu_container {
+    background-color: var(--primary-brand-color);
+    height: 100%;
+    z-index: 100;
+    width: calc(100% - 116px);
+    border-radius: 0 8px 8px 0;
+    padding: 20px;
+    transition: transform .25s cubic-bezier(.4,0,.2,1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-100%);
+}
 /* ----------------- tablet -------------------------------- */
-@media screen and (min-width: 768px) and (max-width: 1199px) {
+@media screen and (min-width: 768px) {
   .navbar_list {
     display: block;
   }
@@ -32,7 +85,5 @@
 
 /* ----------------- descktop -------------------------------- */
 @media screen and (min-width: 1200px) {
-  .navbar_list {
-    display: block;
-  }
+  
 }
