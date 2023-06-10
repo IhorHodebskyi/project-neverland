@@ -1,0 +1,96 @@
+.monthgalery{
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.month-item{
+    display: flex;
+    flex-basis: 100%;
+    gap: 16px;
+    
+}
+.month-item-title > h3{
+    margin: 12px 0 0 0;
+    /* display: inline; */
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.19;
+/* Grey */
+    color: #111111;
+}
+.month-item-title > h3:first-child{
+    margin: 0 0 28px 0;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.18;
+    text-transform: uppercase;
+/* White */
+    color: #111111;
+}
+.month-item-title > p{
+    margin: 20px 0 16px 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.19;
+    align-items: center;
+    text-transform: uppercase;
+/* Background */
+    color: #111111;
+}
+.month-text{
+    font-weight: 400;
+    font-size: 14px;
+  /* Secondary black */
+    color: #282828;
+}
+
+.month-title{
+    margin: 0 0 28px 0;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.18;
+    text-transform: uppercase;
+/* White */
+    color: black;
+}
+.month-btn{
+    display: block;
+    margin: 24px 0 0 0;
+    padding: 12px 24px;
+    width: 155px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.14;
+    align-items: center;
+    text-align: center;
+/* Background */
+    color: #111111;
+/* linear */
+    background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
+    border: none;
+    border-radius: 74px;
+}
+.month-rel-date{
+    margin-left: 58px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.19;
+    align-items: center;
+    text-transform: uppercase;
+
+/* orange */
+    color: #F87719;
+}
+
+.month-vote {
+    margin-left: 62px;
+}
+
+.month-popular{
+    margin-left: 78px;
+}
+.month-genre{
+    margin-left: 108px;
+}
