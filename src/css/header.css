@@ -65,13 +65,9 @@ li {
 
 .mobile_menu_container {
     background-color: var(--primary-brand-color);
-    height: 100%;
-    z-index: 100;
-    width: calc(100% - 116px);
     border-radius: 0 8px 8px 0;
     padding: 20px;
     transition: transform .25s cubic-bezier(.4,0,.2,1);
-    position: absolute;
     top: 0;
     left: 0;
     transform: translate(-100%);
@@ -80,6 +76,14 @@ li {
 @media screen and (min-width: 768px) {
   .navbar_list {
     display: block;
+  }
+
+  .header_menu_btn {
+    display: none;
+  }
+
+a {
+    color: blue;
   }
 }
 
