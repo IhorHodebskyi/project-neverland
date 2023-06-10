@@ -6,7 +6,7 @@ const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original/';
 const BAES_UPCOMING_URL = 'https://api.themoviedb.org/3/movie/upcoming';
 const API_KEY = '057e36269a3ddafbb398756699f3ba82';
 const refs = {
-    galery: document.querySelector('.galery'),
+    galery: document.querySelector('.month-galery'),
     
 }
 const respGenre = responseData(`${BASE_GENRE_URL}?api_key=${API_KEY}`);
@@ -29,22 +29,23 @@ async function genreStr(arr){
 async function markUp(data){
     
     const randCard = Math.floor(Math.random() * 20);
-    console.log(randCard);
-    data.data.results.map(async ({backdrop_path ,original_title, id, release_date, vote_average, vote_count, popularity, overview, genre_ids},i)=>{
+    console.log(data.data.results);
+    data.data.results.map(async ({backdrop_path, title, original_title, id, release_date, vote_average, vote_count, popularity, overview, genre_ids},i)=>{
         
         if (i===randCard)
         {
-            const str = `<div class="item">
-                            <div class="item-img">
+            const str = `<div class="month-item">
+                            <div class="month-item-img">
                                 <img src="${BASE_IMG_URL}${backdrop_path}" alt="${original_title}" width="805">
                             </div>
-                            <div class="item-title">
-                                <h3>${original_title}</h3>
-                                <h3>Release date</h3><span>${release_date}</span>
-                                <h3>Vote / Votes</h3><span>${vote_average} / ${vote_count }</span>
-                                <h3>Popularity</h3><span>${popularity}</span>
-                                <h3>Genre</h3><span>${await genreStr(genre_ids)}<span>
-                                <p><span>About<span> ${overview}</p>
+                            <div class="month-item-title">
+                                <h3>${title}</h3>
+                                <h3>Release date<span class="month-rel-date">${release_date}</span></h3>
+                                <h3>Vote / Votes<span class="month-vote">${vote_average} / ${vote_count }</span></h3>
+                                <h3>Popularity<span class="month-popular">${popularity}</span></h3>
+                                <h3>Genre<span class="month-genre">${await genreStr(genre_ids)}</span></h3>
+                                <p>About</p><span class="month-text">${overview}</span>
+                                <button type="submit" class="month-btn">Add to my library</button>
                             </div>
                          </div>`;
             refs.galery.insertAdjacentHTML('beforeend', str);
