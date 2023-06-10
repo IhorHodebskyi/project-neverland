@@ -77,7 +77,7 @@ li {
     transform: translate(-100%);
 }
 /* ----------------- tablet -------------------------------- */
-@media screen and (min-width: 768px) and (max-width: 1199px) {
+@media screen and (min-width: 768px) {
   .navbar_list {
     display: block;
   }
@@ -85,7 +85,5 @@ li {
 
 /* ----------------- descktop -------------------------------- */
 @media screen and (min-width: 1200px) {
-  .navbar_list {
-    display: block;
-  }
+  
 }
