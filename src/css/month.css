@@ -1,4 +1,4 @@
-.month-galery{
+.monthgalery{
     width: auto;
     display: flex;
     flex-wrap: wrap;
@@ -84,7 +84,7 @@
     color: #F87719;
 }
 
-.month-vote{
+.month-vote {
     margin-left: 62px;
 }
 
