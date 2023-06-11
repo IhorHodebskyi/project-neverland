@@ -25,6 +25,9 @@ li {
 body.is-open {
     overflow: hidden;
 }
+.nav_list-current {
+    color: #f84119;
+}
 
 .header_container {
   display: flex;
