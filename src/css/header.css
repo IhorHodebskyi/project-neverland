@@ -3,14 +3,6 @@
   --primary-text-color: #b7b7b7;
 }
 
-/* .current_page_home .nav_list_link.current_page_home,
-.current_page_catalog .nav_list_link.current_page_catalog, 
-.current_page_my_library .nav-list__link.current_page_library, 
-    .nav-list__link:hover, 
-    .nav-list__link:focus {
-    color: #f87719;
-} */
-
 header {
   background: var(--primary-brand-color);
 }
