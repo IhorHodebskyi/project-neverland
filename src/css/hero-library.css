@@ -1,1 +1,122 @@
 /* тут будуть стилі для hero library */
+.library-hero-container{
+    background-image:
+            linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+            url(../images/mobile-library-hero-img-1x.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        max-height: 380px;
+        padding-top: 40px;
+        padding-bottom: 144px;
+        padding-left: 20px;
+        padding-right: 20px;
+}
+@media (min-device-pixel-ratio: 2),
+(min-resolution: 192dpi),
+(min-resolution: 2dppx) {
+    .library-hero-container {
+        background-image:
+            linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+            url(../images/mobile-library-hero-img-2x.jpg);
+    }
+}
+.library-hero-title{
+    margin-top:0;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    max-width: 235px;
+    
+    color: #FFFFFF;
+}
+.library-hero-text{
+    max-width: 249px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.14;
+    
+        color: #F8F8F8;
+}
+
+@media screen and (min-width: 320px),
+(max-width: 480) {
+    
+}
+
+@media screen and (min-width: 768px) {
+    
+
+    .library-hero-container{
+        background-image:
+            linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+            url(../images/tablet-library-hero-img-1x.jpg);
+        max-height: 372px;
+        padding-top: 62px;
+        padding-bottom: 116px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        .library-hero-container{
+            background-image:
+                linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+                url(../images/tablet-library-hero-img-1x.jpg);
+        }
+    }
+
+    .library-hero-text {
+        max-width: 357px;
+    }
+
+    .library-hero-title {
+        font-size: 44px;
+        line-height: 1.18;
+        max-width: 332px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+
+    /*.container {
+        max-width: 1280px;
+    }*/
+    .library-hero-container {
+        background-image:
+            linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+            url(../images/desktop-library-hero-img-1x.jpg);
+        max-height: 660px;
+        padding-top: 169px;
+        padding-left: 117px;
+    }
+
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        .library-hero-container {
+            background-image:
+                linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+                url(../images/desktop-library-hero-img-2x.jpg);
+        }
+    }
+
+
+    .library-hero-text {
+        font-size: 16px;
+        line-height: 1.18;
+        max-width: 464px;
+    }
+
+    .library-hero-title {
+        max-width: 464;
+        font-size: 64px;
+        line-height: 1.15;
+        margin-bottom: 16px;
+    }
+}

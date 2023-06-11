@@ -9,7 +9,8 @@ homeHeroFilmWraper: document.querySelector('.hero-content'),
 /*heroTrailerBtn: document.querySelector('.hero-trailer-btn'),
 goToCatalogBtn: document.querySelector('.go-to-catalog-btn'),*/
   homeHero: document.querySelector('.home-hero-plug'),
-homeHeroFilmWraper: document.querySelector('.home-hero-container'),
+  homeHeroFilmWraper: document.querySelector('.home-hero-container'),
+homeHeroText: document.querySelector('.home-hero-text'),
 
 /*----------------------------UPCOMING THIS MONTH--------------------------*/
 monthGalery: document.querySelector('.monthgalery'),
