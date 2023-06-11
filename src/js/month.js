@@ -1,6 +1,6 @@
 
 // import axios from 'axios';
-import {fetchAllGet} from './fetchAllGetNew';
+import {fetchAllGet} from './fetchAllGet';
 import { refs } from './refs';
 const BASE_GENRE_URL = 'https://api.themoviedb.org';
 const ENDPOINT_GENRE = '/3/genre/movie/list';
@@ -26,7 +26,6 @@ async function genreStr(arr){
 async function markUp(data){
     
     const randCard = Math.floor(Math.random() * 20);
-    // console.log(data.data.results);
     data.data.results.map(async ({backdrop_path, poster_path, title, original_title, id, release_date, vote_average, vote_count, popularity, overview, genre_ids},i)=>{
         // <img src="${BASE_IMG_URL}${backdrop_path}" alt="${original_title}" width="805">
         if (i===randCard)

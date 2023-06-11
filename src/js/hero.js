@@ -1,6 +1,6 @@
-import axios from "axios";
-import { serviceFilm } from "./fetchAllGet";
-import { refs } from "./refs";
+import axios from 'axios';
+import { serviceFilm } from './fetchAllGet';
+import { refs } from './refs';
 /*async function serviceFilm() {
     const BASE_URL = "https://api.themoviedb.org/3";
     const ENDPOINT = "/trending/movie/day";
@@ -13,23 +13,24 @@ import { refs } from "./refs";
 }
 export { serviceFilm };*/
 
-
-
 serviceFilm()
-    .then(data => {
-        const firstFilm = (data.data.results)[0];
-        console.log(firstFilm);
-        if (!firstFilm) {
-            refs.homeHero.classList.remove('is-hidden');
-        }
-        refs.homeHeroFilmWraper.insertAdjacentHTML('beforeend', createMarkupHero(firstFilm));
+  .then(data => {
+    const firstFilm = data.data.results[0];
+    console.log(firstFilm);
+    if (!firstFilm) {
+      refs.homeHero.classList.remove('is-hidden');
+    }
+    refs.homeHeroFilmWraper.insertAdjacentHTML(
+      'beforeend',
+      createMarkupHero(firstFilm)
+    );
 
-        refs.homeHero.classList.add('is-hidden');
+    refs.homeHero.classList.add('is-hidden');
 
-        /*refs.heroTrailerBtn.setAttribute("id", `${firstFilm.id}`);
+    /*refs.heroTrailerBtn.setAttribute("id", `${firstFilm.id}`);
         refs.goToCatalogBtn.setAttribute("id", `${firstFilm.id}`);*/
-    })
-    .catch(err => console.log(err))
+  })
+  .catch(err => console.log(err));
 
 /*function createMarkup(arr) {
     return arr.map(({ original_title, poster_path, vote_average, overview }) => 
@@ -52,9 +53,16 @@ serviceFilm()
 }*/
 
 
-function createMarkupHero({ original_title, backdrop_path, vote_average, overview, id }) {
-  const imageUrl = `https://image.tmdb.org/t/p/w500${backdrop_path}`;
-  const retinaImageUrl = `https://image.tmdb.org/t/p/w1000${backdrop_path}`;
+function createMarkupHero({
+  original_title,
+  poster_path,
+  vote_average,
+  overview,
+  id,
+}) {
+  const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
+  const retinaImageUrl = `https://image.tmdb.org/t/p/w1000${poster_path}`;
+  
   return `
         <div class="home-hero-film" style="
         background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),url('${imageUrl}');
@@ -89,14 +97,5 @@ function createMarkupHero({ original_title, backdrop_path, vote_average, overvie
 }
 
 addPoints()*/
-/*function addHeroText() {
-    
-    let width = homeHeroFilmWraper.offsetWidth;
-    console.log(width)
-    if (height >= 768) {
-        homeHeroText.textContent += " You'll need a projector, screen, and speakers. Decorate
-            your space, choose your films, and stock up on snacks for the full experience."
-    }
-}
 
-addHeroText()*/
+

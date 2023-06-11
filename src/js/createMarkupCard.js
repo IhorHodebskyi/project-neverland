@@ -1,4 +1,4 @@
-export function createMarkup(cardresult) {
+function createMarkupCard({ cardresult }) {
   const cardMarkUp = cardresult
     .map(
       ({
@@ -9,7 +9,7 @@ export function createMarkup(cardresult) {
         release_date,
         id,
       }) =>
-        `<div class = "cards-section-backphoto" style = "background-image: url(https://image.tmdb.org/t/p/w500${poster_path}) alt="${original_title}" id="${id}">
+        `<div class = "cards-section-backphoto" style = "background-image: url('https://image.tmdb.org/t/p/w500${poster_path}');" id="${id}">
     <div class = "info-cards-section">
     <p class = "info-card-section-title">${original_title}</p>
     <p class = "info-card-section-date>${release_date}${genre_ids}</p>
@@ -20,3 +20,7 @@ export function createMarkup(cardresult) {
     .join('');
   return cardMarkUp;
 }
+
+export { createMarkupCard };
+
+

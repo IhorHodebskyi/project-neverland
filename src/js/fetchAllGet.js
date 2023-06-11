@@ -10,4 +10,9 @@ async function serviceFilm() {
     return heroFilm;
     ;
 }
-export { serviceFilm };
+
+async function fetchAllGet(BASE_URL, ENDPOINT='', API_KEY='', QUERY='') {
+    const hero_film = await axios.get(`${BASE_URL}${ENDPOINT}?api_key=${API_KEY}&${QUERY}`);
+    return hero_film;
+}
+export { serviceFilm, fetchAllGet };
