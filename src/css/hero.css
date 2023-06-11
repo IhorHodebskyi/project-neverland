@@ -1,43 +1,132 @@
+.is-hidden {
+    display: none;
+}
+
 .home-hero {
-    padding-top: 40px;
     overflow: hidden;
-    padding-bottom: 130px;
 }
 
 .home-hero-container {
     overflow-x: hidden;
     /*position: relative;*/
-    min-height: 380px;
+
 }
 
 .home-hero-poster {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    
 
 }
 
-.home-hero-film {}
+.home-hero-film {  
+    max-height: 380px;
+    padding-top: 40px;
+    padding-bottom: 130px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
+
+.home-hero-title{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    
+
+    color: #FFFFFF;
+}
+
+.home-hero-rate {
+    width: 96px;
+    height: 16px;
+    margin-bottom: 20px;
+}
+
+.hero-trailer-btn, .go-to-catalog-btn {
+display: inline-block;
+
+}
+
+.hero-trailer-btn{
+    margin-right: 8px;
+}
+
+.home-hero-overview{
+    max-width: 177px;
+    max-height: 66px;
+    overflow-y: hidden;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    margin-bottom: 20px;
+    color: #F8F8F8;
+
+}
 @media screen and (min-width: 320px),
 (max-width: 480) {
-    /*.container {
+    .home-hero-container {
         min-width: 320px;
-        max-width: 428px;
-        padding: 0 20px;
         margin: auto;
-    }*/
+    }
 }
 
 @media screen and (min-width: 768px) {
-    /*.container {
-        max-width: 768px;
-        padding: 0 32px;
-    }*/
+    .home-hero-container{
+    }
+        .home-hero-film {
+            max-height: 372px;
+            padding-top: 36px;
+            padding-bottom: 115px;
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+        .home-hero-title {
+            font-size: 44px;
+            line-height: 1.18;
+            }
+
+    .home-hero-rate {
+        width: 116px;
+        height: 20px;
+    }
+        .home-hero-overview {
+            max-width: 254px;
+            max-height: 49px;
+            margin-bottom: 28px;
+        }
 }
 
 @media screen and (min-width: 1280px) {
     /*.container {
         max-width: 1280px;
     }*/
+        .home-hero-film {
+            max-height: 660px;
+            padding-top: 118px;
+            padding-bottom: 239px;
+            padding-left: 134px;
+            padding-right: 134px;
+        }
+    
+        .home-hero-title {
+            font-size: 64px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+    
+        .home-hero-rate {
+            width: 136px;
+            height: 24px;
+            margin-bottom: 28px;
+        }
+        .home-hero-overview {
+            font-size: 16px;
+            line-height: 1.18;
+            max-width: 367px;
+            max-height: 76px;
+            margin-bottom: 36px;
+            }
+    .hero-trailer-btn {
+        margin-right: 16px;
+    }
 }
