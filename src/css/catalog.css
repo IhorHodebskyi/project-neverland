@@ -1,6 +1,11 @@
+:root {
+    --primary-brand-color: #000000;
+    --primary-text-color: #B7B7B7;
+}
+
 .search-section {
-    margin-bottom: 100px;
-    margin-top: 100px;
+    background:var(--primary-brand-color);
+    padding-top: 40px;
 }
 
 .search-form {
@@ -22,8 +27,9 @@
 }
 
 .input-field {
-    max-width: 224px;
-    /* border: 1px solid #FFFFFF; */
+    width: 224px;
+    height: 40px;
+    border: 1px solid #FFFFFF;
     border-radius: 8px;
     color: #B7B7B7;
     font-size: 14px;
@@ -36,6 +42,7 @@
 }
 
 .gallery {
+    margin-bottom: 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -43,4 +50,70 @@
 
 .gallery-section {
     margin-bottom: 20px;
+    background: var(--primary-brand-color);
+}
+.without-results-section{
+    padding-top: 48px;
+    background: var(--primary-brand-color);
+}
+.without-results {
+    margin: 0 auto;
+       width: 280px;
+       height: 120px;   
+text-align: center;
+}
+.without-results-text{
+    color: #FFFFFF;
+    font-size: 20px;
+        font-weight: 400;
+        line-height: 1.4;
+    margin: 0 auto;
+}
+.is-hidden {
+    display: none;
+}
+
+/*---------------------- tablet -------------------------------- */
+ @media screen and (min-width: 768px) {
+.without-results {
+        width: 513px;
+        height: 104px;
+        text-align: center;
+    }
+    .without-results-text {
+        color: #FFFFFF;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 1.33;
+        margin: 0 auto;
+    }
+        .search-section {
+     padding-top: 60px;
+        }
+.gallery-section {
+    margin-bottom: 36px;
+}
+}
+
+/*---------------------- desktop -------------------------------- */
+@media screen and (min-width: 1200px) {
+.without-results {
+        width: 684px;
+        height: 124px;
+        text-align: center;
+    }
+
+    .without-results-text {
+        color: #FFFFFF;
+        font-size: 32px;
+        font-weight: 400;
+        line-height: 1.13;
+        margin: 0 auto;
+    }
+.search-section {
+    padding-top: 80px;
+}
+.gallery-section {
+    margin-bottom: 48px;
+}
 }
