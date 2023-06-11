@@ -1,6 +1,6 @@
-import axios from "axios";
-import { serviceFilm } from "./fetchAllGet";
-import { refs } from "./refs";
+import axios from 'axios';
+import { serviceFilm } from './fetchAllGet';
+import { refs } from './refs';
 /*async function serviceFilm() {
     const BASE_URL = "https://api.themoviedb.org/3";
     const ENDPOINT = "/trending/movie/day";
@@ -13,23 +13,24 @@ import { refs } from "./refs";
 }
 export { serviceFilm };*/
 
-
-
 serviceFilm()
-    .then(data => {
-        const firstFilm = (data.data.results)[0];
-        console.log(firstFilm);
-        if (!firstFilm) {
-            refs.homeHero.classList.remove('is-hidden');
-        }
-        refs.homeHeroFilmWraper.insertAdjacentHTML('beforeend', createMarkupHero(firstFilm));
+  .then(data => {
+    const firstFilm = data.data.results[0];
+    console.log(firstFilm);
+    if (!firstFilm) {
+      refs.homeHero.classList.remove('is-hidden');
+    }
+    refs.homeHeroFilmWraper.insertAdjacentHTML(
+      'beforeend',
+      createMarkupHero(firstFilm)
+    );
 
-        refs.homeHero.classList.add('is-hidden');
+    refs.homeHero.classList.add('is-hidden');
 
-        /*refs.heroTrailerBtn.setAttribute("id", `${firstFilm.id}`);
+    /*refs.heroTrailerBtn.setAttribute("id", `${firstFilm.id}`);
         refs.goToCatalogBtn.setAttribute("id", `${firstFilm.id}`);*/
-    })
-    .catch(err => console.log(err))
+  })
+  .catch(err => console.log(err));
 
 /*function createMarkup(arr) {
     return arr.map(({ original_title, poster_path, vote_average, overview }) => 
@@ -51,8 +52,13 @@ serviceFilm()
     </div>`
 }*/
 
-
-function createMarkupHero({ original_title, poster_path, vote_average, overview, id }) {
+function createMarkupHero({
+  original_title,
+  poster_path,
+  vote_average,
+  overview,
+  id,
+}) {
   const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
   const retinaImageUrl = `https://image.tmdb.org/t/p/w1000${poster_path}`;
   return `
