@@ -23,5 +23,3 @@ function createMarkupCard({ cardresult }) {
 }
 
 export { createMarkupCard };
-
-
