@@ -4,13 +4,13 @@
 
 }
 
-.current_page_home .nav_list_link.current_page_home,
+/* .current_page_home .nav_list_link.current_page_home,
 .current_page_catalog .nav_list_link.current_page_catalog, 
 .current_page_my_library .nav-list__link.current_page_library, 
     .nav-list__link:hover, 
     .nav-list__link:focus {
     color: #f87719;
-}
+} */
 
 header {
     background: var(--primary-brand-color);
@@ -62,6 +62,18 @@ body.is-open {
     opacity: 0;
 }
 
+.backdrop {
+    background-color:rgba(255, 255, 255, 0.2);
+    opacity: .2;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    transition: opacity .25s cubic-bezier(.4,0,.2,1);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .visual_hidden {
     width: 1px;
     height: 1px;
@@ -72,6 +84,11 @@ body.is-open {
     position: absolute;
     overflow: hidden;
 }
+.mobile_menu_logo_img {
+    width: 32px;
+    height: 32px;
+}
+
 
 @media screen and (max-width: 767px) {
     .logo_text {
@@ -89,41 +106,34 @@ body.is-open {
         transition: color .25s cubic-bezier(.4,0,.2,1);
         display: block;
     }
-    .header_container.is-open {
-        transform: translate(0);
-    }
+    
     .mobile_menu_container {
         background-color: var(--primary-brand-color);
         height: 100%;
-        width: calc(100% - 116px);
         z-index: 100;
-        border-radius: 0 8px 8px;
+        width: calc(100% - 116px);
+        border-radius: 0 8px 8px 0;
         padding: 20px;
         transition: transform .25s cubic-bezier(.4,0,.2,1);
         position: absolute;
         top: 0;
         left: 0;
-        transform: translate(100%);
+        transform: translate(-100%);
     }
+    .mobile_menu_container.is-open {
+        transform: translate(0);
+    }
+    .navbar {
+        margin-top: 40px;
+    }
+
     .navbar_list {
         display: flex;
         flex-direction: column;
         gap: 24px;
-    }
-    .mobile_menu_container {
-        background-color: var(--primary-brand-color);
-        border-radius: 0 8px 8px 0;
-        padding: 20px;
-        transition: transform .25s cubic-bezier(.4,0,.2,1);
-        top: 0;
-        left: 0;
-        transform: translate(-100%);
+        padding-left: 0;
     }
 
-}
-
-.navbar_list {
-  display: none;
 }
 
 #icon_moon {
@@ -133,17 +143,6 @@ body.is-open {
 #icon_sun {
   width: 8px;
   height: 8px;
-}
-
-.backdrop {
-    background-color:rgba(255, 255, 255, 0.2);
-    opacity: .2;
-    width: 100%;
-    z-index: 2;
-    transition: opacity .25s cubic-bezier(.4,0,.2,1);
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
 .header_theme_switch {
@@ -207,6 +206,7 @@ body.is-open {
         width: 11px;
         height: 11px;
     }
+
 }
 
 /* ----------------- descktop -------------------------------- */
