@@ -8,4 +8,6 @@ home_hero_film_wraper: document.querySelector('.hero-content'),
 hero_trailer_btn: document.querySelector('.hero-trailer-btn'),
 go_to_catalog_btn: document.querySelector('.go-to-catalog-btn'),
 home_hero: document.querySelector('.home-hero'),
+// -----------------------------Home Upcoming-------------------
+monthGalery: document.querySelector('.monthgalery'),
 };

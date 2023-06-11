@@ -84,7 +84,7 @@
     justify-content: center;
     margin: 24px 0 0 0;
     padding: 12px 24px;
-    width: 157px;
+    width: auto;
     height: 40px;
     font-weight: 500;
     font-size: 14px;
@@ -105,8 +105,10 @@
     background: transparent;
     border: 1px solid orange;
 }
-.month-item-img > img{
+
+.month-item-img > picture > img{
     display: block;
+    
 }
 .month-item-img{
     border-radius: 5px;

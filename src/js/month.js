@@ -1,24 +1,20 @@
 
-import axios from 'axios';
-
-const BASE_GENRE_URL = 'https://api.themoviedb.org/3/genre/movie/list';
+// import axios from 'axios';
+import {fetchAllGet} from './fetchAllGetNew';
+import { refs } from './refs';
+const BASE_GENRE_URL = 'https://api.themoviedb.org';
+const ENDPOINT_GENRE = '/3/genre/movie/list';
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original/';
-const BAES_UPCOMING_URL = 'https://api.themoviedb.org/3/movie/upcoming';
-const API_KEY = '057e36269a3ddafbb398756699f3ba82';
-const refs = {
-    galery: document.querySelector('.monthgalery'),
-    
-}
+const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
+const BASE_UPCOMING_URL = 'https://api.themoviedb.org';
+const ENDPOINT_UPCOMING = '/3/movie/upcoming';
 
-const respGenre = responseData(`${BASE_GENRE_URL}?api_key=${API_KEY}`);
+const API_KEY = '5bf13f442a6612ea903461e28536fdca';
+// '057e36269a3ddafbb398756699f3ba82';
 
-async function responseData(url=''){
-    if(url){
-    return await axios.get(url);
-    }
-}
-//https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=2023-06-01&release_date.lte=2023-07-01 
-responseData(`${BAES_UPCOMING_URL}?api_key=${API_KEY}&language=en-US&page=1`)
+const respGenre = fetchAllGet(BASE_GENRE_URL, ENDPOINT_GENRE, API_KEY, '');
+
+fetchAllGet(BASE_UPCOMING_URL, ENDPOINT_UPCOMING, API_KEY,'&language=en-US&page=1')
 .then(markUp);
 
 async function genreStr(arr){
@@ -31,13 +27,16 @@ async function markUp(data){
     
     const randCard = Math.floor(Math.random() * 20);
     // console.log(data.data.results);
-    data.data.results.map(async ({backdrop_path, title, original_title, id, release_date, vote_average, vote_count, popularity, overview, genre_ids},i)=>{
-        
+    data.data.results.map(async ({backdrop_path, poster_path, title, original_title, id, release_date, vote_average, vote_count, popularity, overview, genre_ids},i)=>{
+        // <img src="${BASE_IMG_URL}${backdrop_path}" alt="${original_title}" width="805">
         if (i===randCard)
         {
             const str = `<div class="month-item" id="${id}">
                             <div class="month-item-img">
-                                <img src="${BASE_IMG_URL}${backdrop_path}" alt="${original_title}" width="805">
+                                <picture>
+                                    <source srcset="${BASE_IMG_URL}${backdrop_path}" media="(min-width: 768px)" width="805"/>
+                                    <img src="${BASE_IMG_URL_w500}${poster_path}" alt="${original_title}"/>
+                                </picture>
                             </div>
                             <div class="month-item-title">
                                 <h3>${title}</h3>
@@ -52,10 +51,10 @@ async function markUp(data){
                                     </div>
                                 </div>
                                 <p>About</p><span class="month-text">${overview}</span>
-                                <button type="submit" class="month-btn">Add to my library</button>
+                                <button type="submit" class="month-btn">${textBtn(id)}</button>
                             </div>
                          </div>`;
-            refs.galery.insertAdjacentHTML('beforeend', str);
+            refs.monthGalery.insertAdjacentHTML('beforeend', str);
             refs.monthBtn = document.querySelector('.month-btn');
             refs.monthItem = document.querySelector('.month-item');
             refs.monthBtn.addEventListener('click', handlerBtn);
@@ -64,8 +63,7 @@ async function markUp(data){
       
 }
 
-function handlerBtn(e){
-    e.preventDefault();
+function textBtn(id){
     const idFilm ={
         id: []
     }
@@ -73,9 +71,27 @@ function handlerBtn(e){
         idFilm.id = [...JSON.parse(localStorage.getItem("favoriteFilm")).id];
                
     }
-    if(!idFilm.id.includes(refs.monthItem.getAttribute('id'))){
-        idFilm.id.push(refs.monthItem.getAttribute('id'));
+    return !idFilm.id.includes(id.toString()) ? 'Add to my library' : 'Remove from my library';
+}
+
+function handlerBtn(e){
+    e.preventDefault();
+    const id = refs.monthItem.getAttribute('id');
+    const idFilm ={
+        id: []
+    }
+    if (localStorage.getItem("favoriteFilm")){
+        idFilm.id = [...JSON.parse(localStorage.getItem("favoriteFilm")).id];
+               
+    }
+    if(!idFilm.id.includes(id)){
+        if(e.currentTarget.textContent === 'Add to my library'){e.currentTarget.textContent = 'Remove from  my library';}
+        idFilm.id.push(id);
         localStorage.setItem("favoriteFilm", JSON.stringify(idFilm));
+    }else {
+        idFilm.id.splice(idFilm.id.indexOf(id),1);
+        localStorage.setItem("favoriteFilm", JSON.stringify(idFilm));
+        e.currentTarget.textContent = 'Add to my library';
     }
     
     
