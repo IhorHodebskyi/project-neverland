@@ -1,16 +1,13 @@
-.monthgalery{
-    width: auto;
-    display: flex;
-    flex-wrap: wrap;
-    
+.month-title{
+    margin: 0 0 28px 0;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.18;
+    text-transform: uppercase;
+/* White */
+    color: black;
 }
-.month-item{
-    display: flex;
-    flex-basis: 100%;
-    gap: 16px;
-    
-}
-.month-item-title > h3{
+.month-item-title-text > div > h3{
     margin: 12px 0 0 0;
     /* display: inline; */
     font-weight: 500;
@@ -20,13 +17,51 @@
     color: #111111;
 }
 .month-item-title > h3:first-child{
-    margin: 0 0 28px 0;
+    /* margin: 0 0 28px 0; */
     font-weight: 500;
     font-size: 32px;
     line-height: 1.18;
     text-transform: uppercase;
 /* White */
     color: #111111;
+}
+.month-vote {
+    margin-left: 62px;
+}
+.month-votes, .month-vote {
+    padding: 1px 8px;
+    width: 36px;
+    height: 18px;
+    /* Secondary text */
+    background: #F8F8F8;
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: 1.14;
+    text-align: center;
+    text-transform: uppercase;
+
+    /* Background */
+    color: #111111;
+}
+.month-popular{
+    margin-left: 78px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.19;
+    align-items: center;
+    text-transform: uppercase;
+    /* Secondary black */
+    color: #282828;
+}
+
+.month-genre{
+    margin-left: 108px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.19;
+    align-items: center;
+    /* Secondary black */
+    color: #282828;
 }
 .month-item-title > p{
     margin: 20px 0 16px 0;
@@ -44,34 +79,39 @@
   /* Secondary black */
     color: #282828;
 }
-
-.month-title{
-    margin: 0 0 28px 0;
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 1.18;
-    text-transform: uppercase;
-/* White */
-    color: black;
-}
 .month-btn{
-    display: block;
+    display: flex;
+    justify-content: center;
     margin: 24px 0 0 0;
     padding: 12px 24px;
-    width: 155px;
+    width: 157px;
     height: 40px;
     font-weight: 500;
     font-size: 14px;
     line-height: 1.14;
+    /* letter-spacing: 0.01em; */
     align-items: center;
     text-align: center;
 /* Background */
     color: #111111;
 /* linear */
-    background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
-    border: none;
     border-radius: 74px;
+    border: 1px solid transparent;
+    background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%) border-box;
+
 }
+
+.month-btn:is(:hover, :focus){
+    background: transparent;
+    border: 1px solid orange;
+}
+.month-item-img > img{
+    display: block;
+}
+.month-item-img{
+    border-radius: 5px;
+    overflow: hidden;
+} 
 .month-rel-date{
     margin-left: 58px;
     font-weight: 500;
@@ -83,14 +123,45 @@
 /* orange */
     color: #F87719;
 }
+@media screen and (min-width: 320px), (max-width: 480) {
+    
+  }
 
-.month-vote {
-    margin-left: 62px;
-}
+  @media screen and (min-width: 768px) {
+    .month-item-title > h3:first-child{
+        margin: 32px 0 24px 0;
+    }
+    .month-item-title-text{
+        display: flex;
+        gap: 118px;
+    }
 
-.month-popular{
-    margin-left: 78px;
-}
-.month-genre{
-    margin-left: 108px;
-}
+        
+  }
+
+  @media screen and (min-width: 1280px) {
+    .month-item-title > h3:first-child{
+        margin: 0 0 28px 0;
+    }
+    .month-item-title-text{
+        display: block;
+    }
+    .monthgalery{
+        width: auto;
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    .month-item{
+        display: flex;
+        flex-basis: 100%;
+        gap: 16px;
+        
+    }
+    .month-item-title{
+        max-width: 390px;
+    }
+       
+    
+  }
+

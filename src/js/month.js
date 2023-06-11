@@ -41,10 +41,16 @@ async function markUp(data){
                             </div>
                             <div class="month-item-title">
                                 <h3>${title}</h3>
-                                <h3>Release date<span class="month-rel-date">${release_date}</span></h3>
-                                <h3>Vote / Votes<span class="month-vote">${vote_average}</span> / <span class="month-votes">${vote_count }</span></h3>
-                                <h3>Popularity<span class="month-popular">${popularity}</span></h3>
-                                <h3>Genre<span class="month-genre">${await genreStr(genre_ids)}</span></h3>
+                                <div class="month-item-title-text">
+                                    <div>
+                                        <h3>Release date<span class="month-rel-date">${release_date.replaceAll('-','.')}</span></h3>
+                                        <h3>Vote / Votes<span class="month-vote">${vote_average}</span> / <span class="month-votes">${vote_count }</span></h3>
+                                    </div>
+                                    <div>
+                                        <h3>Popularity<span class="month-popular">${parseFloat(popularity).toFixed(1)}</span></h3>
+                                        <h3>Genre<span class="month-genre">${await genreStr(genre_ids)}</span></h3>
+                                    </div>
+                                </div>
                                 <p>About</p><span class="month-text">${overview}</span>
                                 <button type="submit" class="month-btn">Add to my library</button>
                             </div>
@@ -67,8 +73,10 @@ function handlerBtn(e){
         idFilm.id = [...JSON.parse(localStorage.getItem("favoriteFilm")).id];
                
     }
+    if(!idFilm.id.includes(refs.monthItem.getAttribute('id'))){
+        idFilm.id.push(refs.monthItem.getAttribute('id'));
+        localStorage.setItem("favoriteFilm", JSON.stringify(idFilm));
+    }
     
-    idFilm.id.push(refs.monthItem.getAttribute('id'));
-    localStorage.setItem("favoriteFilm", JSON.stringify(idFilm));
     
 }
