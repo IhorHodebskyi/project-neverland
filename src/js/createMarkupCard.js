@@ -1,4 +1,4 @@
-export function createMarkup(cardresult) {
+function createMarkupCard(cardresult) {
   const cardMarkUp = cardresult
     .map(
       ({
@@ -20,3 +20,5 @@ export function createMarkup(cardresult) {
     .join('');
   return cardMarkUp;
 }
+
+export { createMarkupCard };
