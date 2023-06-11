@@ -1,13 +1,14 @@
-import axios from 'axios';
+// import axios from 'axios';
 
-async function serviceFilm() {
-    const BASE_URL = "https://api.themoviedb.org/3";
-    const ENDPOINT = "/trending/movie/day";
-    const API_KEY = "5bf13f442a6612ea903461e28536fdca";
+// async function serviceFilm() {
+//   const BASE_URL = 'https://api.themoviedb.org/3';
+//   const ENDPOINT = '/trending/movie/day';
+//   const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 
-    const hero_film = await axios.get(`${BASE_URL}${ENDPOINT}?api_key=${API_KEY}`);
+//   const hero_film = await axios.get(
+//     `${BASE_URL}${ENDPOINT}?api_key=${API_KEY}`
+//   );
 
-    return hero_film;
-    ;
-}
-export { serviceFilm };
+//   return hero_film;
+// }
+// export { serviceFilm };

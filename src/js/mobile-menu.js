@@ -1,4 +1,4 @@
-import refs from './refs';
+import { refs } from './refs';
 
 refs.menuBtn.addEventListener('click', toglrModal);
 refs.menuBackdrop.addEventListener('click', closeModal);
