@@ -12,5 +12,10 @@ goToCatalogBtn: document.querySelector('.go-to-catalog-btn'),*/
 homeHeroFilmWraper: document.querySelector('.home-hero-container'),
 
 /*----------------------------UPCOMING THIS MONTH--------------------------*/
-monthGalery: document.querySelector('.monthgalery'),
+  monthGalery: document.querySelector('.monthgalery'),
+/*------------------------CATALOG SEARCH BY TITLE-----------------------------*/
+  
+formSearch: document.querySelector("#search-form"),
+searchWrap: document.querySelector(".gallery"),
+
 };

@@ -1,3 +1,7 @@
+:root {
+    --primary-brand-color: #000000;
+    --primary-text-color: #B7B7B7;
+}
 .search-section {
     margin-bottom: 100px;
     margin-top: 100px;
@@ -43,4 +47,18 @@
 
 .gallery-section {
     margin-bottom: 20px;
+    background-color: black;
+}
+
+.without-results {
+       width: 280px;
+       height: 120px;   
+text-align: center;
+}
+.without-results-text{
+    font-size: 20px;
+        font-weight: 400;
+        line-height: 1.4;
+    /* margin: 0 auto; */
+
 }
