@@ -12,12 +12,12 @@ async function fetchTrendsOfWeek() {
     `${BASE_URL}?api_key=${API_KEY}&language=en-US&per_page=20`
   );
   originalData = response.data.results;
-  handleResponsive();
+  await handleResponsive();
   window.addEventListener('resize', handleResponsive);
   return originalData;
 }
 
-function handleResponsive() {
+async function handleResponsive() {
   const screenWidth = window.innerWidth;
   let slicedData;
 
