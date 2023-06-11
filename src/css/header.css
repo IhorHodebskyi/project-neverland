@@ -3,6 +3,7 @@
   --primary-text-color: #b7b7b7;
 }
 
+
 /* .current_page_home .nav_list_link.current_page_home,
 .current_page_catalog .nav_list_link.current_page_catalog, 
 .current_page_my_library .nav-list__link.current_page_library, 
@@ -11,6 +12,11 @@
     color: #f87719;
 } */
 
+
+
+header {
+  background: var(--primary-brand-color);
+}
 
 a {
   text-decoration: none;

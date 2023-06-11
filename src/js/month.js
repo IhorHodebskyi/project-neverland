@@ -19,7 +19,7 @@ fetchAllGet(BASE_UPCOMING_URL, ENDPOINT_UPCOMING, API_KEY,'&language=en-US&page=
 
 async function genreStr(arr){
         const data = await respGenre;
-        return arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0].name).join(' ');
+        return arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0].name).join(', ');
       
  }
 
@@ -28,15 +28,17 @@ async function markUp(data){
     const randCard = Math.floor(Math.random() * 20);
     data.data.results.map(async ({backdrop_path, poster_path, title, original_title, id, release_date, vote_average, vote_count, popularity, overview, genre_ids},i)=>{
         // <img src="${BASE_IMG_URL}${backdrop_path}" alt="${original_title}" width="805">
+        // 
         if (i===randCard)
         {
             const str = `<div class="month-item" id="${id}">
+                            <div>
                             <div class="month-item-img">
                                 <picture>
                                     <source srcset="${BASE_IMG_URL}${backdrop_path}" media="(min-width: 768px)" width="805"/>
                                     <img src="${BASE_IMG_URL_w500}${poster_path}" alt="${original_title}"/>
                                 </picture>
-                            </div>
+                            </div></div>
                             <div class="month-item-title">
                                 <h3>${title}</h3>
                                 <div class="month-item-title-text">
@@ -53,6 +55,7 @@ async function markUp(data){
                                 <button type="submit" class="month-btn">${textBtn(id)}</button>
                             </div>
                          </div>`;
+                        //  <div class="month-genre-flex"><div><h3>Genre</h3></div><div><span class="month-genre">${await genreStr(genre_ids)}</span></div></div>
             refs.monthGalery.insertAdjacentHTML('beforeend', str);
             refs.monthBtn = document.querySelector('.month-btn');
             refs.monthItem = document.querySelector('.month-item');

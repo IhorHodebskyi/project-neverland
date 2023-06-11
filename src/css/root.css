@@ -1,9 +1,11 @@
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: #111111;
 }
 
 @media screen and (min-width: 320px), (max-width: 480) {
   .container {
+    
     min-width: 320px;
     max-width: 428px;
     padding: 0 20px;

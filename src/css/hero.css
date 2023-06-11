@@ -64,6 +64,16 @@ background-image:
     padding-right: 20px;
 }
 
+.home-hero-plug-title{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 12px;
+    max-width: 200px;
+    
+    color: #FFFFFF;
+}
 
 .home-hero-title{
     font-weight: 700;
@@ -71,7 +81,7 @@ background-image:
     line-height: 1.2;
     margin-top: 0;
     margin-bottom: 12px;
-    max-width: 200px;
+    max-width: 232px;
 
     color: #FFFFFF;
 }
@@ -96,13 +106,16 @@ margin-top: 0;
 .home-hero-overview{
     max-width: 177px;
     max-height: 66px;
-    overflow-y: hidden;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.14;
     margin-top: 0;
     margin-bottom: 20px;
     color: #F8F8F8;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 
 }
 @media screen and (min-width: 320px),
@@ -149,10 +162,15 @@ margin-top: 0;
             padding-left: 32px;
             padding-right: 32px;
         }
+        .home-hero-plug-title{
+            font-size: 44px;
+                line-height: 1.18;
+                max-width: 332px;
+        }
         .home-hero-title {
             font-size: 44px;
             line-height: 1.18;
-            max-width: 332px;
+            max-width: 445px;
             }
 
     .home-hero-rate {
@@ -163,6 +181,10 @@ margin-top: 0;
             max-width: 254px;
             max-height: 49px;
             margin-bottom: 28px;
+            overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
         }
 }
 
@@ -206,9 +228,15 @@ margin-top: 0;
             padding-left: 134px;
             padding-right: 134px;
         }
+        .home-hero-plug-title{
+            max-width: 464;
+                font-size: 64px;
+                line-height: 1.15;
+                margin-bottom: 16px;
+        }
     
         .home-hero-title {
-            max-width: 464;
+            max-width: 670px;
             font-size: 64px;
             line-height: 1.15;
             margin-bottom: 16px;
@@ -219,6 +247,8 @@ margin-top: 0;
             height: 24px;
             margin-bottom: 28px;
         }
+
+        
         .home-hero-overview {
             font-size: 16px;
             line-height: 1.18;
