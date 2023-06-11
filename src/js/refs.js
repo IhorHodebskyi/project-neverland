@@ -6,9 +6,10 @@ export const refs = {
 /*----------------------------HERO--------------------------*/
 
 homeHeroFilmWraper: document.querySelector('.hero-content'),
-heroTrailerBtn: document.querySelector('.hero-trailer-btn'),
-goToCatalogBtn: document.querySelector('.go-to-catalog-btn'),
-homeHero: document.querySelector('.home-hero'),
+/*heroTrailerBtn: document.querySelector('.hero-trailer-btn'),
+goToCatalogBtn: document.querySelector('.go-to-catalog-btn'),*/
+  homeHero: document.querySelector('.home-hero-plug'),
+homeHeroFilmWraper: document.querySelector('.home-hero-container'),
 
 /*----------------------------UPCOMING THIS MONTH--------------------------*/
 monthGalery: document.querySelector('.monthgalery'),
