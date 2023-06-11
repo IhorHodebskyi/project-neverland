@@ -33,7 +33,7 @@ function onSubmit(e) {
   getMovies(value, page).then(({ data }) => {
     console.log(data);
     if (data.results.length === 0) {
-      
+    
     } else {
       createMarkupCard(data);
       wrap.insertAdjacentHTML('beforeend', cardMarkUp)
