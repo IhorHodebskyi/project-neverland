@@ -11,6 +11,9 @@ goToCatalogBtn: document.querySelector('.go-to-catalog-btn'),*/
   homeHero: document.querySelector('.home-hero-plug'),
   homeHeroFilmWraper: document.querySelector('.home-hero-container'),
 
+homeHeroText: document.querySelector('.home-hero-text'),
+
+
   /*----------------------------WEEKLY TRENDS--------------------------*/
   weeklyList: document.querySelector('.weekly-list'),
 

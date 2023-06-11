@@ -52,6 +52,7 @@ serviceFilm()
     </div>`
 }*/
 
+
 function createMarkupHero({
   original_title,
   poster_path,
@@ -61,6 +62,7 @@ function createMarkupHero({
 }) {
   const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
   const retinaImageUrl = `https://image.tmdb.org/t/p/w1000${poster_path}`;
+  
   return `
         <div class="home-hero-film" style="
         background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),url('${imageUrl}');
@@ -95,3 +97,5 @@ function createMarkupHero({
 }
 
 addPoints()*/
+
+
