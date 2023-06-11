@@ -1,7 +1,16 @@
 :root {
     --primary-brand-color: #000000;
+    --primary-text-color:  #B7B7B7;
 
 }
+
+/* .current_page_home .nav_list_link.current_page_home,
+.current_page_catalog .nav_list_link.current_page_catalog, 
+.current_page_my_library .nav-list__link.current_page_library, 
+    .nav-list__link:hover, 
+    .nav-list__link:focus {
+    color: #f87719;
+} */
 
 header {
     background: var(--primary-brand-color);
@@ -11,6 +20,10 @@ a {
 }
 li {
     list-style-type: none;
+}
+
+body.is-open {
+    overflow: hidden;
 }
 
 .header_container {
@@ -26,16 +39,61 @@ li {
   align-items: center;
 }
 
+.logo_text {
+    color: var(--primary-text-color);
+}
+
 .logo_img {
     width: 30px;
     height: 24px;
 }
 
-.logo_text {
-    display: none;
+.navbar_item_link {
+    text-transform: uppercase;
+    color: var(--primary-text-color);
+    transition: color .25s cubic-bezier(.4,0,.2,1);
 }
 
+.mobile_menu_container {
+    margin: 0 auto;
+}
+
+.backdrop.visual_hidden {
+    opacity: 0;
+}
+
+.backdrop {
+    background-color:rgba(255, 255, 255, 0.2);
+    opacity: .2;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    transition: opacity .25s cubic-bezier(.4,0,.2,1);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.visual_hidden {
+    width: 1px;
+    height: 1px;
+    clip: rect(0 0 0 0);
+    border: 0;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+}
+.mobile_menu_logo_img {
+    width: 32px;
+    height: 32px;
+}
+
+
 @media screen and (max-width: 767px) {
+    .logo_text {
+        display: none;
+    }
     .header_menu_btn {
         text-transform: uppercase;
         color: #B7B7B7;
@@ -48,10 +106,34 @@ li {
         transition: color .25s cubic-bezier(.4,0,.2,1);
         display: block;
     }
-}
+    
+    .mobile_menu_container {
+        background-color: var(--primary-brand-color);
+        height: 100%;
+        z-index: 100;
+        width: calc(100% - 116px);
+        border-radius: 0 8px 8px 0;
+        padding: 20px;
+        transition: transform .25s cubic-bezier(.4,0,.2,1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-100%);
+    }
+    .mobile_menu_container.is-open {
+        transform: translate(0);
+    }
+    .navbar {
+        margin-top: 40px;
+    }
 
-.navbar_list {
-  display: none;
+    .navbar_list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding-left: 0;
+    }
+
 }
 
 #icon_moon {
@@ -63,31 +145,86 @@ li {
   height: 8px;
 }
 
-.mobile_menu_container {
-    background-color: var(--primary-brand-color);
-    border-radius: 0 8px 8px 0;
-    padding: 20px;
-    transition: transform .25s cubic-bezier(.4,0,.2,1);
-    top: 0;
-    left: 0;
-    transform: translate(-100%);
+.header_theme_switch {
+    cursor: pointer;
+    width: 38px;
+    height: 16px;
+    background: linear-gradient(141.22deg,#f84119 9.4%,rgba(248,159,25,.68) 91.91%);
+    border-radius: 194px;
+    align-items: center;
+    gap: 14px;
+    padding: 5px;
+    display: flex;
+    position: relative;
+}
+#icon-moon, #icon-sun {
+    width: 8px;
+    height: 8px;
+    fill: #ffffff;
 }
 /* ----------------- tablet -------------------------------- */
 @media screen and (min-width: 768px) {
-  .navbar_list {
-    display: block;
-  }
+    .header_container {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
 
-  .header_menu_btn {
-    display: none;
-  }
+    .mobile_menu_logo_img {
+        display: none;
+    }
 
-a {
-    color: blue;
-  }
+    .logo_img{
+        width: 48px;
+        height: 48px;
+        margin-right: 8px;
+    }
+    .logo_text {
+        display: inline-block;
+        font-size: 24px;
+        font-weight: 400px;
+        line-height: 1.16;
+    }
+
+    .navbar_list {
+        display: flex;
+        gap: 32px;
+        font-size: 14px;
+        font-weight: 500px;
+        line-height: 1.15;
+    }
+
+    .header_menu_btn {
+        display: none;
+    }
+    .header_theme_switch {
+        width: 54px;
+        height: 20px;
+        gap: 24px;
+        margin-left: auto;
+    }
+    #icon-moon, #icon-sun {
+        width: 11px;
+        height: 11px;
+    }
+
 }
 
 /* ----------------- descktop -------------------------------- */
 @media screen and (min-width: 1200px) {
-  
+  .header_container {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+  .logo {
+    margin-right: 90px;
+  }
+  .header_theme_switch {
+    width: 60px;
+    height: 24px;
+    gap: 24px;
+  }
+  #icon-moon, #icon-sun {
+    width: 13px;
+    height: 13px;
+}
 }
