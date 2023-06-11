@@ -1,5 +1,7 @@
 import axios from 'axios';
+
 import { pagination } from './pagination';
+
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original/';
@@ -51,16 +53,19 @@ async function getEventsMovies(page) {
   try {
     const data = await getMovies(page, value);
     console.log(data);
+
     if (!data) {
       return;
     } else {
       list.innerHTML = '';
       createMarkup(data.data.results);
+
     }
   } catch (error) {
     console.log(error);
   }
 }
+
 
 pagination.on('afterMove', event => {
   const currentPage = event.page;
@@ -92,3 +97,4 @@ function createMarkup(data) {
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
 }
+
