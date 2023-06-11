@@ -4,6 +4,7 @@ export const refs = {
   menuBackdrop: document.querySelector('[data-backdrop]'),
   body: document.querySelector('body'),
 /*----------------------------HERO--------------------------*/
+
 homeHeroFilmWraper: document.querySelector('.hero-content'),
 heroTrailerBtn: document.querySelector('.hero-trailer-btn'),
 goToCatalogBtn: document.querySelector('.go-to-catalog-btn'),
