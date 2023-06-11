@@ -1,0 +1,39 @@
+.card-section-backphoto {
+background: linear-gradient(180deg, rgba(0, 0, 0, 0) 63.48%, rgba(0, 0, 0, 0.9) 92.16%);
+border-radius: 5px;
+}
+
+.info-card-section {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 20px;
+text-transform: uppercase;
+color: #FFFFFF;
+}
+
+@media screen and (min-width: 768px) {
+.info-card-section {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 19px;
+color: #FFFFFF;
+  
+  }
+}
+
+@media screen and (min-width: 1200px) {
+.info-card-section {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+color: #FFFFFF;
+
+    
+  }
+}

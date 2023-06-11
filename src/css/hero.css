@@ -1,7 +1,43 @@
 .is-hidden {
     display: none;
 }
+.home-hero-plug {
+background-image:
+    linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+        url(../images/mobile-home-hero-img-1x.jpg);
+    background-repeat: no-repeat;
+        background-size: cover;
+        background-position: right;
+        max-height: 380px;
+        padding-top: 40px;
+        padding-bottom: 80px;
+        padding-left: 20px;
+        padding-right: 20px;
+}
 
+
+@media (min-device-pixel-ratio: 2),
+(min-resolution: 192dpi),
+(min-resolution: 2dppx) {
+    .home-hero-plug {
+        background-image:
+            linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+            url(../images/mobile-home-hero-img-2x.jpg);
+    }
+}
+ .home-hero-text{
+    max-width: 177px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #F8F8F8;
+ }
+
+ .home-hero-btn{
+    margin-top: 0;
+ }
 .home-hero {
     overflow: hidden;
 }
@@ -18,6 +54,9 @@
 }
 
 .home-hero-film {  
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:top 20% right 50%;
     max-height: 380px;
     padding-top: 40px;
     padding-bottom: 130px;
@@ -25,13 +64,24 @@
     padding-right: 20px;
 }
 
+.home-hero-plug-title{
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 12px;
+    max-width: 200px;
+    
+    color: #FFFFFF;
+}
 
 .home-hero-title{
     font-weight: 700;
     font-size: 32px;
     line-height: 1.2;
+    margin-top: 0;
     margin-bottom: 12px;
-    
+    max-width: 232px;
 
     color: #FFFFFF;
 }
@@ -39,11 +89,13 @@
 .home-hero-rate {
     width: 96px;
     height: 16px;
+    margin-top: 0;
     margin-bottom: 20px;
 }
 
 .hero-trailer-btn, .go-to-catalog-btn {
 display: inline-block;
+margin-top: 0;
 
 }
 
@@ -54,12 +106,16 @@ display: inline-block;
 .home-hero-overview{
     max-width: 177px;
     max-height: 66px;
-    overflow-y: hidden;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.14;
+    margin-top: 0;
     margin-bottom: 20px;
     color: #F8F8F8;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 
 }
 @media screen and (min-width: 320px),
@@ -73,6 +129,32 @@ display: inline-block;
 @media screen and (min-width: 768px) {
     .home-hero-container{
     }
+        .home-hero-plug {
+            background-image:
+                linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+                url(../images/tablet-home-hero-img-1x.jpg);
+            max-height: 372px;
+            padding-top: 62px;
+            padding-bottom: 62px;
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+    
+    
+        @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            .home-hero-plug {
+                background-image:
+                    linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+                    url(../images/tablet-home-hero-img-2x.jpg);
+            }
+        }
+        .home-hero-text {
+            max-width: 375px;
+            margin-bottom: 32px;
+        }
+
         .home-hero-film {
             max-height: 372px;
             padding-top: 36px;
@@ -80,9 +162,15 @@ display: inline-block;
             padding-left: 32px;
             padding-right: 32px;
         }
+        .home-hero-plug-title{
+            font-size: 44px;
+                line-height: 1.18;
+                max-width: 332px;
+        }
         .home-hero-title {
             font-size: 44px;
             line-height: 1.18;
+            max-width: 445px;
             }
 
     .home-hero-rate {
@@ -93,6 +181,10 @@ display: inline-block;
             max-width: 254px;
             max-height: 49px;
             margin-bottom: 28px;
+            overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
         }
 }
 
@@ -100,6 +192,35 @@ display: inline-block;
     /*.container {
         max-width: 1280px;
     }*/
+                .home-hero-plug {
+                    background-image:
+                        linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+                        url(../images/desktop-home-hero-img-1x.jpg);
+                    max-height: 660px;
+                    padding-top: 169px;
+                    padding-bottom:169px;
+                    padding-left: 32px;
+                    padding-right: 32px;
+                }
+        
+        
+                @media (min-device-pixel-ratio: 2),
+                (min-resolution: 192dpi),
+                (min-resolution: 2dppx) {
+                    .home-hero-plug {
+                        background-image:
+                            linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+                            url(../images/desktop-home-hero-img-2x.jpg);
+                    }
+                }
+
+                
+                .home-hero-text {
+                    font-size: 16px;
+                    line-height: 1.18;
+                    max-width: 464px;
+                    margin-bottom: 32px;
+                }
         .home-hero-film {
             max-height: 660px;
             padding-top: 118px;
@@ -107,8 +228,15 @@ display: inline-block;
             padding-left: 134px;
             padding-right: 134px;
         }
+        .home-hero-plug-title{
+            max-width: 464;
+                font-size: 64px;
+                line-height: 1.15;
+                margin-bottom: 16px;
+        }
     
         .home-hero-title {
+            max-width: 670px;
             font-size: 64px;
             line-height: 1.15;
             margin-bottom: 16px;
@@ -119,6 +247,8 @@ display: inline-block;
             height: 24px;
             margin-bottom: 28px;
         }
+
+        
         .home-hero-overview {
             font-size: 16px;
             line-height: 1.18;
