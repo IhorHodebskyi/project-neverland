@@ -52,9 +52,9 @@ serviceFilm()
 }*/
 
 
-function createMarkupHero({ original_title, poster_path, vote_average, overview, id }) {
-  const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
-  const retinaImageUrl = `https://image.tmdb.org/t/p/w1000${poster_path}`;
+function createMarkupHero({ original_title, backdrop_path, vote_average, overview, id }) {
+  const imageUrl = `https://image.tmdb.org/t/p/w500${backdrop_path}`;
+  const retinaImageUrl = `https://image.tmdb.org/t/p/w1000${backdrop_path}`;
   return `
         <div class="home-hero-film" style="
         background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),url('${imageUrl}');
@@ -89,3 +89,14 @@ function createMarkupHero({ original_title, poster_path, vote_average, overview,
 }
 
 addPoints()*/
+/*function addHeroText() {
+    
+    let width = homeHeroFilmWraper.offsetWidth;
+    console.log(width)
+    if (height >= 768) {
+        homeHeroText.textContent += " You'll need a projector, screen, and speakers. Decorate
+            your space, choose your films, and stock up on snacks for the full experience."
+    }
+}
+
+addHeroText()*/
