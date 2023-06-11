@@ -11,9 +11,7 @@
     color: #f87719;
 } */
 
-header {
-  background: var(--primary-brand-color);
-}
+
 a {
   text-decoration: none;
 }
