@@ -4,10 +4,11 @@ export const refs = {
   menuBackdrop: document.querySelector('[data-backdrop]'),
   body: document.querySelector('body'),
 /*----------------------------HERO--------------------------*/
-home_hero_film_wraper: document.querySelector('.hero-content'),
-hero_trailer_btn: document.querySelector('.hero-trailer-btn'),
-go_to_catalog_btn: document.querySelector('.go-to-catalog-btn'),
-home_hero: document.querySelector('.home-hero'),
-// -----------------------------Home Upcoming-------------------
+homeHeroFilmWraper: document.querySelector('.hero-content'),
+heroTrailerBtn: document.querySelector('.hero-trailer-btn'),
+goToCatalogBtn: document.querySelector('.go-to-catalog-btn'),
+homeHero: document.querySelector('.home-hero'),
+
+/*----------------------------UPCOMING THIS MONTH--------------------------*/
 monthGalery: document.querySelector('.monthgalery'),
 };
