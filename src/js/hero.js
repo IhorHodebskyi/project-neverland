@@ -87,15 +87,15 @@ function createMarkupHero({
   `;
 }
 
-/*function addPoints() {
-    const heroOverview = document.querySelector('.home-hero-overview');
-    let height = heroOverview.offsetHeight;
-    console.log(height)
-    if (height >= 66) {
-        heroOverview.textContent += "..."
+function addHeroText() {
+    let width = refs.homeHeroFilmWraper.offsetWidth;
+    console.log(width);
+    if (width >= 768) {
+        refs.homeHeroText.textContent += "Decorate your space, choose your films, and stock up on snacks for the full experience."
     }
 }
 
-addPoints()*/
+addHeroText()
+
 
 
