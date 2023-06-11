@@ -54,7 +54,6 @@
 }
 
 .month-genre{
-    width: 80px;
     margin-left: 108px;
     font-weight: 500;
     font-size: 16px;
@@ -83,7 +82,7 @@
    display: flex;
  }
  
-.month-item-img > picture > img{
+.month-item-img > picture > img , .month-item-img > picture{
     display: block;
     
 }
@@ -140,12 +139,13 @@
     }
     .month-item{
         display: flex;
-        flex-basis: 100%;
+        /* flex-basis: 100%; */
         gap: 16px;
         
     }
     .month-item-title{
         max-width: 390px;
+        
     }
     .month-btn{   
         margin: 24px 0 0 0;
