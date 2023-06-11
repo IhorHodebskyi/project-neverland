@@ -73,6 +73,36 @@ text-align: center;
     display: none;
 }
 
+/*---------------- кнопка в инпуте ------------------------*/
+/* .input-field, */
+.search {
+    position: relative;    
+}
+.input-field:focus {
+    box-shadow: 0 0 15px 5px #F87719;
+    border: 2px solid #bebede;
+    /* transition-duration: var(); */
+}
+.close-icon {
+    background: transparent;
+    border: transparent;
+    position: absolute;    
+        cursor: pointer;
+        top: 25%;
+        right: 24.5px;
+        
+}
+    .icon-clear-text {
+            width: 9px;
+            height: 9px;
+            color: rgb(4, 4, 4);
+            
+}
+.input-field:not(:valid)~.icon-clear-text{
+    display: none;
+}
+
+
 /*---------------------- tablet -------------------------------- */
  @media screen and (min-width: 768px) {
 .without-results {
@@ -91,7 +121,7 @@ text-align: center;
      padding-top: 60px;
         }
 .gallery-section {
-    margin-bottom: 36px;
+    margin-bottom: 44px;
 }
 }
 
@@ -114,6 +144,6 @@ text-align: center;
     padding-top: 80px;
 }
 .gallery-section {
-    margin-bottom: 48px;
+    margin-bottom: 60px;
 }
 }

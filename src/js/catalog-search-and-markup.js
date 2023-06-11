@@ -98,3 +98,4 @@ function createMarkup(data) {
   list.insertAdjacentHTML('beforeend', cardMarkUp);
 }
 
+ 
