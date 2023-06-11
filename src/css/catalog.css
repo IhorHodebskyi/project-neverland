@@ -1,0 +1,46 @@
+.search-section {
+    margin-bottom: 100px;
+    margin-top: 100px;
+}
+
+.search-form {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.catalog-btn {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+}
+
+.input-field {
+    max-width: 224px;
+    /* border: 1px solid #FFFFFF; */
+    border-radius: 8px;
+    color: #B7B7B7;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.14;
+    letter-spacing: 0em;
+    padding-left: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.gallery-section {
+    margin-bottom: 20px;
+}
