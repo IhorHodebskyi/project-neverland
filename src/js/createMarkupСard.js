@@ -1,14 +1,13 @@
-
-export default function createMarkup(cardresult) {
+export function createMarkup(cardresult) {
   const cardMarkUp = cardresult
     .map(
-    ({
-      original_title,
-      poster_path,
-      vote_average,
-      genre_ids,
-      release_date,
-      id,
+      ({
+        original_title,
+        poster_path,
+        vote_average,
+        genre_ids,
+        release_date,
+        id,
       }) =>
         `<div class = "cards-section-backphoto" style = "background-image: url(https://image.tmdb.org/t/p/w500${poster_path}) alt="${original_title}" id="${id}">
     <div class = "info-cards-section">
@@ -17,6 +16,7 @@ export default function createMarkup(cardresult) {
     </div>
     <div class ="vote-average-section>${vote_average}</div>
     </div>`
-  ).join('');
+    )
+    .join('');
   return cardMarkUp;
 }
