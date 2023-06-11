@@ -5,6 +5,7 @@
 @import url('./header.css');
 @import url('./hero.css');
 @import url('./library.css');
+@import url("./hero-library.css");
 @import url('./modal-film.css');
 @import url('./month.css');
 @import url('./weekly.css');
