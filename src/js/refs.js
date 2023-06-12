@@ -25,4 +25,8 @@ searchWrap: document.querySelector(".gallery"),
 
 /*----------------------------WEEKLY TRENDS--------------------------*/
   weeklyList: document.querySelector('.weekly-list'),
+// -----------------------------Modal Film-----------------------------
+modalFilmBtnClose: document.querySelector('.modal-film-btn-close'),
+modalTrailerBackdrop: document.querySelector('.modal-film-backdrop'),
+modalTrailerWwindow: document.querySelector('.modal-film-window'),
 };

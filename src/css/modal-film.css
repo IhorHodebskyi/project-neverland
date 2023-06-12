@@ -23,6 +23,35 @@
   .modal-film-item-img > img{
     display: block;
   }
+  .modal-film-btn-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    padding: 0;
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+  }
+  .modal-film-btn-close:hover,
+  .modal-film-btn-close:focus {
+    background-color: rgba(46, 47, 66, 0.4);
+  }
+  .modal-film-btn-close:hover .modal-film-icon-close,
+  .modal-film-btn-close:focus .modal-film-icon-close {
+    fill: #282828;
+  }
+  .modal-film-icon-close {
+    width: 15px;
+    height: 15px;
+  }
   .modal-film-window{
       position: absolute;
       padding: 60px;

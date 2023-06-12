@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import {handlerClickcardsSectionBackphoto} from './modal-film';
 import { pagination } from './pagination';
 
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
@@ -103,4 +103,6 @@ function createMarkup(data) {
     )
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
+  const cardsSectionBackphoto = document.querySelector('.cards-section-backphoto');
+  cardsSectionBackphoto.addEventListener('click',handlerClickcardsSectionBackphoto);
 }

@@ -1,8 +1,5 @@
 import {fetchAllGet} from './fetchAllGet';
-const refs={
-    modalTrailerBackdrop: document.querySelector('.modal-film-backdrop'),
-    modalTrailerWwindow: document.querySelector('.modal-film-window'),
-}
+import {refs} from './refs'
 
 const idFilm = '1073443';
 const BASE_URL = 'https://api.themoviedb.org';
@@ -70,3 +67,16 @@ function handlerBtn(e){
     
     
 }
+
+refs.modalFilmBtnClose.addEventListener('click', handlerBtnClose);
+
+function handlerBtnClose(e){
+    e.preventDefault();
+    refs.modalTrailerBackdrop.classList.toggle('visually-hidden');
+}
+
+function handlerClickcardsSectionBackphoto(e){
+    refs.modalTrailerBackdrop.classList.toggle('visually-hidden')  
+}
+
+export {handlerClickcardsSectionBackphoto}
