@@ -5,10 +5,13 @@ import { pagination } from './pagination';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original/';
+let page = pagination.getCurrentPage();
+let value = '';
+console.log(value);
 
-async function getMovies(value) {
+async function getMovies(page, value) {
   const rest = await axios.get(
-    `${BASE_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=1`
+    `${BASE_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}`
   );
   console.log(rest.data);
   return rest;
@@ -20,21 +23,19 @@ const form = document.querySelector('#search-form');
 const list = document.querySelector('.create-gallery');
 
 form.addEventListener('submit', onSubmit);
-let page = pagination.getCurrentPage();
-let value = '';
 
 function onSubmit(e) {
   e.preventDefault();
-  list.innerHTML = '';
+  // list.innerHTML = '';
 
   const value = e.target.elements.search.value;
   getFirstMovies(page, value);
-  console.log(value);
+  console.log(value, page);
 }
 
-async function getFirstMovies(value) {
+async function getFirstMovies(page, value) {
   try {
-    const data = await getMovies(value);
+    const data = await getMovies(page, value);
     console.log(data);
     console.log(data.data.results);
     if (!data) {
@@ -48,8 +49,8 @@ async function getFirstMovies(value) {
     console.log(error);
   }
 }
-
-async function getEventsMovies(page) {
+console.log(value);
+async function getEventsMovies(page, value) {
   try {
     const data = await getMovies(page, value);
     console.log(data);
@@ -59,20 +60,18 @@ async function getEventsMovies(page) {
     } else {
       list.innerHTML = '';
       createMarkup(data.data.results);
-
     }
   } catch (error) {
     console.log(error);
   }
 }
 
-
 pagination.on('afterMove', event => {
   const currentPage = event.page;
   console.log(currentPage);
   getEventsMovies(currentPage);
 });
-
+console.log(value);
 function createMarkup(data) {
   console.log(data);
   const cardMarkUp = data
@@ -97,5 +96,3 @@ function createMarkup(data) {
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
 }
-
- 
