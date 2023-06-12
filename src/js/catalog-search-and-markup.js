@@ -20,6 +20,10 @@ async function getMovies(page, value) {
 
 const form = document.querySelector('#search-form');
 const list = document.querySelector('.create-gallery');
+<<<<<<< Updated upstream
+=======
+const oops = document.querySelector('.without-results-section');
+>>>>>>> Stashed changes
 
 form.addEventListener('submit', onSubmit);
 
@@ -38,7 +42,11 @@ async function getFirstMovies(page, value) {
     console.log(data);
     console.log(data.data.results);
     if (!data) {
+<<<<<<< Updated upstream
       return;
+=======
+      return oops.classList.remove('is-hidden');
+>>>>>>> Stashed changes
     }
     createMarkup(data.data.results);
     console.log(data.data.results);
