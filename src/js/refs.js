@@ -25,4 +25,11 @@ searchWrap: document.querySelector(".gallery"),
 
 /*----------------------------WEEKLY TRENDS--------------------------*/
   weeklyList: document.querySelector('.weekly-list'),
+
+/*----------------------------Modal-Footers--------------------------*/
+
+footerBtnLink: document.querySelector('.footer_btn_link'),
+teamBackdrop: document.querySelector('.team_backdrop'),
+teamCloseBtn: document.querySelector('.team_modal_close_btn'),
+
 };
