@@ -20,7 +20,7 @@ async function getMovies(page, value) {
 
 const form = document.querySelector('#search-form');
 const list = document.querySelector('.create-gallery');
-const oops = document.querySelector('.without-results-section')
+const oops = document.querySelector('.without-results-section');
 
 form.addEventListener('submit', onSubmit);
 
