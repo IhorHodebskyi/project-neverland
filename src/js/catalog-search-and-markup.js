@@ -18,6 +18,7 @@ async function getMovies(value) {
 
 const form = document.querySelector('#search-form');
 const list = document.querySelector('.create-gallery');
+const oops = document.querySelector('.without-results-section')
 
 form.addEventListener('submit', onSubmit);
 let page = pagination.getCurrentPage();
@@ -38,6 +39,7 @@ async function getFirstMovies(value) {
     console.log(data);
     console.log(data.data.results);
     if (!data) {
+      oops.classList.remove('is-hidden');
       return;
     }
     createMarkup(data.data.results);
@@ -55,6 +57,7 @@ async function getEventsMovies(page) {
     console.log(data);
 
     if (!data) {
+      oops.classList.remove('is-hidden');
       return;
     } else {
       list.innerHTML = '';
