@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { serviceFilm } from './fetchAllGet';
 import { refs } from './refs';
-
+import {trailerBtnClick} from './modal-trailer';
 /*async function serviceFilm() {
     const BASE_URL = "https://api.themoviedb.org/3";
     const ENDPOINT = "/trending/movie/day";
@@ -27,6 +27,10 @@ serviceFilm()
     );
 
     refs.homeHero.classList.add('is-hidden');
+
+    refs.trailerBtn = document.querySelector('.js-hero-trailer');
+    // console.log(refs.trailerBtn);
+    refs.trailerBtn.addEventListener('click', trailerBtnClick);
 
     /*refs.heroTrailerBtn.setAttribute("id", `${firstFilm.id}`);
         refs.goToCatalogBtn.setAttribute("id", `${firstFilm.id}`);*/
