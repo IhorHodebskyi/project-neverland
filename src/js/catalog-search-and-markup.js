@@ -4,9 +4,12 @@ import { pagination } from './pagination';
 
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
-const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original/';
+const WEEK_BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
+const container = document.getElementById('pagination');
 let page = pagination.getCurrentPage();
 let value = '';
+
+container.style.display = 'none';
 
 async function getMovies(page, value) {
   const rest = await axios.get(
@@ -17,7 +20,13 @@ async function getMovies(page, value) {
   return rest;
 }
 
-// https://api.themoviedb.org/3/search/movie?api_key=057e36269a3ddafbb398756699f3ba82&query=Fight%20Club&include_adult=false&language=en-US&page=1
+async function getMoviesTrendingWeek(page) {
+  const rest = await axios.get(
+    `${WEEK_BASE_URL}?api_key=${API_KEY}&language=en-US&page=${page}&per_page=100`
+  );
+  console.log(rest);
+  return rest;
+}
 
 const form = document.querySelector('#search-form');
 const list = document.querySelector('.create-gallery');
@@ -27,47 +36,40 @@ form.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
   e.preventDefault();
-  // list.innerHTML = '';
+  list.innerHTML = '';
 
-  value = e.target.elements.search.value; // тут змінив
+  value = e.target.elements.search.value;
   getFirstMovies(page, value);
-  console.log(value, page);
 }
 
 async function getFirstMovies(page, value) {
   
   try {
     const data = await getMovies(page, value);
-    console.log(data);
-    console.log(data.data.results);
-    if (!data) {
+    if (data.data.results.length === 0) {
+      container.style.display = 'none';
       oops.classList.remove('is-hidden');
       return;
     }
     createMarkup(data.data.results);
-    console.log(data.data.results);
-    pagination.reset(data.data.total_pages); // тут змінив total_results на total_pages
-    console.log(data.data.total_results);
+    container.style.display = 'block';
+    pagination.reset(data.data.total_pages);
   } catch (error) {
     console.log(error);
   }
 }
 
-console.log(value);
-
 async function getEventsMovies(page, value) {
-  console.log(page, value);
   try {
     const data = await getMovies(page, value);
-    console.log(data);
-
-    if (!data) {
+    if (data.data.results.length === 0) {
+      container.style.display = 'none';
       oops.classList.remove('is-hidden');
       return;
-    } else {
-      list.innerHTML = '';
-      createMarkup(data.data.results);
     }
+    list.innerHTML = '';
+    createMarkup(data.data.results);
+    container.style.display = 'block';
   } catch (error) {
     console.log(error);
   }
@@ -75,13 +77,41 @@ async function getEventsMovies(page, value) {
 
 pagination.on('afterMove', event => {
   const currentPage = event.page;
-  console.log(currentPage);
-  getEventsMovies(currentPage, value); // тут змінив (currentPage) на (currentPage, value)
+  getEventsMovies(currentPage, value);
 });
-console.log(value);
+
+// async function getFirstMoviesTrendingWeek(page) {
+//   try {
+//     const data = await getMoviesTrendingWeek(page);
+//     console.log(data);
+//     console.log(data.data.results);
+//     if (!data) {
+//       oops.classList.remove('is-hidden');
+//       return;
+//     }
+//     createMarkup(data.data.results);
+//     pagination.reset(data.data.total_pages);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+getEventsMoviesTrendingWeek(page);
+
+async function getEventsMoviesTrendingWeek(page) {
+  console.log(page);
+  try {
+    const data = await getMoviesTrendingWeek(page);
+    console.log(data);
+
+    list.innerHTML = '';
+    createMarkup(data.data.results);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 function createMarkup(data) {
-  console.log(data);
   const cardMarkUp = data
     .map(
       ({
