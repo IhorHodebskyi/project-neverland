@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {handlerClickcardsSectionBackphoto} from './modal-film';
+import { handlerClickcardsSectionBackphoto } from './modal-film';
 import { pagination } from './pagination';
 
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
@@ -16,7 +16,7 @@ async function getMovies(page, value) {
     `${BASE_URL}?api_key=${API_KEY}&query=${value}&page=${page}`
   );
   console.log(rest.data);
-  
+
   return rest;
 }
 
@@ -43,7 +43,6 @@ function onSubmit(e) {
 }
 
 async function getFirstMovies(page, value) {
-  
   try {
     const data = await getMovies(page, value);
     if (data.data.results.length === 0) {
@@ -160,6 +159,11 @@ function createMarkup(data) {
     )
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
-  const cardsSectionBackphoto = document.querySelector('.cards-section-backphoto');
-  cardsSectionBackphoto.addEventListener('click',handlerClickcardsSectionBackphoto);
+  const cardsSectionBackphoto = document.querySelector(
+    '.cards-section-backphoto'
+  );
+  cardsSectionBackphoto.addEventListener(
+    'click',
+    handlerClickcardsSectionBackphoto
+  );
 }
