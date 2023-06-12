@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { serviceFilm } from './fetchAllGet';
 import { refs } from './refs';
+
 /*async function serviceFilm() {
     const BASE_URL = "https://api.themoviedb.org/3";
     const ENDPOINT = "/trending/movie/day";
@@ -52,7 +53,6 @@ serviceFilm()
     </div>`
 }*/
 
-
 function createMarkupHero({
   original_title,
   poster_path,
@@ -62,7 +62,7 @@ function createMarkupHero({
 }) {
   const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
   const retinaImageUrl = `https://image.tmdb.org/t/p/w1000${poster_path}`;
-  
+
   return `
         <div class="home-hero-film" style="
         background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),url('${imageUrl}');
@@ -74,10 +74,10 @@ function createMarkupHero({
         <p class="home-hero-rate">${vote_average}</p>
         <p class="home-hero-overview">${overview}</p>
         <div class="home-hero-btns">
-        <button data-trailer-open type="button" class="hero-trailer-btn" id="${id}">
+        <button data-trailer-open type="button" class="hero-trailer-btn js-hero-trailer" data-id="${id}">
             Watch trailer
             </button>
-            <button data-gocatalog-open type="button" class="go-to-catalog-btn" id="${id}">
+            <button data-gocatalog-open type="button" class="go-to-catalog-btn">
             More details
             </button>
         </div>
@@ -88,14 +88,12 @@ function createMarkupHero({
 }
 
 function addHeroText() {
-    let width = refs.homeHeroFilmWraper.offsetWidth;
-    console.log(width);
-    if (width >= 768) {
-        refs.homeHeroText.textContent += "Decorate your space, choose your films, and stock up on snacks for the full experience."
-    }
+  let width = refs.homeHeroFilmWraper.offsetWidth;
+  console.log(width);
+  if (width >= 768) {
+    refs.homeHeroText.textContent +=
+      'Decorate your space, choose your films, and stock up on snacks for the full experience.';
+  }
 }
 
-addHeroText()
-
-
-
+addHeroText();

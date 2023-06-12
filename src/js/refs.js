@@ -10,9 +10,8 @@ export const refs = {
 goToCatalogBtn: document.querySelector('.go-to-catalog-btn'),*/
   homeHero: document.querySelector('.home-hero-plug'),
   homeHeroFilmWraper: document.querySelector('.home-hero-container'),
-
-homeHeroText: document.querySelector('.home-hero-text'),
-
+  homeHeroText: document.querySelector('.home-hero-text'),
+  trailerBtn: document.querySelector('.js-hero-trailer'),
 
   /*----------------------------WEEKLY TRENDS--------------------------*/
   weeklyList: document.querySelector('.weekly-list'),
