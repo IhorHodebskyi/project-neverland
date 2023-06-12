@@ -15,8 +15,6 @@ async function getMovies(page, value) {
   const rest = await axios.get(
     `${BASE_URL}?api_key=${API_KEY}&query=${value}&page=${page}`
   );
-  console.log(rest.data);
-
   return rest;
 }
 
