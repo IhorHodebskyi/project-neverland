@@ -7,11 +7,10 @@ const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original/';
 let page = pagination.getCurrentPage();
 let value = '';
-console.log(value);
 
 async function getMovies(page, value) {
   const rest = await axios.get(
-    `${BASE_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}`
+    `${BASE_URL}?api_key=${API_KEY}&query=${value}&page=${page}`
   );
   console.log(rest.data);
   return rest;
@@ -51,8 +50,11 @@ async function getFirstMovies(page, value) {
     console.log(error);
   }
 }
+
 console.log(value);
+
 async function getEventsMovies(page, value) {
+  console.log(page, value);
   try {
     const data = await getMovies(page, value);
     console.log(data);
