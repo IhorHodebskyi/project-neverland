@@ -29,7 +29,7 @@ function onSubmit(e) {
   e.preventDefault();
   // list.innerHTML = '';
 
-  const value = e.target.elements.search.value;
+  value = e.target.elements.search.value; // тут змінив
   getFirstMovies(page, value);
   console.log(value, page);
 }
@@ -46,7 +46,7 @@ async function getFirstMovies(page, value) {
     }
     createMarkup(data.data.results);
     console.log(data.data.results);
-    pagination.reset(data.data.total_results);
+    pagination.reset(data.data.total_pages); // тут змінив total_results на total_pages
     console.log(data.data.total_results);
   } catch (error) {
     console.log(error);
@@ -76,7 +76,7 @@ async function getEventsMovies(page, value) {
 pagination.on('afterMove', event => {
   const currentPage = event.page;
   console.log(currentPage);
-  getEventsMovies(currentPage);
+  getEventsMovies(currentPage, value); // тут змінив (currentPage) на (currentPage, value)
 });
 console.log(value);
 
