@@ -36,7 +36,7 @@
     padding-bottom: 12px;
 }
 
-.gallery {
+.create-gallery {
     margin-bottom: 16px;
     display: flex;
     flex-direction: column;
@@ -125,6 +125,14 @@ text-align: center;
 .gallery-section {
     margin-bottom: 44px;
 }
+.create-gallery {
+    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 16px;
+    row-gap: 28px;
+}
 }
 
 /*---------------------- desktop -------------------------------- */
@@ -147,5 +155,8 @@ text-align: center;
 }
 .gallery-section {
     margin-bottom: 60px;
+}
+.create-gallery {
+        row-gap: 32px;
 }
 }
