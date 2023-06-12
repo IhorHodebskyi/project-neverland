@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import {handlerClickcardsSectionBackphoto} from './modal-film';
 import { pagination } from './pagination';
 
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
@@ -16,6 +16,7 @@ async function getMovies(page, value) {
     `${BASE_URL}?api_key=${API_KEY}&query=${value}&page=${page}`
   );
   console.log(rest.data);
+  
   return rest;
 }
 
@@ -42,6 +43,7 @@ function onSubmit(e) {
 }
 
 async function getFirstMovies(page, value) {
+  
   try {
     const data = await getMovies(page, value);
     if (data.data.results.length === 0) {
@@ -123,12 +125,41 @@ function createMarkup(data) {
         `<div class = "cards-section-backphoto" style = "background-image: url('https://image.tmdb.org/t/p/w500${poster_path}');" id="${id}">
     <div class = "info-cards-section">
     <p class = "info-card-section-title">${original_title}</p>
-    <p class = "info-card-section-date">${release_date}${genre_ids}</p>
+    <p class = "info-card-section-date">${release_date}</p>
+    <p class = "info-card-section-date">${genre_ids}</p>
     </div>
-    <div class ="vote-average-section">${vote_average}</div>
+    <div class ="vote-average-section"></div>
+    <ul class="vote-average-icons">
+          <li class="vote-average-icons-items">
+            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
+              <use href="/src/images/symbol-defs.svg#icon-empty-star">
+              </use>
+            </svg>
+          </li>
+          <li class="vote-average-icons-items">
+            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
+              <use href="/src/images/symbol-defs.svg#icon-empty-star">
+              </use>
+            </svg>
+          </li>
+          <li class="vote-average-icons-items">
+            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
+              <use href="/src/images/symbol-defs.svg#icon-empty-star">
+              </use>
+            </svg>
+          </li>
+          <li class="vote-average-icons-items">
+            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
+              <use href="/src/images/symbol-defs.svg#icon-empty-star">
+              </use>
+            </svg>
+          </li>
+    </ul>
     </div>
-    </div>`
+    `
     )
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
+  const cardsSectionBackphoto = document.querySelector('.cards-section-backphoto');
+  cardsSectionBackphoto.addEventListener('click',handlerClickcardsSectionBackphoto);
 }

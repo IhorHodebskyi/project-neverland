@@ -9,6 +9,7 @@
 }
 
 .search-form {
+
     display: flex;
     gap: 16px;
     align-items: center;
@@ -38,9 +39,10 @@
 
 .create-gallery {
     margin-bottom: 16px;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     gap: 16px;
+    align-items: center;
 }
 
 .gallery-section {
@@ -122,6 +124,9 @@ text-align: center;
         .search-section {
      margin-top: 60px;
         }
+.search-form{
+     margin-bottom: 36px;
+}        
 .gallery-section {
     margin-bottom: 44px;
 }
@@ -132,11 +137,11 @@ text-align: center;
     flex-direction: row;
     gap: 16px;
     row-gap: 28px;
+    
 }
-}
-
+ }
 /*---------------------- desktop -------------------------------- */
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
 .without-results {
         width: 684px;
         height: 124px;
@@ -152,6 +157,9 @@ text-align: center;
     }
 .search-section {
     margin-top: 80px;
+}
+.search-form {
+    margin-bottom: 48px;
 }
 .gallery-section {
     margin-bottom: 60px;
