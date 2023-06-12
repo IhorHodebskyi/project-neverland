@@ -1,13 +1,10 @@
 import axios from 'axios';
 import { serviceFilm } from './fetchAllGet';
 import { refs } from './refs';
-import {trailerBtnClick} from './modal-trailer';
-
+import { trailerBtnClick } from './modal-trailer';
 
 serviceFilm()
   .then(data => {
-
-    
     const allFilms = data.data.results;
     const randomFilmIndex = Math.floor(Math.random() * allFilms.length);
     const filmInHero = allFilms[randomFilmIndex];
@@ -43,7 +40,6 @@ serviceFilm()
     </div>`).join('')
     
 }*/
-
 
 function createMarkupHero({
   original_title,
@@ -88,4 +84,4 @@ function addHeroText() {
   }
 }
 
-addHeroText()
+addHeroText();
