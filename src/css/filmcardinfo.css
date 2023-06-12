@@ -3,11 +3,12 @@ background: linear-gradient(180deg, rgba(0, 0, 0, 0) 63.48%, rgba(0, 0, 0, 0.9) 
 border-radius: 5px;
 margin-left: auto;
 margin-right: auto;
-height: 574px;
-max-width: 394px;
+height: 406px;
+max-width: 280px;
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
+flex-basis: calc((100% - 2*16px)/3);
 }
 
 .info-cards-section {
@@ -32,3 +33,26 @@ font-size: 20px;
 line-height: 24px;
 color: #B7B7B7;
 }
+
+
+/*---------------------- tablet -------------------------------- */
+@media screen and (min-width: 768px) {
+  .cards-section-backphoto {
+      height: 325px;
+      max-width: 224px;     
+      flex-basis: calc((100% - 2*16px)/3);
+      margin-left: 0;
+      margin-right: 0;
+    }
+  
+
+  }
+
+    /*---------------------- desktop -------------------------------- */
+    @media screen and (min-width: 1280px) {
+      .cards-section-backphoto {
+          height: 574px;
+          max-width: 395px;
+         
+        }
+      }
