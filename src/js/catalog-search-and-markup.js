@@ -16,10 +16,12 @@ async function getMovies(value) {
 
 const form = document.querySelector('#search-form');
 const list = document.querySelector('.create-gallery');
+const container = document.querySelector('.tui-pagination');
 
 form.addEventListener('submit', onSubmit);
 let page = pagination.getCurrentPage();
 let value = '';
+container.style.display = 'none';
 
 function onSubmit(e) {
   e.preventDefault();
@@ -27,19 +29,18 @@ function onSubmit(e) {
 
   const value = e.target.elements.search.value;
   getFirstMovies(page, value);
-  console.log(value);
 }
 
 async function getFirstMovies(value) {
   try {
     const data = await getMovies(value);
-    console.log(data);
-    console.log(data.data.results);
+
     if (!data) {
       return;
     }
     createMarkup(data.data.results);
-    console.log(data.data.results);
+    container.style.display = 'block';
+
     pagination.reset(data.data.total_results);
     console.log(data.data.total_results);
   } catch (error) {
@@ -50,7 +51,7 @@ async function getFirstMovies(value) {
 async function getEventsMovies(page) {
   try {
     const data = await getMovies(page, value);
-    console.log(data);
+
     if (!data) {
       return;
     } else {
