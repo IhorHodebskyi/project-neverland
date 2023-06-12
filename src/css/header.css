@@ -3,17 +3,6 @@
   --primary-text-color: #b7b7b7;
 }
 
-
-/* .current_page_home .nav_list_link.current_page_home,
-.current_page_catalog .nav_list_link.current_page_catalog, 
-.current_page_my_library .nav-list__link.current_page_library, 
-    .nav-list__link:hover, 
-    .nav-list__link:focus {
-    color: #f87719;
-} */
-
-
-
 header {
   background: var(--primary-brand-color);
 }
@@ -87,10 +76,15 @@ body.is-open {
   position: absolute;
   overflow: hidden;
 }
+
 .mobile_menu_logo_img {
   width: 32px;
   height: 32px;
 }
+
+.nav_list-current {
+    color: #F87719;
+  }
 
 @media screen and (max-width: 767px) {
   .logo_text {
@@ -221,9 +215,9 @@ body.is-open {
     padding-top: 6px;
     padding-bottom: 6px;
   }
-  .logo {
+  /* .logo {
     margin-right: 90px;
-  }
+  } */
   .header_theme_switch {
     width: 60px;
     height: 24px;
@@ -234,8 +228,4 @@ body.is-open {
     width: 13px;
     height: 13px;
   }
-}
-
-.nav_list-current {
-  color: #f84119;
 }

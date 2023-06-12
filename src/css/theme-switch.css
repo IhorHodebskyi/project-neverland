@@ -57,9 +57,16 @@
     display: inline-block;
     width: 60px;
     height: 24px;
-    margin-left: auto;
+    /* margin-left: auto; margim pushes links !*/
   }
   
+  /* no delite ! */
+  @media screen and (min-width: 767px) {
+    .theme-switch {
+      margin-left: auto;
+    }
+  }
+
   .theme-switch__checkbox {
     display: none;
   }
