@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { serviceFilm } from './fetchAllGet';
 import { refs } from './refs';
+
 /*async function serviceFilm() {
     const BASE_URL = "https://api.themoviedb.org/3";
     const ENDPOINT = "/trending/movie/day";
@@ -73,10 +74,10 @@ function createMarkupHero({
         <p class="home-hero-rate">${vote_average}</p>
         <p class="home-hero-overview">${overview}</p>
         <div class="home-hero-btns">
-        <button data-trailer-open type="button" class="hero-trailer-btn" id="${id}">
+        <button data-trailer-open type="button" class="hero-trailer-btn js-hero-trailer" data-id="${id}">
             Watch trailer
             </button>
-            <button data-gocatalog-open type="button" class="go-to-catalog-btn" id="${id}">
+            <button data-gocatalog-open type="button" class="go-to-catalog-btn">
             More details
             </button>
         </div>
