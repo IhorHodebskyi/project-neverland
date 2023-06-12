@@ -95,11 +95,38 @@ function createMarkup(data) {
         `<div class = "cards-section-backphoto" style = "background-image: url('https://image.tmdb.org/t/p/w500${poster_path}');" id="${id}">
     <div class = "info-cards-section">
     <p class = "info-card-section-title">${original_title}</p>
-    <p class = "info-card-section-date">${release_date}${genre_ids}</p>
+    <p class = "info-card-section-date">${release_date}</p>
+    <p class = "info-card-section-date">${genre_ids}</p>
     </div>
-    <div class ="vote-average-section">${vote_average}</div>
+    <div class ="vote-average-section"></div>
+    <ul class="vote-average-icons">
+          <li class="vote-average-icons-items">
+            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
+              <use href="/src/images/symbol-defs.svg#icon-empty-star">
+              </use>
+            </svg>
+          </li>
+          <li class="vote-average-icons-items">
+            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
+              <use href="/src/images/symbol-defs.svg#icon-empty-star">
+              </use>
+            </svg>
+          </li>
+          <li class="vote-average-icons-items">
+            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
+              <use href="/src/images/symbol-defs.svg#icon-empty-star">
+              </use>
+            </svg>
+          </li>
+          <li class="vote-average-icons-items">
+            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
+              <use href="/src/images/symbol-defs.svg#icon-empty-star">
+              </use>
+            </svg>
+          </li>
+    </ul>
     </div>
-    </div>`
+    `
     )
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
