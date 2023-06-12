@@ -1,0 +1,135 @@
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --grey-whiteTheme-color: #595959;
+    --secondaryBlack-color: #282828;
+  }
+
+  body {
+    background-color: var(--black-color);
+  }
+
+  .light-theme {
+    background-color: var(--white-color);
+  }
+
+  .light-theme__header--text {
+    color: var(--grey-whiteTheme-color);
+  }
+
+  .light-theme__section--text {
+    color: var(--black-color);;
+  }
+
+  .light-theme__section--secondaryText {
+    color: var(--secondaryBlack-color);
+  }
+
+  .light-theme__input {
+    color: var(--grey-whiteTheme-color);
+    border-color: var(--grey-whiteTheme-color);
+  }
+
+  .light-theme__search--icon path {
+    stroke: var(--black-color);;
+  }
+
+  .light-theme__pageNumber {
+    border-color: var(--grey-whiteTheme-color);
+    color: var(--secondaryBlack-color);
+  }
+
+  .light-theme__modal {
+    background-color: #fff;
+    box-shadow: 1px 1px 14px 4px rgba(0, 0, 0, 0.22);
+  }
+
+  .light-theme__modal--closeIcon {
+    stroke: var(--secondaryBlack-color);
+  }
+
+  .light-theme__modal--btn {
+    color: var(--black-color);;
+  }
+
+  .theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 24px;
+    margin-left: auto;
+  }
+  
+  .theme-switch__checkbox {
+    display: none;
+  }
+  
+  .theme-switch__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 34px;
+    background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
+  }
+
+  .theme-switch__icon--round{
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 3px;
+    left: 39px;
+    transition: .4s;
+    z-index: 2;
+  }
+
+  .theme-switch__icon--moon {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 5px;
+    left: 4px;
+  }
+  
+  .theme-switch__icon--sun {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
+
+  
+  .theme-switch__checkbox:checked + .theme-switch__icon--round {
+    left: 3px;
+    transform: rotateZ(-0.5turn);;
+  }
+
+  @media screen and (max-width: 768px) {
+    
+    .theme-switch {
+      width: 44px;
+      height: 18px;
+    }
+
+    .theme-switch__icon--moon {
+      width: 11px;
+      height: 11px;
+      top: 4px;
+      left: 3px;
+    }
+    
+    .theme-switch__icon--sun {
+      width: 11px;
+      height: 11px;
+    }
+
+    .theme-switch__icon--round{
+      width: 13px;
+      height: 13px;
+      left: 28.5px;
+      top: 2.5px;
+    }
+  }

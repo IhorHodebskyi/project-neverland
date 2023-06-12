@@ -96,4 +96,4 @@ function addHeroText() {
   }
 }
 
-addHeroText();
+// addHeroText()
