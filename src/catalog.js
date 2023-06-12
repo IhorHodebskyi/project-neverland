@@ -5,3 +5,4 @@ import './js/hero';
 import './js/createMarkupCard';
 import './js/modal-trailer';
 import './js/theme-switcher';
+import './js/modal-film';
