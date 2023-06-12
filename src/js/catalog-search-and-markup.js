@@ -13,6 +13,7 @@ async function getMovies(page, value) {
     `${BASE_URL}?api_key=${API_KEY}&query=${value}&page=${page}`
   );
   console.log(rest.data);
+  
   return rest;
 }
 
@@ -34,6 +35,7 @@ function onSubmit(e) {
 }
 
 async function getFirstMovies(page, value) {
+  
   try {
     const data = await getMovies(page, value);
     console.log(data);
@@ -77,6 +79,7 @@ pagination.on('afterMove', event => {
   getEventsMovies(currentPage);
 });
 console.log(value);
+
 function createMarkup(data) {
   console.log(data);
   const cardMarkUp = data
