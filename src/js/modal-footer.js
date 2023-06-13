@@ -5,6 +5,7 @@ function onBtnClick(event) {
 
   refs.teamBackdrop.classList.remove('is-hidden');
         document.body.classList.add('modal-open');
+        refs.body.classList.add('no_scroll');
 
     eventAddFunc();
 };
@@ -22,6 +23,7 @@ function closestBckdListner() {
   
     refs.teamBackdrop.classList.add('is-hidden');
         document.body.classList.remove('modal-open');
+        refs.body.classList.remove('no_scroll');
 };
 
 function onEscClick(event) {
