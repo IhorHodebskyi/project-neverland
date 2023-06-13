@@ -5,7 +5,7 @@ import { refs } from './refs';
 const BASE_GENRE_URL = 'https://api.themoviedb.org';
 const ENDPOINT_GENRE = '/3/genre/movie/list';
 const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original/';
-const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
+const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/original/';
 const BASE_UPCOMING_URL = 'https://api.themoviedb.org';
 const ENDPOINT_UPCOMING = '/3/movie/upcoming';
 

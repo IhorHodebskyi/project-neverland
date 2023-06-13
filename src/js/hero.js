@@ -48,8 +48,8 @@ function createMarkupHero({
   overview,
   id,
 }) {
-  const imageUrl = `https://image.tmdb.org/t/p/w500${backdrop_path}`;
-  const retinaImageUrl = `https://image.tmdb.org/t/p/w1000${backdrop_path}`;
+  const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
+  const retinaImageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
 
   return `
         <div class="home-hero-film" style="
