@@ -127,52 +127,67 @@ function createMarkup(data) {
         release_date,
         id,
       }) =>
-        `<div class = "cards-section-backphoto" style = "background-image: url('https://image.tmdb.org/t/p/w500${poster_path}');" id="${id}">
-    <div class = "info-cards-section">
-    <p class = "info-card-section-title">${original_title}</p>
-    <p class = "info-card-section-date">${String(release_date).slice(
-      0,
-      4
-    )} | ${genre_ids}</p>
-    </div>
-    <div class ="vote-average-section">
-    <ul class="vote-average-icons">
-          <li class="vote-average-icons-items">
-            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
-              <use href="/src/images/reitingfull.svg">
-              </use>
-            </svg>
-          </li>
-          <li class="vote-average-icons-items">
-            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
-              <use href="/src/images/reitingfull.svg">
-              </use>
-            </svg>
-          </li>
-          <li class="vote-average-icons-items">
-            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
-              <use href="/src/images/reitingfull.svg">
-              </use>
-            </svg>
-          </li>
-          <li class="vote-average-icons-items">
-            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
-              <use href="/src/images/reitingfull.svg">
-              </use>
-            </svg>
-          </li>
-          <li class="vote-average-icons-items">
-            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
-              <use href="/src/images/reitingfull.svg">
-              </use>
-            </svg>
-          </li>
-    </ul>
-            </svg>
-    </div>
-    
-    
-    </div>
+
+        `
+      <a href="#" class="card-film" id="${id}">
+        <div class="card-backdrop"></div>
+        <img
+          class="card-img"
+          src="https://image.tmdb.org/t/p/w500${poster_path}"
+          alt=""
+          loading="lazy"
+          srcset="
+            https://image.tmdb.org/t/p/w500${poster_path} 1x,
+            https://image.tmdb.org/t/p/w500${poster_path} 2x
+          "
+        />
+        <div class="card-info-section">
+          <h3 class="card-info-title">${original_title}</h3>
+          <div class="card-info">
+            <p class="card-info-text">
+              ${String(release_date).slice(0, 4)} | ${genre_ids}
+            </p>
+            <ul class="card-vote">
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </a>
+
     `
     )
     .join('');
