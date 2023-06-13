@@ -9,13 +9,17 @@ background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
 flex-basis: calc((100% - 2*16px)/3);
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .info-cards-section {
   margin-left: 20px;
+  margin-top: 498px;
 }
 
-.info-card-section-title {
+.info-card-section-title { 
 font-family: 'Roboto';
 text-transform: uppercase;
 font-style: normal;
@@ -32,6 +36,16 @@ font-weight: 500;
 font-size: 20px;
 line-height: 24px;
 color: #B7B7B7;
+}
+
+.vote-average-icons {
+  width: 16.87px;
+  height: 15.75px;
+  margin-top: 533px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 
