@@ -48,6 +48,7 @@ async function getFirstMovies(page, value) {
       oops.classList.remove('is-hidden');
       return;
     }
+     oops.classList.add('is-hidden');
     createMarkup(data.data.results);
     container.style.display = 'block';
     pagination.reset(data.data.total_pages);
