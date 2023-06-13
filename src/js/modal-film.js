@@ -1,9 +1,7 @@
 import {fetchAllGet} from './fetchAllGet';
-const refs={
-    modalTrailerBackdrop: document.querySelector('.modal-film-backdrop'),
-    modalTrailerWwindow: document.querySelector('.modal-film-window'),
-}
-const idFilm = '1076443';
+import {refs} from './refs'
+
+const idFilm = '1073443';
 const BASE_URL = 'https://api.themoviedb.org';
 const ENDPOINT = `/3/movie/${idFilm}`;
 const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
@@ -14,25 +12,25 @@ fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
 
 function markUp(data){
     const {backdrop_path, poster_path, title, original_title, id, release_date, vote_average, vote_count, popularity, overview, genres} = data.data;
-    const str = `<div class="modal-trailer-item" id="${id}">
+    const str = `<div class="modal-film-item" id="${id}">
                             <div>
-                            <div class="modal-trailer-item-img">
+                            <div class="modal-film-item-img">
                                 <img src="${BASE_IMG_URL_w500}${poster_path}" alt="${original_title}" height="478"/>
                             </div>
                             </div>
-                            <div class="modal-trailer-item-title">
+                            <div class="modal-film-item-title">
                                 <h3>${title}</h3>
-                                        <h3>Vote / Votes<span class="modal-trailer-vote">${vote_average}</span> / <span class="modal-trailer-votes">${vote_count }</span></h3>
-                                        <h3>Popularity<span class="modal-trailer-popular">${parseFloat(popularity).toFixed(1)}</span></h3>
-                                        <h3>Genre<span class="modal-trailer-genre">${genres.map(({name})=>name).join(', ')}</span></h3>
-                                <p>About</p><span class="modal-trailer-text">${overview}</span>
-                                <button type="submit" class="modal-trailer-btn">${textBtn(id)}</button>
+                                        <h3>Vote / Votes<span class="modal-film-vote">${vote_average}</span> / <span class="modal-film-votes">${vote_count }</span></h3>
+                                        <h3>Popularity<span class="modal-film-popular">${parseFloat(popularity).toFixed(1)}</span></h3>
+                                        <h3>Genre<span class="modal-film-genre">${genres.map(({name})=>name).join(', ')}</span></h3>
+                                <p>About</p><span class="modal-film-text">${overview}</span>
+                                <button type="submit" class="modal-film-btn">${textBtn(id)}</button>
                             </div>
                          </div>`;
                         
             refs.modalTrailerWwindow.insertAdjacentHTML('beforeend', str);
-            refs.monthBtn = document.querySelector('.modal-trailer-btn');
-            refs.monthItem = document.querySelector('.modal-trailer-item');
+            refs.monthBtn = document.querySelector('.modal-film-btn');
+            refs.monthItem = document.querySelector('.modal-film-item');
             refs.monthBtn.addEventListener('click', handlerBtn);
 }
 
@@ -69,3 +67,16 @@ function handlerBtn(e){
     
     
 }
+
+refs.modalFilmBtnClose.addEventListener('click', handlerBtnClose);
+
+function handlerBtnClose(e){
+    e.preventDefault();
+    refs.modalTrailerBackdrop.classList.toggle('visually-hidden');
+}
+
+function handlerClickcardsSectionBackphoto(e){
+    refs.modalTrailerBackdrop.classList.toggle('visually-hidden')  
+}
+
+export {handlerClickcardsSectionBackphoto}

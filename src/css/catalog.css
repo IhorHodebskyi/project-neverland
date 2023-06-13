@@ -9,10 +9,10 @@
 }
 
 .search-form {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
 }
 
 .catalog-btn {
@@ -37,10 +37,11 @@
 }
 
 .create-gallery {
-  margin-bottom: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+    margin-bottom: 16px;
+    /* display: flex; */
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
 }
 
 .gallery-section {
@@ -103,23 +104,27 @@
 }
 
 /*---------------------- tablet -------------------------------- */
-@media screen and (min-width: 768px) {
-  .without-results {
-    width: 513px;
-    height: 104px;
-    text-align: center;
-  }
-  .without-results-text {
-    color: #ffffff;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.33;
-    margin: 0 auto;
-  }
-  .search-section {
-    margin-top: 60px;
-  }
-  .gallery-section {
+
+ @media screen and (min-width: 768px) {
+.without-results {
+        width: 513px;
+        height: 104px;
+        text-align: center;
+    }
+    .without-results-text {
+        color: #FFFFFF;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 1.33;
+        margin: 0 auto;
+    }
+        .search-section {
+     margin-top: 60px;
+        }
+.search-form{
+     margin-bottom: 36px;
+}        
+.gallery-section {
     margin-bottom: 44px;
   }
   .create-gallery {
@@ -128,17 +133,16 @@
     flex-wrap: wrap;
     flex-direction: row;
     gap: 16px;
-    row-gap: 28px;
-  }
+    row-gap: 28px;   
 }
-
+ }
 /*---------------------- desktop -------------------------------- */
-@media screen and (min-width: 1200px) {
-  .without-results {
-    width: 684px;
-    height: 124px;
-    text-align: center;
-  }
+@media screen and (min-width: 1280px) {
+.without-results {
+        width: 684px;
+        height: 124px;
+        text-align: center;
+    }
 
   .without-results-text {
     color: #ffffff;
@@ -149,8 +153,11 @@
   }
   .search-section {
     margin-top: 80px;
-  }
-  .gallery-section {
+}
+.search-form {
+    margin-bottom: 48px;
+}
+.gallery-section {
     margin-bottom: 60px;
   }
   .create-gallery {
