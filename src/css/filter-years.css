@@ -1,0 +1,68 @@
+:root {
+    --grey: #B7B7B7;
+    --white: #fff;
+    --black: #111;
+    --orange:#F87719;
+}
+
+ul {
+    margin: 0;
+}
+
+.select-text {
+    color: var(--grey);
+    user-select: none;
+}
+
+.select-btn {
+    width: 95px;
+    height: 48px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: var(--black);
+    color: var(--grey);
+}
+
+.select-menu .options {
+    position: absolute;
+    width: 95px;
+    height: 292px;
+    list-style: none;
+    padding: 8px 0;
+    text-align: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+    overflow: auto;
+    scrollbar-width: none;
+    background-color: var(--black);
+    z-index: 10;
+}
+
+.select-menu .options::-webkit-scrollbar {
+    display: none;
+}
+
+.select-menu .option {
+    padding: 12px;
+    cursor: pointer;
+    color: var(--white);
+    user-select: none;
+    transition: font-size 0.5s ease;
+}
+
+.select-menu .option:hover {
+    font-size: 20px;
+}
+
+.select-menu .option:hover {
+    color: var(--orange);
+}
+
+.hidden {
+    display: none;
+}
