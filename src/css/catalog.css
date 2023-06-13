@@ -39,13 +39,8 @@
 .create-gallery {
     margin-bottom: 16px;
     /* display: flex; */
-<<<<<<< Updated upstream
-    flex-direction: column;
-    gap: 16px;
-=======
     /* flex-direction: column;
     gap: 16px; */
->>>>>>> Stashed changes
     align-items: center;
 }
 
