@@ -9,7 +9,7 @@ function createMarkupCard({ cardresult }) {
         release_date,
         id,
       }) =>
-        `<div class="cards-section-backphoto" style="background-image: url('https://image.tmdb.org/t/p/original${poster_path}');" id="${id}">
+        `<div class="cards-section-backphoto" style="background-image: url('https://image.tmdb.org/t/p/w500l${poster_path}');" id="${id}">
     <div class="info-cards-section">
     <p class="info-card-section-title">${original_title}</p>
     <p class="info-card-section-date">${release_date}${genre_ids}</p>

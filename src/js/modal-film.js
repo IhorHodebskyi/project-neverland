@@ -5,7 +5,7 @@ import {refs} from './refs'
 const BASE_URL = 'https://api.themoviedb.org';
 // const ENDPOINT = `/3/movie/${idFilm}`;
 const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
-const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/original/';
+const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
 
 // fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
 // .then(markUp);
