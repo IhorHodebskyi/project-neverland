@@ -26,11 +26,10 @@ serviceFilm()
     refs.trailerBtn = document.querySelector('.js-hero-trailer');
     refs.trailerBtn.addEventListener('click', trailerBtnClick);
 
-    /*refs.heroTrailerBtn.setAttribute("id", `${firstFilm.id}`);
-        refs.goToCatalogBtn.setAttribute("id", `${firstFilm.id}`);*/
-  })
-  .catch(err => console.log(err));
-
+//     /*refs.heroTrailerBtn.setAttribute("id", `${firstFilm.id}`);
+//         refs.goToCatalogBtn.setAttribute("id", `${firstFilm.id}`);*/
+//   })
+//   .catch(err => console.log(err));
 
 function createMarkupHero({
   original_title,

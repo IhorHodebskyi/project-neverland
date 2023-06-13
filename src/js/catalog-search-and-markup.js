@@ -77,7 +77,7 @@ async function getEventsMovies(page, value) {
     container.style.display = 'block';
   } catch (error) {
     console.log(error);
-  }
+  } 
 }
 
 pagination.on('afterMove', event => {

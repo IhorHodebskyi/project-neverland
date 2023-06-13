@@ -6,3 +6,4 @@ import './js/theme-switcher'
 import './js/weekly';
 import './js/modal-trailer';
 import './js/modal-footer';
+import './js/pre-loader-spinner';
