@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { handlerClickcardsSectionBackphoto } from './modal-film';
 import { pagination } from './pagination';
-
+import { refs } from './refs';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 const WEEK_BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
@@ -11,9 +11,11 @@ let value = '';
 
 container.style.display = 'none';
 
-async function getMovies(page, value) {
+async function getMovies(page, value, year) {
   const rest = await axios.get(
-    `${BASE_URL}?api_key=${API_KEY}&query=${value}&page=${page}`
+
+    `${BASE_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}&year=${year}`
+
   );
   return rest;
 }
@@ -29,6 +31,8 @@ async function getMoviesTrendingWeek(page) {
 const form = document.querySelector('#search-form');
 const list = document.querySelector('.create-gallery');
 const oops = document.querySelector('.without-results-section');
+const selectBtnEl = document.querySelector(".select-btn");
+
 
 form.addEventListener('submit', onSubmit);
 
@@ -36,23 +40,33 @@ function onSubmit(e) {
   e.preventDefault();
   list.innerHTML = '';
 
+
   value = e.target.elements.search.value;
-  getFirstMovies(page, value);
+  const year = selectBtnEl.textContent;
+  getFirstMovies(page, value, year);
+  console.log(value, page);
+
 }
 
-async function getFirstMovies(page, value) {
+async function getFirstMovies(page, value, year) {
   try {
-    const data = await getMovies(page, value);
+
+    showSpinner();
+     const data = await getMovies(page, value, year);
     if (data.data.results.length === 0) {
       container.style.display = 'none';
+
       oops.classList.remove('is-hidden');
       return;
     }
+     oops.classList.add('is-hidden');
     createMarkup(data.data.results);
     container.style.display = 'block';
     pagination.reset(data.data.total_pages);
   } catch (error) {
     console.log(error);
+  } finally {
+    hideSpinner();
   }
 }
 
@@ -182,11 +196,23 @@ function createMarkup(data) {
     )
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
-  const cardsSectionBackphoto = document.querySelector(
-    '.cards-section-backphoto'
-  );
-  cardsSectionBackphoto.addEventListener(
-    'click',
-    handlerClickcardsSectionBackphoto
-  );
+  refs.cardsSectionBackphoto = document.querySelectorAll('.cards-section-backphoto');
+  refs.cardsSectionBackphoto.forEach(el=>el.addEventListener('click',handlerClickcardsSectionBackphoto));
+  // const cardsSectionBackphoto = document.querySelector(
+  //   '.cards-section-backphoto'
+  // );
+  // cardsSectionBackphoto.addEventListener(
+  //   'click',
+  //   handlerClickcardsSectionBackphoto
+  // );
+}
+
+const spinnerEl = document.querySelector(".spinner")
+
+function showSpinner() {
+  spinnerEl.style.display = "block";
+}
+
+function hideSpinner() {
+  spinnerEl.style.display = "none";
 }
