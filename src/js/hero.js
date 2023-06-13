@@ -26,7 +26,7 @@ serviceFilm()
       createMarkupHero(firstFilm)
     );
 
-    refs.homeHero.classList.add('is-hidden');
+    // refs.homeHero.classList.add('is-hidden');
 
     refs.trailerBtn = document.querySelector('.js-hero-trailer');
     // console.log(refs.trailerBtn);

@@ -9,9 +9,9 @@ let page = pagination.getCurrentPage();
 let value = '';
 console.log(value);
 
-async function getMovies(page, value) {
+async function getMovies(page, value, year) {
   const rest = await axios.get(
-    `${BASE_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}`
+    `${BASE_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}&year=${year}`
   );
   console.log(rest.data);
   return rest;
@@ -21,7 +21,8 @@ async function getMovies(page, value) {
 
 const form = document.querySelector('#search-form');
 const list = document.querySelector('.create-gallery');
-const oops = document.querySelector('.without-results-section')
+const oops = document.querySelector('.without-results-section');
+const selectBtnEl = document.querySelector(".select-btn");
 
 form.addEventListener('submit', onSubmit);
 
@@ -30,13 +31,14 @@ function onSubmit(e) {
   // list.innerHTML = '';
 
   const value = e.target.elements.search.value;
-  getFirstMovies(page, value);
+  const year = selectBtnEl.textContent;
+  getFirstMovies(page, value, year);
   console.log(value, page);
 }
 
-async function getFirstMovies(page, value) {
+async function getFirstMovies(page, value, year) {
   try {
-    const data = await getMovies(page, value);
+    const data = await getMovies(page, value, year);
     console.log(data);
     console.log(data.data.results);
     if (!data) {
