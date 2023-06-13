@@ -26,7 +26,7 @@ searchWrap: document.querySelector(".gallery"),
   weeklyList: document.querySelector('.weekly-list'),
 
 // -----------------------------Modal Film-----------------------------
-modalFilmBtnClose: document.querySelector('.modal-film-btn-close'),
+// modalFilmBtnClose: document.querySelector('.modal-film-btn-close'),
 modalTrailerBackdrop: document.querySelector('.modal-film-backdrop'),
 modalTrailerWwindow: document.querySelector('.modal-film-window'),
 

@@ -1,16 +1,17 @@
 import {fetchAllGet} from './fetchAllGet';
 import {refs} from './refs'
 
-const idFilm = '1073443';
+// const idFilm = '1073443';
 const BASE_URL = 'https://api.themoviedb.org';
-const ENDPOINT = `/3/movie/${idFilm}`;
+// const ENDPOINT = `/3/movie/${idFilm}`;
 const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
 const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/original/';
 
-fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
-.then(markUp);
+// fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
+// .then(markUp);
 
 function markUp(data){
+    
     const {backdrop_path, poster_path, title, original_title, id, release_date, vote_average, vote_count, popularity, overview, genres} = data.data;
     const str = `<div class="modal-film-item" id="${id}">
                             <div>
@@ -26,14 +27,19 @@ function markUp(data){
                                 <p>About</p><span class="modal-film-text">${overview}</span>
                                 <button type="submit" class="modal-film-btn">${textBtn(id)}</button>
                             </div>
-                         </div>`;
-                        
+                         </div>              
+                         `;
+             
+                  
             refs.modalTrailerWwindow.insertAdjacentHTML('beforeend', str);
             refs.monthBtn = document.querySelector('.modal-film-btn');
+            
             refs.monthItem = document.querySelector('.modal-film-item');
             refs.monthBtn.addEventListener('click', handlerBtn);
+            console.log("kjsdhfkajshkjfdh", refs.modalFilmBtnClose)
+            refs.modalFilmBtnClose.addEventListener('click', handlerBtnClose);
 }
-
+refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
 function textBtn(id){
     const idFilm ={
         id: []
@@ -68,14 +74,26 @@ function handlerBtn(e){
     
 }
 
-refs.modalFilmBtnClose.addEventListener('click', handlerBtnClose);
+
 
 function handlerBtnClose(e){
     e.preventDefault();
+    console.log("kjsdhfkajshkjfdh")
+    refs.modalTrailerWwindow.textContent = '';
+    refs.modalTrailerWwindow.insertAdjacentHTML('beforeend',`<button class="modal-film-btn-close"><svg class="modal-film-icon-close">
+        <use href="./images/symbol-defs.svg#icon-x"></use></svg></button>`);
+        refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
     refs.modalTrailerBackdrop.classList.toggle('visually-hidden');
+    // refs.cardsSectionBackphoto.removeEventListener();
+
 }
 
 function handlerClickcardsSectionBackphoto(e){
+    
+    const ENDPOINT = `/3/movie/${e.currentTarget.getAttribute('id')}`;
+    fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
+    .then(markUp)
+    .catch(console.log);
     refs.modalTrailerBackdrop.classList.toggle('visually-hidden')  
 }
 

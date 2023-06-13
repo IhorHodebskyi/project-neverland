@@ -66,7 +66,9 @@
       border-radius: 20px;
       transform: translate(-50%, -50%);
   }
-  
+  .modal-film-item-title{
+    width: 331px;
+  }
   .modal-film-item-title > h3:first-child{
       margin: 22px 0 29px 0;
       font-weight: 500;
@@ -127,6 +129,8 @@
     color: #282828;
   }
   .modal-film-item-img{
+    width: 375px; 
+    height: 478px;
     box-shadow: 1px 1px 24px 2px rgba(1, 1, 1, 0.45);
     border-radius: 5px;
     overflow: hidden;
@@ -160,6 +164,10 @@
       display: flex;
       gap: 20px;
     }
+    .modal-film-item-img > img{
+      width: 375px;
+      height: auto;
+    }
     .modal-film-window{
       padding: 60px;
       top: 50%;
@@ -183,5 +191,8 @@
     .modal-film-item-title > h3:first-child{
       margin: 0 0 28px 0;
     }
-    
+    .modal-film-item-img > img{
+      width: 375px;
+      height: auto;
+    }
   }
