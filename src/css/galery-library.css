@@ -1,0 +1,11 @@
+.galery-library{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.galery-library-btn{
+    display: block;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
