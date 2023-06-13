@@ -34,7 +34,7 @@ function handleTrailerResponse(response) {
     <div class="no-trailer" id="js-close-no-trailer">
       <button type="button" class="no-trailer-close-btn" id="js-close-no-trailer-btn">
         <svg class="no-trailer-close-icon" width="16" height="16">
-          <use href="/src/images/symbol-defs.svg#icon-x"></use>
+          <use href="src/images/symbol-defs.svg#icon-x"></use>
         </svg>
       </button>
       <div class="no-trailer-content">
@@ -45,11 +45,11 @@ function handleTrailerResponse(response) {
       <div class="no-trailer-img-wrap">
         <img
           class="no-trailer-img"
-          src="/src/images/no-trailer-x1.png"
+          src="src/images/no-trailer-x1.png"
           alt="No trailer available"
           srcset="
-            /src/images/no-trailer-x1.png 1x,
-            /src/images/no-trailer-x2.png 2x
+            src/images/no-trailer-x1.png 1x,
+            src/images/no-trailer-x2.png 2x
           "
         />
       </div>
