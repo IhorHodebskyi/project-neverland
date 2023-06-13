@@ -7,3 +7,4 @@ import './js/modal-trailer';
 import './js/theme-switcher';
 import './js/modal-film';
 import './js/modal-footer';
+import './js/pre-loader-spinner';
