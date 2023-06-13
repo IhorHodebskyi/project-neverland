@@ -10,16 +10,18 @@ serviceFilm()
     const filmInHero = allFilms[randomFilmIndex];
 
     /*const firstFilm = data.data.results[0];*/
-    console.log(filmInHero);
+    
     if (!filmInHero) {
-      refs.homeHero.classList.remove('is-hidden');
+      refs.homeHero.classList.toggle('is-hidden');
+      refs.libraryHeroPlug.classList.toggle('is-hidden');
     }
     refs.homeHeroFilmWraper.insertAdjacentHTML(
       'beforeend',
       createMarkupHero(filmInHero)
     );
 
-    // refs.homeHero.classList.add('is-hidden');
+    refs.homeHero.classList.toggle('is-hidden');
+    refs.libraryHeroPlug.classList.toggle('is-hidden');
 
     refs.trailerBtn = document.querySelector('.js-hero-trailer');
     refs.trailerBtn.addEventListener('click', trailerBtnClick);
@@ -29,16 +31,6 @@ serviceFilm()
   })
   .catch(err => console.log(err));
 
-/*function createMarkupHero(arr) {
-    return arr.map(({ original_title, poster_path, vote_average, overview }) => 
-    `<div>
-    <img src="https://image.tmdb.org/t/p/w300${poster_path}" alt="${original_title}">
-    <h2>${original_title}</h2>
-    <p>${overview}</p>
-    <p>${vote_average}</p>
-    </div>`).join('')
-    
-}*/
 
 function createMarkupHero({
   original_title,
@@ -74,6 +66,8 @@ function createMarkupHero({
   `;
 }
 
+window.addEventListener('resize', addHeroText);
+
 function addHeroText() {
   let width = refs.homeHeroFilmWraper.offsetWidth;
   console.log(width);
@@ -83,4 +77,4 @@ function addHeroText() {
   }
 }
 
-addHeroText();
+//addHeroText();
