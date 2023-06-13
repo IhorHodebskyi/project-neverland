@@ -39,8 +39,13 @@
 .create-gallery {
     margin-bottom: 16px;
     /* display: flex; */
+<<<<<<< Updated upstream
     flex-direction: column;
     gap: 16px;
+=======
+    /* flex-direction: column;
+    gap: 16px; */
+>>>>>>> Stashed changes
     align-items: center;
 }
 
@@ -81,7 +86,7 @@
 }
 .input-field:focus {
   box-shadow: 0 0 15px 5px #f87719;
-  /* border: 2px solid #bebede; */
+
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
