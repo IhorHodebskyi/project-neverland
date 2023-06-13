@@ -12,6 +12,7 @@ export const refs = {
   homeHero: document.querySelector('.home-hero-plug'),
   homeHeroFilmWraper: document.querySelector('.home-hero-container'),
   homeHeroText: document.querySelector('.home-hero-text'),
+  libraryHeroPlug : document.querySelector('.library-hero-container'),
 
 
 /*----------------------------UPCOMING THIS MONTH--------------------------*/

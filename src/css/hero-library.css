@@ -1,4 +1,8 @@
 /* тут будуть стилі для hero library */
+
+.is-hidden {
+    display: none;
+}
 .library-hero-container{
     background-image:
             linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
