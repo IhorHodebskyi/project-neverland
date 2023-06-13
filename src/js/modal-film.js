@@ -93,7 +93,7 @@ function handlerBtnClose(e){
     refs.modalTrailerWwindow.textContent = '';
     refs.modalTrailerWwindow.insertAdjacentHTML('beforeend',`<button class="modal-film-btn-close"><svg class="modal-film-icon-close">
         <use href="./images/symbol-defs.svg#icon-x"></use></svg></button>`);
-        refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
+    refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
     refs.modalTrailerBackdrop.classList.toggle('visually-hidden');
     
 }
