@@ -9,40 +9,56 @@ background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
 /* flex-basis: calc((100% - 2*16px)/3); */
-display: flex;
+/* display: flex;
 justify-content: center;
-align-items: center;
-margin-bottom: 16px;
+align-items: center; */
+/* margin-bottom: 16px; */
+}
+
+.info-cards-box {
+  display: flex;
+justify-content: center;
+align-items: center; 
+
 }
 
 .info-cards-section {
-  margin-left: 20px;
-  margin-top: 498px;
+
+
 }
 
 .info-card-section-title { 
+  display: block;
+  margin-left: 12px;
+  padding-top: 354px;
+  margin-bottom: 0;
 font-family: 'Roboto';
-text-transform: uppercase;
 font-style: normal;
 font-weight: 500;
-font-size: 20px;
-line-height: 23px;
+font-size: 12px;
+line-height: 20px;
+text-transform: uppercase;
 color: #FFFFFF;
+
 }
 
 .info-card-section-date {
+  display: inline-block;
+  margin-left: 12px;
+  margin-top: 0;
+  margin-bottom: 0;
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 500;
-font-size: 20px;
-line-height: 24px;
+font-size: 12px;
+line-height: 20px;
 color: #B7B7B7;
 }
 
 .vote-average-icons {
   width: 16.87px;
   height: 15.75px;
-  margin-top: 533px;
+ 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,4 +87,27 @@ color: #B7B7B7;
           max-width: 395px;
          
         }
+       .info-cards-section {
+        margin-left: 12px;
+       
+       }
+
+       .info-card-section-title {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 20px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+
+       }
+
+       .info-card-section-date {
+        color: #B7B7B7;
+        padding-top: 0;
+       }
+
       }

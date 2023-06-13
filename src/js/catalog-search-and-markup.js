@@ -134,7 +134,8 @@ function createMarkup(data) {
         id,
       }) =>
         `<div class = "cards-section-backphoto" style = "background-image: url('https://image.tmdb.org/t/p/original${poster_path}');" id="${id}">
-    <div class = "info-cards-section">
+    <div class="info-cards-box>
+        <div class = "info-cards-section">
     <p class = "info-card-section-title">${original_title}</p>
     <p class = "info-card-section-date">${String(release_date).slice(0,4)} | ${genre_ids}</p>
     </div>
@@ -174,7 +175,7 @@ function createMarkup(data) {
             </svg>
     </div>
     
-    
+    </div>
     </div>
     `
     )
