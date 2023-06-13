@@ -1,3 +1,13 @@
+:root {
+    /* popularity-text, genre-text, title */
+    --primary-title-color: #FFFFFF;
+    /* vote , popularity, genre, about */
+    --primary-vote-color: #B7B7B7; 
+    --primary-vote-color-text: #111111;
+    --primary-about-text: #F8F8F8;
+    --primary-date-text: #F87719;
+  }
+
 .month-title{
     margin: 0 0 28px 0;
     font-weight: 500;
@@ -5,7 +15,7 @@
     line-height: 1.18;
     text-transform: uppercase;
 /* White */
-    color: black;
+    color: var(--primary-title-color);
 }
 .month-item-title-text > div > h3{
     margin: 0 0 12px 0;
@@ -13,7 +23,7 @@
     font-size: 16px;
     line-height: 1.19;
 /* Grey */
-    color: #111111;
+    color: var(--primary-vote-color);
 }
 .month-item-title > h3:first-child{
     /* margin: 0 0 28px 0; */
@@ -22,7 +32,7 @@
     line-height: 1.18;
     text-transform: uppercase;
 /* White */
-    color: #111111;
+    color: var(--primary-vote-color);
 }
 .month-vote {
     margin-left: 62px;
@@ -40,7 +50,7 @@
     text-transform: uppercase;
 
     /* Background */
-    color: #111111;
+    color: var(--primary-vote-color-text);
 }
 .month-popular{
     margin-left: 78px;
@@ -50,7 +60,7 @@
     align-items: center;
     text-transform: uppercase;
     /* Secondary black */
-    color: #282828;
+    color: var(--primary-title-color);
 }
 
 .month-genre{
@@ -60,7 +70,7 @@
     line-height: 1.19;
     align-items: center;
     /* Secondary black */
-    color: #282828;
+    color: var(--primary-title-color);
 }
 .month-item-title > p{
     margin: 8px 0 16px 0;
@@ -70,13 +80,13 @@
     align-items: center;
     text-transform: uppercase;
 /* Background */
-    color: #111111;
+    color: var(--primary-vote-color);
 }
 .month-text{
     font-weight: 400;
     font-size: 14px;
   /* Secondary black */
-    color: #282828;
+    color: var(--primary-about-text);
 }
  .month-btn{
    display: flex;
@@ -97,7 +107,7 @@
     line-height: 1.19;
     align-items: center;
     text-transform: uppercase;
-    color: #F87719;
+    color: var(--primary-date-text);
 }
 @media screen and (min-width: 320px), (max-width: 480) {
     .month-item-title > h3:first-child{

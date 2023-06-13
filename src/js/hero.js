@@ -1,35 +1,27 @@
 import axios from 'axios';
 import { serviceFilm } from './fetchAllGet';
 import { refs } from './refs';
-import {trailerBtnClick} from './modal-trailer';
-/*async function serviceFilm() {
-    const BASE_URL = "https://api.themoviedb.org/3";
-    const ENDPOINT = "/trending/movie/day";
-    const API_KEY = "5bf13f442a6612ea903461e28536fdca";
-
-    const hero_film = await axios.get(`${BASE_URL}${ENDPOINT}?api_key=${API_KEY}`);
-
-    return hero_film;
-    ;
-}
-export { serviceFilm };*/
+import { trailerBtnClick } from './modal-trailer';
 
 serviceFilm()
   .then(data => {
-    const firstFilm = data.data.results[0];
-    console.log(firstFilm);
-    if (!firstFilm) {
+    const allFilms = data.data.results;
+    const randomFilmIndex = Math.floor(Math.random() * allFilms.length);
+    const filmInHero = allFilms[randomFilmIndex];
+
+    /*const firstFilm = data.data.results[0];*/
+    console.log(filmInHero);
+    if (!filmInHero) {
       refs.homeHero.classList.remove('is-hidden');
     }
     refs.homeHeroFilmWraper.insertAdjacentHTML(
       'beforeend',
-      createMarkupHero(firstFilm)
+      createMarkupHero(filmInHero)
     );
 
     // refs.homeHero.classList.add('is-hidden');
 
     refs.trailerBtn = document.querySelector('.js-hero-trailer');
-    // console.log(refs.trailerBtn);
     refs.trailerBtn.addEventListener('click', trailerBtnClick);
 
     /*refs.heroTrailerBtn.setAttribute("id", `${firstFilm.id}`);
@@ -37,7 +29,7 @@ serviceFilm()
   })
   .catch(err => console.log(err));
 
-/*function createMarkup(arr) {
+/*function createMarkupHero(arr) {
     return arr.map(({ original_title, poster_path, vote_average, overview }) => 
     `<div>
     <img src="https://image.tmdb.org/t/p/w300${poster_path}" alt="${original_title}">
@@ -48,24 +40,15 @@ serviceFilm()
     
 }*/
 
-/*function createMarkup({ original_title, poster_path, vote_average, overview}) {
-    return `<div class = "home-hero-film" >
-    <img src="https://image.tmdb.org/t/p/w500${poster_path}" alt="${original_title}" class = "home-hero-poster">
-    <h2 class = "home-hero-title">${original_title}</h2>
-    <p class = "home-hero-rate">${vote_average}</p>
-    <p class = "home-hero-overview">${overview}</p>
-    </div>`
-}*/
-
 function createMarkupHero({
   original_title,
-  poster_path,
+  backdrop_path,
   vote_average,
   overview,
   id,
 }) {
-  const imageUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
-  const retinaImageUrl = `https://image.tmdb.org/t/p/w1000${poster_path}`;
+  const imageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
+  const retinaImageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
 
   return `
         <div class="home-hero-film" style="
@@ -78,10 +61,10 @@ function createMarkupHero({
         <p class="home-hero-rate">${vote_average}</p>
         <p class="home-hero-overview">${overview}</p>
         <div class="home-hero-btns">
-        <button data-trailer-open type="button" class="hero-trailer-btn js-hero-trailer" data-id="${id}">
+        <button data-trailer-open type="button" class="hero-trailer-btn js-hero-trailer button-light" data-id="${id}">
             Watch trailer
             </button>
-            <button data-gocatalog-open type="button" class="go-to-catalog-btn">
+            <button data-gocatalog-open type="button" class="go-to-catalog-btn button-dark">
             More details
             </button>
         </div>
@@ -94,10 +77,10 @@ function createMarkupHero({
 function addHeroText() {
   let width = refs.homeHeroFilmWraper.offsetWidth;
   console.log(width);
-  if (width >= 768) {
+  if (width >= 768 && !refs.homeHero.classList.contains('is-hidden')) {
     refs.homeHeroText.textContent +=
       'Decorate your space, choose your films, and stock up on snacks for the full experience.';
   }
 }
 
-// addHeroText()
+addHeroText();

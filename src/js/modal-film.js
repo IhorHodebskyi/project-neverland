@@ -1,41 +1,54 @@
 import {fetchAllGet} from './fetchAllGet';
-const refs={
-    modalTrailerBackdrop: document.querySelector('.modal-film-backdrop'),
-    modalTrailerWwindow: document.querySelector('.modal-film-window'),
-}
-const idFilm = '1076443';
-const BASE_URL = 'https://api.themoviedb.org';
-const ENDPOINT = `/3/movie/${idFilm}`;
-const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
-const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
+import {refs} from './refs'
 
-fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
-.then(markUp);
+// const idFilm = '1073443';
+const BASE_URL = 'https://api.themoviedb.org';
+// const ENDPOINT = `/3/movie/${idFilm}`;
+const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
+const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/original/';
+
+// fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
+// .then(markUp);
+
+if (localStorage.getItem("theme")){
+    const root = document.querySelector(':root');
+    root.style.setProperty('--primary-title-color', '#111111');
+    root.style.setProperty('--primary-vote-color', '#111111');
+    root.style.setProperty('--primary-vote-color-text', '#282828');
+    root.style.setProperty('--primary-about-text', '#282828');
+    root.style.setProperty('--modal-film-bgrcol', '#FFFFFF');
+} 
 
 function markUp(data){
+    
     const {backdrop_path, poster_path, title, original_title, id, release_date, vote_average, vote_count, popularity, overview, genres} = data.data;
-    const str = `<div class="modal-trailer-item" id="${id}">
+    const str = `<div class="modal-film-item" id="${id}">
                             <div>
-                            <div class="modal-trailer-item-img">
-                                <img src="${BASE_IMG_URL_w500}${poster_path}" alt="${original_title}" height="478"/>
+                            <div class="modal-film-item-img">
+                                <img src="${BASE_IMG_URL_w500}${poster_path}" alt="${original_title}" />
                             </div>
                             </div>
-                            <div class="modal-trailer-item-title">
+                            <div class="modal-film-item-title">
                                 <h3>${title}</h3>
-                                        <h3>Vote / Votes<span class="modal-trailer-vote">${vote_average}</span> / <span class="modal-trailer-votes">${vote_count }</span></h3>
-                                        <h3>Popularity<span class="modal-trailer-popular">${parseFloat(popularity).toFixed(1)}</span></h3>
-                                        <h3>Genre<span class="modal-trailer-genre">${genres.map(({name})=>name).join(', ')}</span></h3>
-                                <p>About</p><span class="modal-trailer-text">${overview}</span>
-                                <button type="submit" class="modal-trailer-btn">${textBtn(id)}</button>
+                                        <h3>Vote / Votes<span class="modal-film-vote">${vote_average}</span> / <span class="modal-film-votes">${vote_count }</span></h3>
+                                        <h3>Popularity<span class="modal-film-popular">${parseFloat(popularity).toFixed(1)}</span></h3>
+                                        <h3>Genre<span class="modal-film-genre">${genres.map(({name})=>name).join(', ')}</span></h3>
+                                <p>About</p><span class="modal-film-text">${overview}</span>
+                                <button type="submit" class="modal-film-btn">${textBtn(id)}</button>
                             </div>
-                         </div>`;
-                        
+                         </div>              
+                         `;
+             
+                  
             refs.modalTrailerWwindow.insertAdjacentHTML('beforeend', str);
-            refs.monthBtn = document.querySelector('.modal-trailer-btn');
-            refs.monthItem = document.querySelector('.modal-trailer-item');
+            refs.monthBtn = document.querySelector('.modal-film-btn');
+            
+            refs.monthItem = document.querySelector('.modal-film-item');
             refs.monthBtn.addEventListener('click', handlerBtn);
+            // console.log("kjsdhfkajshkjfdh", refs.modalFilmBtnClose)
+            refs.modalFilmBtnClose.addEventListener('click', handlerBtnClose);
 }
-
+refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
 function textBtn(id){
     const idFilm ={
         id: []
@@ -69,3 +82,35 @@ function handlerBtn(e){
     
     
 }
+
+
+document.addEventListener('keydown',(evt)=>{
+    // console.log("hbvsdhvfasdbhfjasbhdjbh", modalTrailerBackdrop)
+    if (evt.key==="Escape"){
+        refs.modalTrailerWwindow.textContent = '';
+        refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
+        refs.modalTrailerBackdrop.classList.add('visually-hidden');
+    }
+});
+
+function handlerBtnClose(e){
+    e.preventDefault();
+    
+    refs.modalTrailerWwindow.textContent = '';
+    refs.modalTrailerWwindow.insertAdjacentHTML('beforeend',`<button class="modal-film-btn-close"><svg class="modal-film-icon-close">
+        <use href="./images/symbol-defs.svg#icon-x"></use></svg></button>`);
+        refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
+    refs.modalTrailerBackdrop.classList.toggle('visually-hidden');
+    
+}
+
+function handlerClickcardsSectionBackphoto(e){
+    
+    const ENDPOINT = `/3/movie/${e.currentTarget.getAttribute('id')}`;
+    fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
+    .then(markUp)
+    .catch(console.log);
+    refs.modalTrailerBackdrop.classList.toggle('visually-hidden')  
+}
+
+export {handlerClickcardsSectionBackphoto}

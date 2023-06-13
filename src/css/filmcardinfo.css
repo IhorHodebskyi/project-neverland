@@ -1,39 +1,74 @@
-.card-section-backphoto {
+.cards-section-backphoto {
 background: linear-gradient(180deg, rgba(0, 0, 0, 0) 63.48%, rgba(0, 0, 0, 0.9) 92.16%);
 border-radius: 5px;
+margin-left: auto;
+margin-right: auto;
+height: 406px;
+max-width: 280px;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+/* flex-basis: calc((100% - 2*16px)/3); */
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 16px;
 }
 
-.info-card-section {
+.info-cards-section {
+  margin-left: 20px;
+  margin-top: 498px;
+}
+
+.info-card-section-title { 
 font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 20px;
 text-transform: uppercase;
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 23px;
 color: #FFFFFF;
 }
 
-@media screen and (min-width: 768px) {
-.info-card-section {
+.info-card-section-date {
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 500;
-font-size: 12px;
-line-height: 19px;
-color: #FFFFFF;
-  
-  }
-}
-
-@media screen and (min-width: 1200px) {
-.info-card-section {
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
 font-size: 20px;
 line-height: 24px;
-color: #FFFFFF;
-
-    
-  }
+color: #B7B7B7;
 }
+
+.vote-average-icons {
+  width: 16.87px;
+  height: 15.75px;
+  margin-top: 533px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+
+/*---------------------- tablet -------------------------------- */
+@media screen and (min-width: 768px) {
+  .cards-section-backphoto {
+      height: 325px;
+      max-width: 224px;     
+      flex-basis: calc((100% - 2*16px)/3);
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+  
+
+  }
+
+    /*---------------------- desktop -------------------------------- */
+    @media screen and (min-width: 1280px) {
+      .cards-section-backphoto {
+          height: 574px;
+          max-width: 395px;
+         
+        }
+      }
