@@ -105,6 +105,8 @@
     left: 0;
     overflow: scroll;
     background-color: rgba(0, 0, 0, .8);
+    transition: transform .25s cubic-bezier(.4,0,.2,1),
+                visibility .25s;
 }
 
 .team_wrapper {
@@ -116,6 +118,7 @@
     padding: 30px 15px;
     position: relative;
     background-color: rgba(222, 222, 222, .8);
+    transform: matrix(1)translate(-50%) scale(1);
 }
 
 .team_modal_close_btn {
