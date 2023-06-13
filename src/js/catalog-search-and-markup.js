@@ -193,7 +193,7 @@ function createMarkup(data) {
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
   refs.cardsSectionBackphoto = document.querySelectorAll(
-    '.cards-section-backphoto'
+    '.card-film'
   );
   refs.cardsSectionBackphoto.forEach(el =>
     el.addEventListener('click', handlerClickcardsSectionBackphoto)
