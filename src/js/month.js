@@ -43,16 +43,25 @@ async function markUp(data){
                                 <h3>${title}</h3>
                                 <div class="month-item-title-text">
                                     <div>
-                                        <h3>Release date<span class="month-rel-date">${release_date.replaceAll('-','.')}</span></h3>
-                                        <h3>Vote / Votes<span class="month-vote">${vote_average}</span> / <span class="month-votes">${vote_count }</span></h3>
+                                        <h3>Release date<span class="month-rel-date">${release_date.replaceAll(
+                                          '-',
+                                          '.'
+                                        )}</span></h3>
+                                        <h3>Vote / Votes<span class="month-vote">${vote_average}</span> / <span class="month-votes">${vote_count}</span></h3>
                                     </div>
                                     <div>
-                                        <h3>Popularity<span class="month-popular">${parseFloat(popularity).toFixed(1)}</span></h3>
-                                        <h3>Genre<span class="month-genre">${await genreStr(genre_ids)}</span></h3>
+                                        <h3>Popularity<span class="month-popular">${parseFloat(
+                                          popularity
+                                        ).toFixed(1)}</span></h3>
+                                        <h3>Genre<span class="month-genre">${await genreStr(
+                                          genre_ids
+                                        )}</span></h3>
                                     </div>
                                 </div>
                                 <p>About</p><span class="month-text">${overview}</span>
-                                <button type="submit" class="month-btn">${textBtn(id)}</button>
+                                <button type="submit" class="month-btn button-light">${textBtn(
+                                  id
+                                )}</button>
                             </div>
                          </div>`;
                         //  <div class="month-genre-flex"><div><h3>Genre</h3></div><div><span class="month-genre">${await genreStr(genre_ids)}</span></div></div>

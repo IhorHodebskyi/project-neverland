@@ -7,7 +7,6 @@ import {trailerBtnClick} from './modal-trailer';
 serviceFilm()
   .then(data => {
 
-    
     const allFilms = data.data.results;
     const randomFilmIndex = Math.floor(Math.random() * allFilms.length);
     const filmInHero = allFilms[randomFilmIndex];
@@ -25,7 +24,6 @@ serviceFilm()
     refs.homeHero.classList.add('is-hidden');
 
     refs.trailerBtn = document.querySelector('.js-hero-trailer');
-    // console.log(refs.trailerBtn);
     refs.trailerBtn.addEventListener('click', trailerBtnClick);
 
     /*refs.heroTrailerBtn.setAttribute("id", `${firstFilm.id}`);
@@ -66,10 +64,10 @@ function createMarkupHero({
         <p class="home-hero-rate">${vote_average}</p>
         <p class="home-hero-overview">${overview}</p>
         <div class="home-hero-btns">
-        <button data-trailer-open type="button" class="hero-trailer-btn js-hero-trailer" data-id="${id}">
+        <button data-trailer-open type="button" class="hero-trailer-btn js-hero-trailer button-light" data-id="${id}">
             Watch trailer
             </button>
-            <button data-gocatalog-open type="button" class="go-to-catalog-btn">
+            <button data-gocatalog-open type="button" class="go-to-catalog-btn button-dark">
             More details
             </button>
         </div>
