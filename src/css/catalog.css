@@ -13,6 +13,7 @@
     gap: 16px;
     align-items: center;
     justify-content: center;
+    margin-bottom: 16px;
 }
 
 .catalog-btn {
@@ -38,9 +39,11 @@
 
 .create-gallery {
     margin-bottom: 16px;
+
     /* display: flex; */
-    flex-direction: column;
-    gap: 16px;
+    /* flex-direction: column;
+    gap: 16px; */
+
     align-items: center;
 }
 
@@ -82,7 +85,7 @@
 }
 .input-field:focus {
   box-shadow: 0 0 15px 5px #f87719;
-  /* border: 2px solid #bebede; */
+
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -100,9 +103,15 @@
   height: 9px;
   fill: #ffffff;
 }
-.input-field:not(:valid) ~ .icon-clear-text {
-  display: none;
+.icon-clear-text:is(:hover, :focus){
+  fill:#f87719;
+  transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* .input-field:not(:valid) ~ .icon-clear-text {
+  display: none;
+} */
 
 /*---------------------- tablet -------------------------------- */
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { handlerClickcardsSectionBackphoto } from './modal-film';
 import { pagination } from './pagination';
-
+import { refs } from './refs';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 const WEEK_BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
@@ -11,9 +11,9 @@ let value = '';
 
 container.style.display = 'none';
 
-async function getMovies(page, value) {
+async function getMovies(page, value, year) {
   const rest = await axios.get(
-    `${BASE_URL}?api_key=${API_KEY}&query=${value}&page=${page}`
+    `${BASE_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}&year=${year}`
   );
   return rest;
 }
@@ -29,7 +29,7 @@ async function getMoviesTrendingWeek(page) {
 const form = document.querySelector('#search-form');
 const list = document.querySelector('.create-gallery');
 const oops = document.querySelector('.without-results-section');
-
+const selectBtnEl = document.querySelector('.select-btn');
 
 form.addEventListener('submit', onSubmit);
 
@@ -38,18 +38,22 @@ function onSubmit(e) {
   list.innerHTML = '';
 
   value = e.target.elements.search.value;
-  getFirstMovies(page, value);
+  const year = selectBtnEl.textContent;
+  getFirstMovies(page, value, year);
+  console.log(value, page);
 }
 
-async function getFirstMovies(page, value) {
+async function getFirstMovies(page, value, year) {
   try {
     showSpinner();
-    const data = await getMovies(page, value);
+    const data = await getMovies(page, value, year);
     if (data.data.results.length === 0) {
       container.style.display = 'none';
+
       oops.classList.remove('is-hidden');
       return;
     }
+    oops.classList.add('is-hidden');
     createMarkup(data.data.results);
     container.style.display = 'block';
     pagination.reset(data.data.total_pages);
@@ -123,68 +127,92 @@ function createMarkup(data) {
         release_date,
         id,
       }) =>
-        `<div class = "cards-section-backphoto" style = "background-image: url('https://image.tmdb.org/t/p/original${poster_path}');" id="${id}">
-    <div class = "info-cards-section">
-    <p class = "info-card-section-title">${original_title}</p>
-    <p class = "info-card-section-date">${String(release_date).slice(0,4)} | ${genre_ids}</p>
-    </div>
-    <div class ="vote-average-section">
-    <ul class="vote-average-icons">
-          <li class="vote-average-icons-items">
-            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
-              <use href="/src/images/reitingfull.svg">
-              </use>
-            </svg>
-          </li>
-          <li class="vote-average-icons-items">
-            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
-              <use href="/src/images/reitingfull.svg">
-              </use>
-            </svg>
-          </li>
-          <li class="vote-average-icons-items">
-            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
-              <use href="/src/images/reitingfull.svg">
-              </use>
-            </svg>
-          </li>
-          <li class="vote-average-icons-items">
-            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
-              <use href="/src/images/reitingfull.svg">
-              </use>
-            </svg>
-          </li>
-          <li class="vote-average-icons-items">
-            <svg width="16.87px" height="15.75px" class="vote-average-icons-items-img">
-              <use href="/src/images/reitingfull.svg">
-              </use>
-            </svg>
-          </li>
-    </ul>
-            </svg>
-    </div>
-    
-    
-    </div>
+
+        `
+      <a href="#" class="card-film" id="${id}">
+        <div class="card-backdrop"></div>
+        <img
+          class="card-img"
+          src="https://image.tmdb.org/t/p/w500${poster_path}"
+          alt=""
+          loading="lazy"
+          srcset="
+            https://image.tmdb.org/t/p/w500${poster_path} 1x,
+            https://image.tmdb.org/t/p/w500${poster_path} 2x
+          "
+        />
+        <div class="card-info-section">
+          <h3 class="card-info-title">${original_title}</h3>
+          <div class="card-info">
+            <p class="card-info-text">
+              ${String(release_date).slice(0, 4)} | ${genre_ids}
+            </p>
+            <ul class="card-vote">
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </a>
+
     `
     )
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
-  const cardsSectionBackphoto = document.querySelector(
-    '.cards-section-backphoto'
+  refs.cardsSectionBackphoto = document.querySelectorAll(
+    '.card-film'
   );
-  cardsSectionBackphoto.addEventListener(
-    'click',
-    handlerClickcardsSectionBackphoto
+  refs.cardsSectionBackphoto.forEach(el =>
+    el.addEventListener('click', handlerClickcardsSectionBackphoto)
   );
+  // const cardsSectionBackphoto = document.querySelector(
+  //   '.cards-section-backphoto'
+  // );
+  // cardsSectionBackphoto.addEventListener(
+  //   'click',
+  //   handlerClickcardsSectionBackphoto
+  // );
 }
 
-const spinnerEl = document.querySelector(".spinner")
+const spinnerEl = document.querySelector('.spinner');
 
 function showSpinner() {
-  spinnerEl.style.display = "block";
+  spinnerEl.style.display = 'block';
 }
 
 function hideSpinner() {
-  spinnerEl.style.display = "none";
+  spinnerEl.style.display = 'none';
 }

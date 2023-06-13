@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createMarkupCard } from './createMarkupCard';
+// import { createMarkupCard } from './createMarkupCard';
 import { refs } from './refs';
 
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
@@ -12,24 +12,98 @@ async function fetchTrendsOfWeek() {
     `${BASE_URL}?api_key=${API_KEY}&language=en-US&per_page=20`
   );
   originalData = response.data.results;
-  await handleResponsive();
-  window.addEventListener('resize', handleResponsive);
+  handleResponsive();
+
   return originalData;
 }
-
-async function handleResponsive() {
+// window.addEventListener('resize', handleResponsive);
+function handleResponsive() {
   const screenWidth = window.innerWidth;
-  let slicedData;
-
-  if (screenWidth < 768) {
-    slicedData = originalData.slice(0, 1);
-  } else {
-    slicedData = originalData.slice(0, 3);
-  }
-
-  refs.weeklyList.innerHTML = createMarkupCard(slicedData);
+  let slicedData = [];
+  console.log(slicedData);
+  // if (screenWidth < 768) {
+  //   return (slicedData = originalData.slice(0, 1));
+  // }
+  // slicedData = originalData.slice(0, 3);
+  slicedData = originalData.slice(0, 3);
+  createMarkupCard(slicedData);
 }
 
 fetchTrendsOfWeek();
 
 export { fetchTrendsOfWeek };
+
+function createMarkupCard(cardresult) {
+  const cardMarkUp = cardresult
+    .map(
+      ({
+        original_title,
+        poster_path,
+        vote_average,
+        genre_ids,
+        release_date,
+        id,
+      }) =>
+        `<a href="#" class="card-film" id="${id}">
+        <div class="card-backdrop"></div>
+        <img
+          class="card-img"
+          src="https://image.tmdb.org/t/p/w500${poster_path}"
+          alt=""
+          loading="lazy"
+          srcset="
+            https://image.tmdb.org/t/p/w500${poster_path} 1x,
+            https://image.tmdb.org/t/p/w500${poster_path} 2x
+          "
+        />
+        <div class="card-info-section">
+          <h3 class="card-info-title">${original_title}</h3>
+          <div class="card-info">
+            <p class="card-info-text">
+              ${String(release_date).slice(0, 4)} | ${genre_ids}
+            </p>
+            <ul class="card-vote">
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+              <li class="card-vote-items">
+                <img
+                  class="card-vote-icon"
+                  src="../../images/reitingfull.svg"
+                  alt="Rating Stars"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </a>`
+    )
+    .join('');
+
+  refs.weeklyList.insertAdjacentHTML('beforeend', cardMarkUp);
+}
