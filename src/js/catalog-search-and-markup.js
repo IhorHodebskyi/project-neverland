@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { handlerClickcardsSectionBackphoto } from './modal-film';
 import { pagination } from './pagination';
-
+import { refs } from './refs';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 const WEEK_BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
@@ -167,11 +167,13 @@ function createMarkup(data) {
     )
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
-  const cardsSectionBackphoto = document.querySelector(
-    '.cards-section-backphoto'
-  );
-  cardsSectionBackphoto.addEventListener(
-    'click',
-    handlerClickcardsSectionBackphoto
-  );
+  refs.cardsSectionBackphoto = document.querySelectorAll('.cards-section-backphoto');
+  refs.cardsSectionBackphoto.forEach(el=>el.addEventListener('click',handlerClickcardsSectionBackphoto));
+  // const cardsSectionBackphoto = document.querySelector(
+  //   '.cards-section-backphoto'
+  // );
+  // cardsSectionBackphoto.addEventListener(
+  //   'click',
+  //   handlerClickcardsSectionBackphoto
+  // );
 }
