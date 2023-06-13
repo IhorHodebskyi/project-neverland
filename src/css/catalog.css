@@ -14,6 +14,7 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
+    flex-wrap: wrap;
 }
 
 .catalog-btn {
@@ -77,6 +78,10 @@
   height: 18px;
   fill: currentColor;
 }
+.flex-mobile{
+  display: flex;
+  gap: 30px;
+}
 
 /*---------------- кнопка в инпуте ------------------------*/
 /* .input-field, */
@@ -116,7 +121,13 @@
 /*---------------------- tablet -------------------------------- */
 
  @media screen and (min-width: 768px) {
-.without-results {
+.flex-mobile {
+  gap: 16px;   
+  }
+  .input-field{
+    height: 44px;
+  }
+  .without-results {
         width: 513px;
         height: 104px;
         text-align: center;
@@ -142,8 +153,11 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    gap: 16px;
+    gap: 15px;
     row-gap: 28px;   
+}
+.close-icon {
+  top: 28%;
 }
  }
 /*---------------------- desktop -------------------------------- */
@@ -166,11 +180,23 @@
 }
 .search-form {
     margin-bottom: 48px;
+    gap: 24px;
 }
 .gallery-section {
     margin-bottom: 60px;
   }
   .create-gallery {
+    margin-bottom: 16px;
     row-gap: 32px;
   }
+.input-field {
+  height: 48px;
+  font-size: 16px;
+}
+.flex-mobile{
+  gap: 24px;
+}
+.close-icon {
+  top: 30%;
+}
 }
