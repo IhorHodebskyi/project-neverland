@@ -14,6 +14,7 @@ if (localStorage.getItem("theme")){
     root.style.setProperty('--primary-vote-color-text', '#282828');
     root.style.setProperty('--primary-about-text', '#282828');
     root.style.setProperty('--modal-film-bgrcol', '#FFFFFF');
+    root.style.setProperty('--modal-film-shadow', '1px 1px 14px 4px rgba(0, 0, 0, 0.22)');
 } 
 
 function markUp(data){

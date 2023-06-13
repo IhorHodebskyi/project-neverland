@@ -1,5 +1,6 @@
 :root{
   --modal-film-bgrcol: #111111;
+  --modal-film-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
 }
 .visually-hidden {
     position: absolute;
@@ -72,8 +73,7 @@
       height: 598px;
       /* padding: 0 24px; */
       background-color: var(--modal-film-bgrcol);
-      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
-        0px 2px 1px rgba(0, 0, 0, 0.2);
+      box-shadow: var(--modal-film-shadow);
       border-radius: 20px;
       transform: translate(-50%, -50%);
       overflow: auto;
@@ -165,6 +165,7 @@
       padding: 52px 16px;
       width: 280px;
       height: 847px;
+      border-radius: 16px;
       /* overflow: auto; */
       /* overflow: auto;
       scrollbar-width: none;
@@ -199,6 +200,7 @@
       padding: 44px;
       top: 50%;
       left: 50%;
+      border-radius: 16px;
       /* overflow: auto;
       scrollbar-width: none;
       scrollbar-color: hsl(0 0% 50%); */
@@ -247,6 +249,7 @@
       width: 846px;
       height: 598px;
       padding: 60px;
+      border-radius: 20px;
     }
     .modal-film-item-title{
       width: 331px;
