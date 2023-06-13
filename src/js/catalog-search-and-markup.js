@@ -138,7 +138,7 @@ function createMarkup(data) {
         <div class="card-backdrop"></div>
         <img
           class="card-img"
-          src="/src/images/test-photo.jpg"
+          src="https://image.tmdb.org/t/p/w500${poster_path}"
           alt=""
           loading="lazy"
           srcset="
@@ -156,35 +156,35 @@ function createMarkup(data) {
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="/src/images/reitingfull.svg"
+                  src="../../images/reitingfull.svg"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="/src/images/reitingfull.svg"
+                  src="../../images/reitingfull.svg"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="/src/images/reitingfull.svg"
+                  src="../../images/reitingfull.svg"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="/src/images/reitingfull.svg"
+                  src="../../images/reitingfull.svg"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="/src/images/reitingfull.svg"
+                  src="../../images/reitingfull.svg"
                   alt="Rating Stars"
                 />
               </li>
