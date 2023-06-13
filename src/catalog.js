@@ -10,4 +10,3 @@ import './js/modal-film';
 import './js/filter-years';
 
 import './js/modal-footer';
-

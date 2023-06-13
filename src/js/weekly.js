@@ -6,11 +6,13 @@ const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
 
 let originalData = [];
+const randomIndex = Math.floor(Math.random() * 100);
 
 async function fetchTrendsOfWeek() {
   const response = await axios.get(
-    `${BASE_URL}?api_key=${API_KEY}&language=en-US&per_page=20`
+    `${BASE_URL}?api_key=${API_KEY}&language=en-US&page=${randomIndex}`
   );
+  console.log(randomIndex);
   originalData = response.data.results;
   handleResponsive();
 
