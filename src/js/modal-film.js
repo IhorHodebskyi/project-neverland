@@ -1,11 +1,8 @@
 import {fetchAllGet} from './fetchAllGet';
 import {refs} from './refs'
-
-// const idFilm = '1073443';
 const BASE_URL = 'https://api.themoviedb.org';
-// const ENDPOINT = `/3/movie/${idFilm}`;
 const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
-const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/original/';
+const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
 
 // fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
 // .then(markUp);
@@ -22,11 +19,10 @@ if (localStorage.getItem("theme")){
 function markUp(data){
     
     const {backdrop_path, poster_path, title, original_title, id, release_date, vote_average, vote_count, popularity, overview, genres} = data.data;
-    const str = `<div class="modal-film-item" id="${id}">
-                            <div>
-                            <div class="modal-film-item-img">
-                                <img src="${BASE_IMG_URL_w500}${poster_path}" alt="${original_title}" />
-                            </div>
+    // <img src="${BASE_IMG_URL_w500}${poster_path}" alt="${original_title}" />
+    console.log(`${BASE_IMG_URL_w500}${poster_path}`);
+    const str = `<div class="modal-film-item" id="${id}" >
+                            <div class="modal-film-item-img" style="background-image: url(${BASE_IMG_URL_w500}${poster_path}" alt="${original_title});background-repeat: no-repeat;background-size: contain;background-position: left;">
                             </div>
                             <div class="modal-film-item-title">
                                 <h3>${title}</h3>
@@ -38,15 +34,12 @@ function markUp(data){
                             </div>
                          </div>              
                          `;
-             
-                  
             refs.modalTrailerWwindow.insertAdjacentHTML('beforeend', str);
             refs.monthBtn = document.querySelector('.modal-film-btn');
-            
             refs.monthItem = document.querySelector('.modal-film-item');
             refs.monthBtn.addEventListener('click', handlerBtn);
-            // console.log("kjsdhfkajshkjfdh", refs.modalFilmBtnClose)
             refs.modalFilmBtnClose.addEventListener('click', handlerBtnClose);
+            
 }
 refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
 function textBtn(id){
@@ -85,7 +78,7 @@ function handlerBtn(e){
 
 
 document.addEventListener('keydown',(evt)=>{
-    // console.log("hbvsdhvfasdbhfjasbhdjbh", modalTrailerBackdrop)
+    
     if (evt.key==="Escape"){
         refs.modalTrailerWwindow.textContent = '';
         refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
