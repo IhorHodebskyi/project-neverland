@@ -30,6 +30,7 @@ const form = document.querySelector('#search-form');
 const list = document.querySelector('.create-gallery');
 const oops = document.querySelector('.without-results-section');
 
+
 form.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
@@ -42,6 +43,7 @@ function onSubmit(e) {
 
 async function getFirstMovies(page, value) {
   try {
+    showSpinner();
     const data = await getMovies(page, value);
     if (data.data.results.length === 0) {
       container.style.display = 'none';
@@ -54,6 +56,8 @@ async function getFirstMovies(page, value) {
     pagination.reset(data.data.total_pages);
   } catch (error) {
     console.log(error);
+  } finally {
+    hideSpinner();
   }
 }
 
@@ -176,4 +180,14 @@ function createMarkup(data) {
   //   'click',
   //   handlerClickcardsSectionBackphoto
   // );
+}
+
+const spinnerEl = document.querySelector(".spinner")
+
+function showSpinner() {
+  spinnerEl.style.display = "block";
+}
+
+function hideSpinner() {
+  spinnerEl.style.display = "none";
 }

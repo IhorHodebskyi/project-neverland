@@ -48,6 +48,7 @@
 }
 
 .gallery-section {
+  position: relative;
   margin-bottom: 20px;
   background: var(--primary-brand-color);
 }
