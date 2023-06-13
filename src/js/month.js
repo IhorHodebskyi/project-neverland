@@ -14,6 +14,14 @@ const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 
 const respGenre = fetchAllGet(BASE_GENRE_URL, ENDPOINT_GENRE, API_KEY, '');
 
+if (localStorage.getItem("theme")){
+    const root = document.querySelector(':root');
+    root.style.setProperty('--primary-title-color', '#111111');
+    root.style.setProperty('--primary-vote-color', '#111111');
+    root.style.setProperty('--primary-vote-color-text', '#282828');
+    root.style.setProperty('--primary-about-text', '#282828');
+} 
+
 fetchAllGet(BASE_UPCOMING_URL, ENDPOINT_UPCOMING, API_KEY,'&language=en-US&page=1')
 .then(markUp);
 
@@ -27,10 +35,9 @@ async function markUp(data){
     
     const randCard = Math.floor(Math.random() * 20);
     data.data.results.map(async ({backdrop_path, poster_path, title, original_title, id, release_date, vote_average, vote_count, popularity, overview, genre_ids},i)=>{
-        // <img src="${BASE_IMG_URL}${backdrop_path}" alt="${original_title}" width="805">
-        // 
         if (i===randCard)
         {
+            
             const str = `<div class="month-item" id="${id}">
                             <div>
                             <div class="month-item-img">
@@ -64,11 +71,12 @@ async function markUp(data){
                                 )}</button>
                             </div>
                          </div>`;
-                        //  <div class="month-genre-flex"><div><h3>Genre</h3></div><div><span class="month-genre">${await genreStr(genre_ids)}</span></div></div>
+                        
             refs.monthGalery.insertAdjacentHTML('beforeend', str);
             refs.monthBtn = document.querySelector('.month-btn');
             refs.monthItem = document.querySelector('.month-item');
             refs.monthBtn.addEventListener('click', handlerBtn);
+            
         }
     });
       

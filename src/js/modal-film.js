@@ -10,13 +10,22 @@ const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/original/';
 // fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
 // .then(markUp);
 
+if (localStorage.getItem("theme")){
+    const root = document.querySelector(':root');
+    root.style.setProperty('--primary-title-color', '#111111');
+    root.style.setProperty('--primary-vote-color', '#111111');
+    root.style.setProperty('--primary-vote-color-text', '#282828');
+    root.style.setProperty('--primary-about-text', '#282828');
+    root.style.setProperty('--modal-film-bgrcol', '#FFFFFF');
+} 
+
 function markUp(data){
     
     const {backdrop_path, poster_path, title, original_title, id, release_date, vote_average, vote_count, popularity, overview, genres} = data.data;
     const str = `<div class="modal-film-item" id="${id}">
                             <div>
                             <div class="modal-film-item-img">
-                                <img src="${BASE_IMG_URL_w500}${poster_path}" alt="${original_title}" height="478"/>
+                                <img src="${BASE_IMG_URL_w500}${poster_path}" alt="${original_title}" />
                             </div>
                             </div>
                             <div class="modal-film-item-title">
@@ -36,7 +45,7 @@ function markUp(data){
             
             refs.monthItem = document.querySelector('.modal-film-item');
             refs.monthBtn.addEventListener('click', handlerBtn);
-            console.log("kjsdhfkajshkjfdh", refs.modalFilmBtnClose)
+            // console.log("kjsdhfkajshkjfdh", refs.modalFilmBtnClose)
             refs.modalFilmBtnClose.addEventListener('click', handlerBtnClose);
 }
 refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
@@ -75,17 +84,24 @@ function handlerBtn(e){
 }
 
 
+document.addEventListener('keydown',(evt)=>{
+    // console.log("hbvsdhvfasdbhfjasbhdjbh", modalTrailerBackdrop)
+    if (evt.key==="Escape"){
+        refs.modalTrailerWwindow.textContent = '';
+        refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
+        refs.modalTrailerBackdrop.classList.add('visually-hidden');
+    }
+});
 
 function handlerBtnClose(e){
     e.preventDefault();
-    console.log("kjsdhfkajshkjfdh")
+    
     refs.modalTrailerWwindow.textContent = '';
     refs.modalTrailerWwindow.insertAdjacentHTML('beforeend',`<button class="modal-film-btn-close"><svg class="modal-film-icon-close">
         <use href="./images/symbol-defs.svg#icon-x"></use></svg></button>`);
         refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
     refs.modalTrailerBackdrop.classList.toggle('visually-hidden');
-    // refs.cardsSectionBackphoto.removeEventListener();
-
+    
 }
 
 function handlerClickcardsSectionBackphoto(e){
