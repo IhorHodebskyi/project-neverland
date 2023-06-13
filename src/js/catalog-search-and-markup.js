@@ -119,7 +119,7 @@ function createMarkup(data) {
         release_date,
         id,
       }) =>
-        `<div class = "cards-section-backphoto" style = "background-image: url('https://image.tmdb.org/t/p/original${poster_path}');" id="${id}">
+        `<div class = "cards-section-backphoto" style = "background-image: url('https://image.tmdb.org/t/p/w500${poster_path}');" id="${id}">
     <div class = "info-cards-section">
     <p class = "info-card-section-title">${original_title}</p>
     <p class = "info-card-section-date">${String(release_date).slice(0,4)} | ${genre_ids}</p>
