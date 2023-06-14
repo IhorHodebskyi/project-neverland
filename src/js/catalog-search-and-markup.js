@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { fetchAllGet } from './fetchAllGet'
 import { handlerClickcardsSectionBackphoto } from './modal-film';
 import { pagination } from './pagination';
 import { refs } from './refs';
@@ -8,6 +9,17 @@ import starIconZero from '../images/reitingzero.svg';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 const WEEK_BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
+
+const BASE_GENRE_URL = 'https://api.themoviedb.org';
+const ENDPOINT_GENRE = '/3/genre/movie/list';
+const respGenre = fetchAllGet(BASE_GENRE_URL, ENDPOINT_GENRE, API_KEY, '');
+
+async function genreStr(arr){
+  const data = await respGenre;
+  return arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0]?.name).join(', ');
+
+}
+
 const container = document.getElementById('pagination');
 let page = pagination.getCurrentPage();
 let value = '';
@@ -141,10 +153,8 @@ pagination.on('afterMove', event => {
 //   }
 // }
 
-function createMarkup(data) {
-  const cardMarkUp = data
-    .map(
-      ({
+async function createMarkup(data) {
+  data.map(async ({
         name,
         original_title,
         poster_path,
@@ -155,7 +165,8 @@ function createMarkup(data) {
       }) => {
         const starRatingNumber = Number(vote_average);
         const starRatingRound = Math.round(starRatingNumber);
-        console.log(starRatingRound);
+        const genresLine = await genreStr(genre_ids);
+      
         let starIcons = '';
         for (let i = 1; i <= 5; i++) {
           let dubbleI = i * 2;
@@ -168,7 +179,7 @@ function createMarkup(data) {
           }
         }
 
-        return `
+        const str = `
         <a href="#" class="card-film" id="${id}">
           <div class="card-backdrop"></div>
           <img
@@ -185,7 +196,7 @@ function createMarkup(data) {
             <h3 class="card-info-title">${original_title || name}</h3>
             <div class="card-info">
               <p class="card-info-text">
-                ${String(release_date).slice(0, 4)} | ${genre_ids}
+              ${genresLine} | ${String(release_date).slice(0, 4)}
               </p>
               <ul class="card-vote">
                 ${starIcons}
@@ -194,19 +205,14 @@ function createMarkup(data) {
           </div>
         </a>
       `;
+      list.insertAdjacentHTML('beforeend', str);
       }
-    )
-    .join('');
-  list.insertAdjacentHTML('beforeend', cardMarkUp);
+      );
+    
+  //  list.insertAdjacentHTML('beforeend', cardMarkUp);
   refs.cardsSectionBackphoto = document.querySelectorAll('.card-film');
   refs.cardsSectionBackphoto.forEach(el =>
     el.addEventListener('click', handlerClickcardsSectionBackphoto)
   );
-  // const cardsSectionBackphoto = document.querySelector(
-  //   '.cards-section-backphoto'
-  // );
-  // cardsSectionBackphoto.addEventListener(
-  //   'click',
-  //   handlerClickcardsSectionBackphoto
-  // );
+  
 }
