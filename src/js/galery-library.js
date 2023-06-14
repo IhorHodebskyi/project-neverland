@@ -1,5 +1,7 @@
 import {fetchAllGet} from './fetchAllGet';
 import { refs } from "./refs";
+import ratingStarFull from '../images/reitingfull.svg';
+
 // import { createMarkup } from './catalog-search-and-markup';
 const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
@@ -7,21 +9,37 @@ const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
 
 const idFilm ={
     id: [...JSON.parse(localStorage.getItem("favoriteFilm")).id],
+    id_9:[],
+    id_j:[],
+    page: 1,
 }
+
+idFilm.id.map((el,i)=>{
+  i++;
+  idFilm.id_j.push(el);
+  if(i%9===0){
+    idFilm.id_9.push(idFilm.id_j);
+    idFilm.id_j=[];
+  }
+});
+idFilm.id_9.push(idFilm.id_j)
+
 if(idFilm.id.length){
-    console.log(idFilm.id)
-    idFilm.id.map((el,i)=>{const ENDPOINT = `/3/movie/${el}`;
-    fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
-    .then(markUp)
-    .catch(console.log);
-    
-    })
-    
+  pageCardFilm(0);
 }
+
+function pageCardFilm(n){
+      idFilm.id_9[n].map((el,i)=>{const ENDPOINT = `/3/movie/${el}`;
+      fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
+      .then(markUp)
+      .catch(console.log);
+      })
+  }
+
 function markUp(data){
+  
     const { original_title, poster_path, vote_average, genre_ids, release_date, id } = data.data;
-    const cardFilm = 
-        `
+    const cardFilm = `
       <div class="card-film" id="${id}">
         <div class="card-backdrop"></div>
         <img
@@ -44,35 +62,35 @@ function markUp(data){
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}g"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
@@ -84,4 +102,16 @@ function markUp(data){
     `;
     refs.galeryLibrary.insertAdjacentHTML('beforeend', cardFilm);
     
+}
+
+refs.galeryLibraryBtn.addEventListener('click', handlerBtnLoad);
+
+function handlerBtnLoad(e){
+  e.preventDefault();
+  pageCardFilm(idFilm.page++);
+  if(idFilm.id_9.length===idFilm.page){
+    e.currentTarget.classList.toggle('hidden');
+    e.currentTarget.removeEventListener('click', handlerBtnLoad);
+    
+  }
 }

@@ -14,6 +14,16 @@ let value = '';
 
 container.style.display = 'none';
 
+const spinnerEl = document.querySelector('.spinner');
+
+function showSpinner() {
+  spinnerEl.style.display = 'block';
+}
+
+function hideSpinner() {
+  spinnerEl.style.display = 'none';
+}
+
 async function getMovies(page, value, year) {
   const rest = await axios.get(
     `${BASE_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}&year=${year}`
@@ -130,7 +140,6 @@ function createMarkup(data) {
         release_date,
         id,
       }) =>
-
         `
       <a href="#" class="card-film" id="${id}">
         <div class="card-backdrop"></div>
@@ -154,35 +163,45 @@ function createMarkup(data) {
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
+
                   src="${starIconFull}"
+
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
+
                   src="${starIconFull}"
+
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
+
                   src="${starIconFull}"
+
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
+
                   src="${starIconHalf}"
+
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
+
                   src="${starIconZero}"
+
                   alt="Rating Stars"
                 />
               </li>
@@ -195,9 +214,7 @@ function createMarkup(data) {
     )
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
-  refs.cardsSectionBackphoto = document.querySelectorAll(
-    '.card-film'
-  );
+  refs.cardsSectionBackphoto = document.querySelectorAll('.card-film');
   refs.cardsSectionBackphoto.forEach(el =>
     el.addEventListener('click', handlerClickcardsSectionBackphoto)
   );
@@ -208,14 +225,4 @@ function createMarkup(data) {
   //   'click',
   //   handlerClickcardsSectionBackphoto
   // );
-}
-
-const spinnerEl = document.querySelector('.spinner');
-
-function showSpinner() {
-  spinnerEl.style.display = 'block';
-}
-
-function hideSpinner() {
-  spinnerEl.style.display = 'none';
 }

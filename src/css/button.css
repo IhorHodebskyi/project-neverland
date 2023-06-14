@@ -8,9 +8,7 @@
   border-radius: 74px;
   border: none;
   cursor: pointer;
-
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms linear, background 250ms linear, border 250ms linear;
 }
 .button-light:is(:hover, :focus) {
   color: #f87719;
@@ -28,9 +26,8 @@
   background: transparent;
   border-radius: 74px;
   border: 1px solid #ffffff;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  transition: color 250ms linear, background 250ms linear, border 250ms linear;
 }
 .button-dark:is(:hover, :focus) {
   color: #000000;
@@ -48,9 +45,8 @@
   color: #ffffff;
   border-radius: 74px;
   border: 1px solid #f87719;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  transition: color 250ms linear, background 250ms linear, border 250ms linear;
 }
 
 .button-modal:is(:hover, :focus) {
@@ -71,6 +67,8 @@
   border-radius: 50%;
   border: none;
   cursor: pointer;
+  transition: color 250ms linear, background 250ms linear, border 250ms linear,
+    border-color 250ms linear;
 }
 
 .button-search:is(:hover, :focus) {
@@ -78,6 +76,25 @@
   color: #f87719;
   border: 1px solid #ff4500;
   border-color: #f87719;
+}
+
+.button-card-modal {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17; /* 14px/12 */
+  border: 1px solid rgba(255, 194, 38, 1);
+  border-color: rgba(248, 65, 25, 1);
+  border-radius: 74px;
+  background-color: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 12px 24px;
+  transition: color 250ms linear, background-color 250ms linear;
+}
+
+.button-card-modal:is(:hover, :focus) {
+  background-color: #ffffff;
+  color: #f87719;
 }
 
 /* ----------------------------- Width 768px --------------------------------- */
@@ -101,6 +118,11 @@
     width: 44px;
     height: 44px;
     padding: 13px;
+  }
+
+  .button-card-modal {
+    font-size: 12px;
+    line-height: 1.33; /* 16px/12 */
   }
 }
 
