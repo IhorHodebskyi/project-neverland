@@ -126,13 +126,16 @@ function markUp(data){
   
     const { original_title, poster_path, vote_average, genres, release_date, id } = data.data;
     let cardFilm='';
-    if(genre==='all'){cardFilm = htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id); }
+    if(genre==='all'){
+      cardFilm = htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id);
+      refs.galeryLibrary.insertAdjacentHTML('beforeend', cardFilm);
+    }
     else if(genres.map(({name})=>name).join(', ').toLowerCase().includes(genre))
     {
     cardFilm = htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id); 
     
     }
-    refs.galeryLibrary.insertAdjacentHTML('beforeend', cardFilm);
+    
 }
 
 refs.galeryLibraryBtn.addEventListener('click', handlerBtnLoad);
