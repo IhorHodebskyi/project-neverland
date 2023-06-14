@@ -19,8 +19,9 @@ ul {
 }
 
 .select-btn {
-    width: 105px;
-    height: 40px;
+    position: relative;
+    width: 95px;
+    height: 48px;
     display: flex;
     gap: 12px;
     justify-content: center;
@@ -30,9 +31,10 @@ ul {
     cursor: pointer;
     background-color: var(--black);
     color: var(--grey);
+    z-index: 100;
 }
 
-.select-menu .options {
+.options {
     position: absolute;
     width: 95px;
     height: 292px;
@@ -44,14 +46,17 @@ ul {
     overflow: auto;
     scrollbar-width: none;
     background-color: var(--black);
-    z-index: 10;
+    z-index: 5;
+    opacity: 1;
+    
+    transition: 0.4s;
 }
 
 .select-menu .options::-webkit-scrollbar {
     display: none;
 }
 
-.select-menu .option {
+.option {
     padding: 12px;
     cursor: pointer;
     color: var(--white);
@@ -67,8 +72,12 @@ ul {
     color: var(--orange);
 }
 
+
 .hidden {
-    display: none;
+    opacity: 0;
+    translate: 0 -20px;
+    transition: 0.4s;
+    /* display: none; */
 }
 /*---------------------- tablet -------------------------------- */
 
