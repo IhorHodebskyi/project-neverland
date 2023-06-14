@@ -38,4 +38,5 @@ teamBackdrop: document.querySelector('.team_backdrop'),
 teamCloseBtn: document.querySelector('.team_modal_close_btn'),
 // ------------------------------galery-library--------------------------
 galeryLibrary: document.querySelector('.galery-library'),
+galeryLibraryBtn: document.querySelector('.galery-library-btn'),
 };
