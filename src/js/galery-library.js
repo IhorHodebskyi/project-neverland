@@ -2,13 +2,11 @@ import {fetchAllGet} from './fetchAllGet';
 import { refs } from "./refs";
 import ratingStarFull from '../images/reitingfull.svg';
 
-// import { createMarkup } from './catalog-search-and-markup';
 const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
 const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
 
 if(!JSON.parse(localStorage.getItem("favoriteFilm"))){
-  console.log(JSON.parse(localStorage.getItem("favoriteFilm")));
   const str=`<div class="galery-library-text"><span>OOPS...</span><span>We are very sorry!</span><span>You don’t have any movies at your library.</span></div>`;
   refs.galeryLibrary.insertAdjacentHTML('beforeend', str);
   refs.galeryLibraryBtn.textContent="Search movie";
@@ -51,7 +49,8 @@ function pageCardFilm(n){
 
 function markUp(data){
   
-    const { original_title, poster_path, vote_average, genre_ids, release_date, id } = data.data;
+    const { original_title, poster_path, vote_average, genres, release_date, id } = data.data;
+    
     const cardFilm = `
       <div class="card-film" id="${id}">
         <div class="card-backdrop"></div>
@@ -69,7 +68,7 @@ function markUp(data){
           <h3 class="card-info-title">${original_title}</h3>
           <div class="card-info">
             <p class="card-info-text">
-              ${String(release_date).slice(0, 4)} | ${genre_ids}
+              ${String(release_date).slice(0, 4)} | ${genres.map(({name})=>name).join(', ')}
             </p>
             <ul class="card-vote">
               <li class="card-vote-items">

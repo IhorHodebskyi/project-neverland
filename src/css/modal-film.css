@@ -166,10 +166,9 @@
       width: 280px;
       height: 847px;
       border-radius: 16px;
-      /* overflow: auto; */
-      /* overflow: auto;
+      overflow: auto;
       scrollbar-width: none;
-      scrollbar-color: hsl(0 0% 50%); */
+      scrollbar-color: hsl(0 0% 50%);
       
     }
     .modal-film-btn-close{
