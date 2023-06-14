@@ -155,12 +155,13 @@ function createMarkup(data) {
       }) => {
         const starRatingNumber = Number(vote_average);
         const starRatingRound = Math.round(starRatingNumber);
-
+        console.log(starRatingRound);
         let starIcons = '';
-        for (let i = 0; i < 5; i++) {
-          if (i < starRatingRound) {
+        for (let i = 1; i <= 5; i++) {
+          let dubbleI = i * 2;
+          if (dubbleI <= starRatingRound) {
             starIcons += `<img class="card-vote-icon" src="${starIconFull}" alt="Rating Stars" />`;
-          } else if (i === starRatingRound && starRatingRound % 1 !== 0) {
+          } else if (dubbleI % starRatingRound === 1) {
             starIcons += `<img class="card-vote-icon" src="${starIconHalf}" alt="Rating Stars" />`;
           } else {
             starIcons += `<img class="card-vote-icon" src="${starIconZero}" alt="Rating Stars" />`;
