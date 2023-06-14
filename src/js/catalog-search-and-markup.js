@@ -12,7 +12,12 @@ const container = document.getElementById('pagination');
 let page = pagination.getCurrentPage();
 let value = '';
 let DELTA_URL = WEEK_BASE_URL;
-container.style.display = 'none';
+
+const form = document.querySelector('#search-form');
+const list = document.querySelector('.create-gallery');
+const oops = document.querySelector('.without-results-section');
+const selectText = document.querySelector('.select-text');
+const closIicon = document.querySelector('.icon-clear-text');
 
 const input = document.querySelector('.input-field');
 
@@ -51,17 +56,12 @@ function onE(event) {
   }
 }
 
-const form = document.querySelector('#search-form');
-const list = document.querySelector('.create-gallery');
-const oops = document.querySelector('.without-results-section');
-const selectText = document.querySelector('.select-text');
-
 form.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
   e.preventDefault();
   list.innerHTML = '';
-  
+
   value = e.target.elements.search.value;
   const year = selectText.textContent;
   getFirstMovies(page, value, year);
@@ -74,13 +74,15 @@ async function getFirstMovies(page, value, year) {
     const data = await getMovies(page, value, year);
     if (data.data.results.length === 0) {
       container.style.display = 'none';
-
+      closIicon.style.display = 'none';
+      closIicon.form.reset();
       oops.classList.remove('is-hidden');
       return;
     }
     oops.classList.add('is-hidden');
     createMarkup(data.data.results);
     container.style.display = 'block';
+    closIicon.style.display = 'block';
     pagination.reset(data.data.total_pages);
   } catch (error) {
     console.log(error);
@@ -109,37 +111,6 @@ pagination.on('afterMove', event => {
   const currentPage = event.page;
   getEventsMovies(currentPage, value);
 });
-
-// async function getFirstMoviesTrendingWeek(page) {
-//   try {
-//     const data = await getMoviesTrendingWeek(page);
-//     console.log(data);
-//     console.log(data.data.results);
-//     if (!data) {
-//       oops.classList.remove('is-hidden');
-//       return;
-//     }
-//     createMarkup(data.data.results);
-//     pagination.reset(data.data.total_pages);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// getEventsMoviesTrendingWeek(page);
-
-// async function getEventsMoviesTrendingWeek(page) {
-//   console.log(page);
-//   try {
-//     const data = await getMoviesTrendingWeek(page);
-//     console.log(data);
-
-//     list.innerHTML = '';
-//     createMarkup(data.data.results);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
 
 function createMarkup(data) {
   const cardMarkUp = data
