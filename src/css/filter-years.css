@@ -80,25 +80,3 @@ ul {
     transition: 0.4s;
     /* display: none; */
 }
-/*---------------------- tablet -------------------------------- */
-
-@media screen and (min-width: 768px) {
-    
-.select-btn {
-        width: 105px;
-        height: 44px;
-        
-    }
-    }
-
-        /*---------------------- desktop -------------------------------- */
-        @media screen and (min-width: 1280px) {
-            .select-btn {
-                    width: 115px;
-                    height: 48px;
-            
-                }
-            .select-text{
-                font-size: 16px;
-            }    
-            }
