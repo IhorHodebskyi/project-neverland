@@ -15,7 +15,7 @@ let DELTA_URL = WEEK_BASE_URL;
 container.style.display = 'none';
 
 const input = document.querySelector('.input-field');
-
+const cros = document.querySelector('.close-icon');
 const spinnerEl = document.querySelector('.spinner');
 
 function showSpinner() {
@@ -43,11 +43,19 @@ async function getMovies(page, value, year) {
 // }
 
 input.addEventListener('input', onE);
-
+input.addEventListener('input', inpupIsHiden);
 function onE(event) {
-  console.log(event.currentTarget.value);
   if (event.currentTarget.value.length > 0) {
     return (DELTA_URL = BASE_URL);
+  }
+}
+
+function inpupIsHiden(e) {
+  if (e.currentTarget.value.length > 0) {
+    cros.style.display = 'block';
+  }
+  if (e.currentTarget.value.length === 0) {
+    cros.style.display = 'none';
   }
 }
 
@@ -61,7 +69,6 @@ form.addEventListener('submit', onSubmit);
 function onSubmit(e) {
   e.preventDefault();
   list.innerHTML = '';
-  
   value = e.target.elements.search.value;
   const year = selectText.textContent;
   getFirstMovies(page, value, year);
@@ -74,13 +81,15 @@ async function getFirstMovies(page, value, year) {
     const data = await getMovies(page, value, year);
     if (data.data.results.length === 0) {
       container.style.display = 'none';
-
+      form.reset();
+      cros.style.display = 'none';
       oops.classList.remove('is-hidden');
       return;
     }
     oops.classList.add('is-hidden');
     createMarkup(data.data.results);
     container.style.display = 'block';
+    cros.style.display = 'block';
     pagination.reset(data.data.total_pages);
   } catch (error) {
     console.log(error);
