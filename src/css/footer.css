@@ -2,7 +2,7 @@
     overflow: hidden;
 }
 .footer {
-    background-color: var(--primary-brand-color);
+    background-color: var(--primary-color);
 }
 
 .footer_containet {
