@@ -2,7 +2,7 @@ const themeCheckboxEl = document.querySelector(".theme-switch__checkbox");
 const themeElements = document.querySelectorAll(".theme-element");
 
 const isLightThemeExists = localStorage.getItem("theme");
-
+console.log("fdf");
 if (isLightThemeExists) {
   themeCheckboxEl.checked = true;
 
@@ -23,19 +23,37 @@ function toggleStylesTheme() {
     const classMatched = true; 
     
     switch (classMatched) {
-      case element.classList.contains("body"):
+      //////////////////////////////// section 
+      case element.classList.contains("body") ||
+           element.classList.contains("header") ||
+           element.classList.contains("footer") ||
+           element.classList.contains("search-section")||
+           element.classList.contains("without-results-section"):
         element.classList.toggle("light-theme");
         break;
-    /////////////////////////////////// header
+    /////////////////////////////////// text grey 
       case element.classList.contains("navbar_item_link")||
-           element.classList.contains("logo_text"):
-        element.classList.toggle("light-theme__header--text");
+           element.classList.contains("logo_text") ||
+           element.classList.contains("select-text") ||
+           element.classList.contains("wraper_text"):
+        element.classList.toggle("light-theme__text--grey");
         break;      
-      case element.classList.contains("footer"):
-        element.classList.toggle("light-theme__footer--text");
+     /////////////////////////////////// text black
+      case element.classList.contains("without-results-text"):
+           element.classList.toggle("light-theme__text--black");
+        break;    
+      ////////////////////////////////// input or ul 
+      case element.classList.contains("input-field")||
+           element.classList.contains("options") ||
+           element.classList.contains("gallery-section") ||
+           element.classList.contains("select-btn"):
+        element.classList.toggle("light-theme__input");
         break;  
-      case element.classList.contains("section text"):
-        element.classList.toggle("light-theme__section--text");
+      /////////////////////////////////// icon 
+      case element.classList.contains("icon-search")||
+           element.classList.contains("icon-arrow-down")||
+           element.classList.contains("icon-clear-text"):
+        element.classList.toggle("light-theme__search--icon");
         break;  
       case element.classList.contains("section secondaryText"):
         element.classList.toggle("light-theme__section--secondaryText");
