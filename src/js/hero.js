@@ -59,16 +59,18 @@ function createMarkupHero({
                             linear-gradient(0deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%),
                             linear-gradient(180deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%),
                             url('${retinaImageUrl}');">
-        <h2 class="home-hero-title">${original_title}</h2>
-        <p class="home-hero-rate">${vote_average}</p>
-        <p class="home-hero-overview">${overview}</p>
-        <div class="home-hero-btns">
-          <button data-trailer-open type="button" class="hero-trailer-btn js-hero-trailer button-light" data-id="${id}">
-            Watch trailer
-          </button>
-          <button data-gocatalog-open type="button" class="go-to-catalog-btn button-dark">
-            More details
-          </button>
+        <div class="home-hero-content">
+          <h2 class="home-hero-title">${original_title}</h2>
+          <p class="home-hero-rate">${vote_average}</p>
+          <p class="home-hero-text">${overview}</p>
+          <div class="home-hero-btns">
+            <button data-trailer-open type="button" class="hero-trailer-btn js-hero-trailer button-light" data-id="${id}">
+              Watch trailer
+            </button>
+            <button data-gocatalog-open type="button" class="go-to-catalog-btn button-dark">
+              More details
+            </button>
+          </div>
         </div>
       </div>
   `;

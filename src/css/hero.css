@@ -42,25 +42,24 @@
 .home-hero-plug-title {
   font-weight: 700;
   font-size: 32px;
-  line-height: 1.2;
+  line-height: 1.19; /* 38/32 */
   margin-top: 0;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   max-width: 200px;
-
   color: #ffffff;
 }
 
-.home-hero-text {
+.home-hero-plug-text {
   max-width: 177px;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1.14;
+  line-height: 1.14; /* 16/14 */
   margin-top: 0;
   margin-bottom: 20px;
   color: #f8f8f8;
 }
 
-.home-hero-btn {
+.home-hero-plug-btn {
   margin-top: 0;
 }
 
@@ -70,47 +69,40 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  padding-top: 40px;
-  padding-bottom: 130px;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
+  height: 380px;
+  width: 100%;
+  position: relative;
+}
+
+.home-hero-content {
+  position: absolute;
+  top: 40px;
+  left: 20px;
 }
 
 .home-hero-title {
   font-weight: 700;
   font-size: 32px;
-  line-height: 1.2;
-  margin-top: 0;
+  line-height: 1.19; /* 38/32 */
+  margin: 0;
   margin-bottom: 12px;
-  max-width: 232px;
+  max-width: 240px;
   color: #ffffff;
 }
 
 .home-hero-rate {
   width: 96px;
   height: 16px;
-  margin-top: 0;
-  margin-bottom: 20px;
+  margin: 0;
+  margin-bottom: 16px;
 }
 
-.hero-trailer-btn,
-.go-to-catalog-btn {
-  display: inline-block;
-  margin-top: 0;
-}
-
-.hero-trailer-btn {
-  margin-right: 8px;
-}
-
-.home-hero-overview {
-  max-width: 177px;
-  max-height: 66px;
+.home-hero-text {
+  max-width: 180px;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1.14;
-  margin-top: 0;
+  line-height: 1.14; /* 16/14 */
+  margin: 0;
   margin-bottom: 20px;
   color: #f8f8f8;
   overflow: hidden;
@@ -119,6 +111,14 @@
   -webkit-box-orient: vertical;
 }
 
+.home-hero-btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* -------------------- min-width: 768px -------------------- */
+
 @media screen and (min-width: 768px) {
   .home-hero {
     height: 432px;
@@ -126,7 +126,6 @@
 
   .home-hero-container {
     max-width: 768px;
-    margin: 0 auto;
   }
 
   /* ---------- Static Hero Styles ---------- */
@@ -164,7 +163,7 @@
     max-width: 332px;
   }
 
-  .home-hero-text {
+  .home-hero-plug-text {
     max-width: 375px;
     margin-bottom: 32px;
   }
@@ -172,33 +171,33 @@
   /* ---------- Dynamic Hero Styles ---------- */
 
   .home-hero-film {
-    max-height: 372px;
-    padding-top: 36px;
-    padding-bottom: 115px;
-    padding-left: 32px;
-    padding-right: 32px;
+    height: 432px;
+  }
+
+  .home-hero-content {
+    top: 36px;
+    left: 32px;
   }
 
   .home-hero-title {
     font-size: 44px;
-    line-height: 1.18;
+    line-height: 1.18; /* 52/44 */
     max-width: 445px;
   }
 
   .home-hero-rate {
     width: 116px;
     height: 20px;
+    margin-bottom: 20px;
   }
-  .home-hero-overview {
-    max-width: 254px;
-    max-height: 49px;
+
+  .home-hero-text {
+    max-width: 260px;
     margin-bottom: 28px;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
   }
 }
+
+/* -------------------- min-width: 1280px -------------------- */
 
 @media screen and (min-width: 1280px) {
   .home-hero {
@@ -207,7 +206,6 @@
 
   .home-hero-container {
     max-width: 1280px;
-    margin: 0 auto;
   }
 
   /* ---------- Static Hero Styles ---------- */
@@ -239,7 +237,14 @@
     }
   }
 
-  .home-hero-text {
+  .home-hero-plug-title {
+    max-width: 464px;
+    font-size: 64px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .home-hero-plug-text {
     font-size: 16px;
     line-height: 1.18;
     max-width: 464px;
@@ -249,41 +254,35 @@
   /* ---------- Dynamic Hero Styles ---------- */
 
   .home-hero-film {
-    max-height: 660px;
-    padding-top: 118px;
-    padding-bottom: 239px;
-    padding-left: 134px;
-    padding-right: 134px;
+    height: 660px;
   }
 
-  .home-hero-plug-title {
-    max-width: 464;
-    font-size: 64px;
-    line-height: 1.15;
-    margin-bottom: 16px;
+  .home-hero-content {
+    top: 118px;
+    left: 134px;
   }
 
   .home-hero-title {
-    max-width: 670px;
+    max-width: 675px;
     font-size: 64px;
-    line-height: 1.15;
+    line-height: 1.17; /* 75/64 */
     margin-bottom: 16px;
   }
 
   .home-hero-rate {
-    width: 136px;
+    width: 140px;
     height: 24px;
     margin-bottom: 28px;
   }
 
-  .home-hero-overview {
+  .home-hero-text {
     font-size: 16px;
-    line-height: 1.18;
-    max-width: 367px;
-    max-height: 76px;
+    line-height: 1.19; /* 19/16 */
+    max-width: 370px;
     margin-bottom: 36px;
   }
-  .hero-trailer-btn {
-    margin-right: 16px;
+
+  .home-hero-btns {
+    gap: 14px;
   }
 }
