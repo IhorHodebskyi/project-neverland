@@ -9,3 +9,17 @@
     margin-left: auto;
     margin-right: auto;
 }
+.galery-library-text{
+    margin-left: auto;
+    margin-right: auto;
+    width: 584px;
+    height: 124px;
+    font-weight: 400;
+    font-size: 32px;
+    text-align: center;
+    color: var(--primary-title-color);
+}
+.galery-library-text > span{
+    display: block;
+    text-align: center;
+}
