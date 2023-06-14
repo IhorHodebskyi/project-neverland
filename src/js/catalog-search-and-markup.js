@@ -13,7 +13,9 @@ let page = pagination.getCurrentPage();
 let value = '';
 let DELTA_URL = WEEK_BASE_URL;
 container.style.display = 'none';
+
 const input = document.querySelector('.input-field');
+
 const spinnerEl = document.querySelector('.spinner');
 
 function showSpinner() {
@@ -25,6 +27,7 @@ function hideSpinner() {
 }
 
 async function getMovies(page, value, year) {
+  console.log(year);
   const rest = await axios.get(
     `${DELTA_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}&year=${year}`
   );
@@ -51,16 +54,16 @@ function onE(event) {
 const form = document.querySelector('#search-form');
 const list = document.querySelector('.create-gallery');
 const oops = document.querySelector('.without-results-section');
-const selectBtnEl = document.querySelector('.select-btn');
+const selectText = document.querySelector('.select-text');
 
 form.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
   e.preventDefault();
   list.innerHTML = '';
-
+  
   value = e.target.elements.search.value;
-  const year = selectBtnEl.textContent;
+  const year = selectText.textContent;
   getFirstMovies(page, value, year);
   console.log(e.currentTarget);
 }
