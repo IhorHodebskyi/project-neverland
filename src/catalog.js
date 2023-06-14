@@ -1,3 +1,4 @@
+import './js/pre-loader-spinner';
 import './js/mobile-menu';
 import './js/activMenu';
 import './js/catalog-search-and-markup';
@@ -10,4 +11,5 @@ import './js/modal-film';
 import './js/filter-years';
 
 import './js/modal-footer';
-import './js/pre-loader-spinner';
+
+import './js/scroll-to-top';

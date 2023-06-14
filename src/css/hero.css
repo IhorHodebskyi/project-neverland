@@ -7,14 +7,14 @@
   margin: 0 auto;
 }
 
-.home-hero-content {
-    
-}
-
 /* ---------- Static Hero Styles ---------- */
 
 .home-hero-plug {
-  background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+  background-image: linear-gradient(
+      86.47deg,
+      #111111 33.63%,
+      rgba(17, 17, 17, 0) 76.86%
+    ),
     url(../images/mobile-home-hero-img-1x.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -26,9 +26,15 @@
   padding-right: 20px;
 }
 
-@media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+@media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
   .home-hero-plug {
-    background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+    background-image: linear-gradient(
+        86.47deg,
+        #111111 33.63%,
+        rgba(17, 17, 17, 0) 76.86%
+      ),
       url(../images/mobile-home-hero-img-2x.jpg);
   }
 }
@@ -68,6 +74,7 @@
   padding-bottom: 130px;
   padding-left: 20px;
   padding-right: 20px;
+  box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .home-hero-title {
@@ -125,7 +132,11 @@
   /* ---------- Static Hero Styles ---------- */
 
   .home-hero-plug {
-    background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+    background-image: linear-gradient(
+        86.47deg,
+        #111111 33.63%,
+        rgba(17, 17, 17, 0) 76.86%
+      ),
       url(../images/tablet-home-hero-img-1x.jpg);
     max-height: 372px;
     padding-top: 62px;
@@ -134,9 +145,15 @@
     padding-right: 32px;
   }
 
-  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
     .home-hero-plug {
-      background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+      background-image: linear-gradient(
+          86.47deg,
+          #111111 33.63%,
+          rgba(17, 17, 17, 0) 76.86%
+        ),
         url(../images/tablet-home-hero-img-2x.jpg);
     }
   }
@@ -196,7 +213,11 @@
   /* ---------- Static Hero Styles ---------- */
 
   .home-hero-plug {
-    background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+    background-image: linear-gradient(
+        86.47deg,
+        #111111 33.63%,
+        rgba(17, 17, 17, 0) 76.86%
+      ),
       url(../images/desktop-home-hero-img-1x.jpg);
     max-height: 660px;
     padding-top: 169px;
@@ -205,9 +226,15 @@
     padding-right: 32px;
   }
 
-  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
     .home-hero-plug {
-      background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+      background-image: linear-gradient(
+          86.47deg,
+          #111111 33.63%,
+          rgba(17, 17, 17, 0) 76.86%
+        ),
         url(../images/desktop-home-hero-img-2x.jpg);
     }
   }

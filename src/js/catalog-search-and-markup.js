@@ -25,7 +25,9 @@ let page = pagination.getCurrentPage();
 let value = '';
 let DELTA_URL = WEEK_BASE_URL;
 container.style.display = 'none';
+
 const input = document.querySelector('.input-field');
+
 const spinnerEl = document.querySelector('.spinner');
 
 function showSpinner() {
@@ -37,6 +39,7 @@ function hideSpinner() {
 }
 
 async function getMovies(page, value, year) {
+  console.log(year);
   const rest = await axios.get(
     `${DELTA_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}&year=${year}`
   );
@@ -63,16 +66,16 @@ function onE(event) {
 const form = document.querySelector('#search-form');
 const list = document.querySelector('.create-gallery');
 const oops = document.querySelector('.without-results-section');
-const selectBtnEl = document.querySelector('.select-btn');
+const selectText = document.querySelector('.select-text');
 
 form.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
   e.preventDefault();
   list.innerHTML = '';
-
+  
   value = e.target.elements.search.value;
-  const year = selectBtnEl.textContent;
+  const year = selectText.textContent;
   getFirstMovies(page, value, year);
   console.log(e.currentTarget);
 }
@@ -165,10 +168,11 @@ async function createMarkup(data) {
         const genresLine = await genreStr(genre_ids);
       
         let starIcons = '';
-        for (let i = 0; i < 5; i++) {
-          if (i < starRatingRound) {
+        for (let i = 1; i <= 5; i++) {
+          let dubbleI = i * 2;
+          if (dubbleI <= starRatingRound) {
             starIcons += `<img class="card-vote-icon" src="${starIconFull}" alt="Rating Stars" />`;
-          } else if (i === starRatingRound && starRatingRound % 1 !== 0) {
+          } else if (dubbleI % starRatingRound === 1) {
             starIcons += `<img class="card-vote-icon" src="${starIconHalf}" alt="Rating Stars" />`;
           } else {
             starIcons += `<img class="card-vote-icon" src="${starIconZero}" alt="Rating Stars" />`;

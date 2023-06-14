@@ -2,6 +2,9 @@
   --modal-film-bgrcol: #111111;
   --modal-film-shadow: 1px 1px 14px 4px rgba(255, 107, 8, 0.42);
 }
+.no_scroll {
+  overflow: hidden;
+}
 .visually-hidden {
     position: absolute;
     width: 1px;

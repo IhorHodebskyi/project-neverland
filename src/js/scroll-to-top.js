@@ -1,18 +1,26 @@
-const scrollToTopBtn = document.querySelector('.scroll-to-top');
+const scrollButton = document.getElementById("scrollButton");
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY >= window.innerHeight) {
-    scrollToTopBtn.classList.add('show');
+window.onscroll = function() {
+
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    scrollButton.style.display = "block";
   } else {
-    scrollToTopBtn.classList.remove('show');
+    scrollButton.style.display = "none";
   }
-});
+};
 
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
+scrollButton.addEventListener("click", scrollUp);
+
+function scrollUp() {
+  const scrollDuration = 500; 
+  const scrollStep = -window.scrollY / (scrollDuration / 15); 
+
+  const scrollInterval = setInterval(function() {
+    if (window.scrollY !== 0) {
+      window.scrollBy(0, scrollStep);
+    } else {
+      clearInterval(scrollInterval);
+    }
+  }, 15);
 }
 
-scrollToTopBtn.addEventListener('click', scrollToTop);

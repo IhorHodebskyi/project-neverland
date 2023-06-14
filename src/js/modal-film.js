@@ -113,6 +113,7 @@ function handlerBtnClose(e) {
   );
   refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
   refs.modalTrailerBackdrop.classList.toggle('visually-hidden');
+  refs.body.classList.remove('no_scroll');
 }
 
 function handlerClickcardsSectionBackphoto(e) {
@@ -121,6 +122,7 @@ function handlerClickcardsSectionBackphoto(e) {
     .then(markUp)
     .catch(console.log);
   refs.modalTrailerBackdrop.classList.toggle('visually-hidden');
+  refs.body.classList.add('no_scroll');
 }
 
 export { handlerClickcardsSectionBackphoto };
