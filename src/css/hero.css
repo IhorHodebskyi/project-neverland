@@ -1,260 +1,262 @@
-
-.home-hero-plug {
-background-image:
-    linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
-        url(../images/mobile-home-hero-img-1x.jpg);
-    background-repeat: no-repeat;
-        background-size: cover;
-        background-position: right;
-        max-height: 380px;
-        padding-top: 40px;
-        padding-bottom: 80px;
-        padding-left: 20px;
-        padding-right: 20px;
-}
-
-
-@media (min-device-pixel-ratio: 2),
-(min-resolution: 192dpi),
-(min-resolution: 2dppx) {
-    .home-hero-plug {
-        background-image:
-            linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
-            url(../images/mobile-home-hero-img-2x.jpg);
-    }
-}
- .home-hero-text{
-    max-width: 177px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.14;
-    margin-top: 0;
-    margin-bottom: 20px;
-    color: #F8F8F8;
- }
-
- .home-hero-btn{
-    margin-top: 0;
- }
 .home-hero {
-    overflow: hidden;
+  height: 380px;
 }
 
 .home-hero-container {
-    overflow-x: hidden;
-    /*position: relative;*/
-
+  max-width: 428px;
+  margin: 0 auto;
 }
 
-.home-hero-poster {
+.home-hero-content {
     
-
 }
 
-.home-hero-film {  
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position:top 20% right 50%;
-    max-height: 380px;
-    padding-top: 40px;
-    padding-bottom: 130px;
-    padding-left: 20px;
-    padding-right: 20px;
+/* ---------- Static Hero Styles ---------- */
+
+.home-hero-plug {
+  background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+    url(../images/mobile-home-hero-img-1x.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  height: 380px;
+  padding-top: 40px;
+  padding-bottom: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-.home-hero-plug-title{
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 1.2;
-    margin-top: 0;
-    margin-bottom: 12px;
-    max-width: 200px;
-    
-    color: #FFFFFF;
+@media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .home-hero-plug {
+    background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+      url(../images/mobile-home-hero-img-2x.jpg);
+  }
 }
 
-.home-hero-title{
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 1.2;
-    margin-top: 0;
-    margin-bottom: 12px;
-    max-width: 232px;
+.home-hero-plug-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 12px;
+  max-width: 200px;
 
-    color: #FFFFFF;
+  color: #ffffff;
+}
+
+.home-hero-text {
+  max-width: 177px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #f8f8f8;
+}
+
+.home-hero-btn {
+  margin-top: 0;
+}
+
+/* ---------- Dynamic Hero Styles ---------- */
+
+.home-hero-film {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-top: 40px;
+  padding-bottom: 130px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.home-hero-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 12px;
+  max-width: 232px;
+  color: #ffffff;
 }
 
 .home-hero-rate {
-    width: 96px;
-    height: 16px;
-    margin-top: 0;
-    margin-bottom: 20px;
+  width: 96px;
+  height: 16px;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
-.hero-trailer-btn, .go-to-catalog-btn {
-display: inline-block;
-margin-top: 0;
-
+.hero-trailer-btn,
+.go-to-catalog-btn {
+  display: inline-block;
+  margin-top: 0;
 }
 
-.hero-trailer-btn{
-    margin-right: 8px;
+.hero-trailer-btn {
+  margin-right: 8px;
 }
 
-.home-hero-overview{
-    max-width: 177px;
-    max-height: 66px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.14;
-    margin-top: 0;
-    margin-bottom: 20px;
-    color: #F8F8F8;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-
-}
-@media screen and (min-width: 320px),
-(max-width: 480) {
-    .home-hero-container {
-        min-width: 320px;
-        margin: auto;
-    }
+.home-hero-overview {
+  max-width: 177px;
+  max-height: 66px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #f8f8f8;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 @media screen and (min-width: 768px) {
-    .home-hero-container{
-    }
-        .home-hero-plug {
-            background-image:
-                linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
-                url(../images/tablet-home-hero-img-1x.jpg);
-            max-height: 372px;
-            padding-top: 62px;
-            padding-bottom: 62px;
-            padding-left: 32px;
-            padding-right: 32px;
-        }
-    
-    
-        @media (min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi),
-        (min-resolution: 2dppx) {
-            .home-hero-plug {
-                background-image:
-                    linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
-                    url(../images/tablet-home-hero-img-2x.jpg);
-            }
-        }
-        .home-hero-text {
-            max-width: 375px;
-            margin-bottom: 32px;
-        }
+  .home-hero {
+    height: 432px;
+  }
 
-        .home-hero-film {
-            max-height: 372px;
-            padding-top: 36px;
-            padding-bottom: 115px;
-            padding-left: 32px;
-            padding-right: 32px;
-        }
-        .home-hero-plug-title{
-            font-size: 44px;
-                line-height: 1.18;
-                max-width: 332px;
-        }
-        .home-hero-title {
-            font-size: 44px;
-            line-height: 1.18;
-            max-width: 445px;
-            }
+  .home-hero-container {
+    max-width: 768px;
+    margin: 0 auto;
+  }
 
-    .home-hero-rate {
-        width: 116px;
-        height: 20px;
+  /* ---------- Static Hero Styles ---------- */
+
+  .home-hero-plug {
+    background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+      url(../images/tablet-home-hero-img-1x.jpg);
+    max-height: 372px;
+    padding-top: 62px;
+    padding-bottom: 62px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    .home-hero-plug {
+      background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+        url(../images/tablet-home-hero-img-2x.jpg);
     }
-        .home-hero-overview {
-            max-width: 254px;
-            max-height: 49px;
-            margin-bottom: 28px;
-            overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-        }
+  }
+
+  .home-hero-plug-title {
+    font-size: 44px;
+    line-height: 1.18;
+    max-width: 332px;
+  }
+
+  .home-hero-text {
+    max-width: 375px;
+    margin-bottom: 32px;
+  }
+
+  /* ---------- Dynamic Hero Styles ---------- */
+
+  .home-hero-film {
+    max-height: 372px;
+    padding-top: 36px;
+    padding-bottom: 115px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .home-hero-title {
+    font-size: 44px;
+    line-height: 1.18;
+    max-width: 445px;
+  }
+
+  .home-hero-rate {
+    width: 116px;
+    height: 20px;
+  }
+  .home-hero-overview {
+    max-width: 254px;
+    max-height: 49px;
+    margin-bottom: 28px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-    /*.container {
-        max-width: 1280px;
-    }*/
-                .home-hero-plug {
-                    background-image:
-                        linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
-                        url(../images/desktop-home-hero-img-1x.jpg);
-                    max-height: 660px;
-                    padding-top: 169px;
-                    padding-bottom:169px;
-                    padding-left: 32px;
-                    padding-right: 32px;
-                }
-        
-        
-                @media (min-device-pixel-ratio: 2),
-                (min-resolution: 192dpi),
-                (min-resolution: 2dppx) {
-                    .home-hero-plug {
-                        background-image:
-                            linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
-                            url(../images/desktop-home-hero-img-2x.jpg);
-                    }
-                }
+  .home-hero {
+    height: 660px;
+  }
 
-                
-                .home-hero-text {
-                    font-size: 16px;
-                    line-height: 1.18;
-                    max-width: 464px;
-                    margin-bottom: 32px;
-                }
-        .home-hero-film {
-            max-height: 660px;
-            padding-top: 118px;
-            padding-bottom: 239px;
-            padding-left: 134px;
-            padding-right: 134px;
-        }
-        .home-hero-plug-title{
-            max-width: 464;
-                font-size: 64px;
-                line-height: 1.15;
-                margin-bottom: 16px;
-        }
-    
-        .home-hero-title {
-            max-width: 670px;
-            font-size: 64px;
-            line-height: 1.15;
-            margin-bottom: 16px;
-        }
-    
-        .home-hero-rate {
-            width: 136px;
-            height: 24px;
-            margin-bottom: 28px;
-        }
+  .home-hero-container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
 
-        
-        .home-hero-overview {
-            font-size: 16px;
-            line-height: 1.18;
-            max-width: 367px;
-            max-height: 76px;
-            margin-bottom: 36px;
-            }
-    .hero-trailer-btn {
-        margin-right: 16px;
+  /* ---------- Static Hero Styles ---------- */
+
+  .home-hero-plug {
+    background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+      url(../images/desktop-home-hero-img-1x.jpg);
+    max-height: 660px;
+    padding-top: 169px;
+    padding-bottom: 169px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    .home-hero-plug {
+      background-image: linear-gradient(86.47deg, #111111 33.63%, rgba(17, 17, 17, 0) 76.86%),
+        url(../images/desktop-home-hero-img-2x.jpg);
     }
+  }
+
+  .home-hero-text {
+    font-size: 16px;
+    line-height: 1.18;
+    max-width: 464px;
+    margin-bottom: 32px;
+  }
+
+  /* ---------- Dynamic Hero Styles ---------- */
+
+  .home-hero-film {
+    max-height: 660px;
+    padding-top: 118px;
+    padding-bottom: 239px;
+    padding-left: 134px;
+    padding-right: 134px;
+  }
+
+  .home-hero-plug-title {
+    max-width: 464;
+    font-size: 64px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .home-hero-title {
+    max-width: 670px;
+    font-size: 64px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .home-hero-rate {
+    width: 136px;
+    height: 24px;
+    margin-bottom: 28px;
+  }
+
+  .home-hero-overview {
+    font-size: 16px;
+    line-height: 1.18;
+    max-width: 367px;
+    max-height: 76px;
+    margin-bottom: 36px;
+  }
+  .hero-trailer-btn {
+    margin-right: 16px;
+  }
 }
