@@ -139,79 +139,48 @@ function createMarkup(data) {
         genre_ids,
         release_date,
         id,
-      }) =>
-        `
-      <a href="#" class="card-film" id="${id}">
-        <div class="card-backdrop"></div>
-        <img
-          class="card-img"
-          src="https://image.tmdb.org/t/p/w500${poster_path}"
-          alt=""
-          loading="lazy"
-          srcset="
-            https://image.tmdb.org/t/p/w500${poster_path} 1x,
-            https://image.tmdb.org/t/p/w500${poster_path} 2x
-          "
-        />
-        <div class="card-info-section">
-          <h3 class="card-info-title">${original_title}</h3>
-          <div class="card-info">
-            <p class="card-info-text">
-              ${String(release_date).slice(0, 4)} | ${genre_ids}
-            </p>
-            <ul class="card-vote">
-              <li class="card-vote-items">
-                <img
-                  class="card-vote-icon"
+      }) => {
+      const starRatingNumber = Number(vote_average);
+      const starRatingRound = Math.round(starRatingNumber);
 
-                  src="${starIconFull}"
+      let starIcons = '';
+      for (let i = 0; i < 5; i++) {
+        if (i < starRatingRound) {
+          starIcons += '<img class="card-vote-icon" src="${starIconFull}" alt="Rating Stars" />';
+        } else if (i === starRatingRound && starRatingRound % 1 !== 0) {
+            starIcons += '<img class="card-vote-icon" src="${starIconHalf}" alt="Rating Stars" />';
+          } else {
+          starIcons += '<img class="card-vote-icon" src="${starIconZero}" alt="Rating Stars" />';
+        }
+      }
 
-                  alt="Rating Stars"
-                />
-              </li>
-              <li class="card-vote-items">
-                <img
-                  class="card-vote-icon"
-
-                  src="${starIconFull}"
-
-                  alt="Rating Stars"
-                />
-              </li>
-              <li class="card-vote-items">
-                <img
-                  class="card-vote-icon"
-
-                  src="${starIconFull}"
-
-                  alt="Rating Stars"
-                />
-              </li>
-              <li class="card-vote-items">
-                <img
-                  class="card-vote-icon"
-
-                  src="${starIconHalf}"
-
-                  alt="Rating Stars"
-                />
-              </li>
-              <li class="card-vote-items">
-                <img
-                  class="card-vote-icon"
-
-                  src="${starIconZero}"
-
-                  alt="Rating Stars"
-                />
-              </li>
-            </ul>
+      return `
+        <a href="#" class="card-film" id="${id}">
+          <div class="card-backdrop"></div>
+          <img
+            class="card-img"
+            src="https://image.tmdb.org/t/p/w500${poster_path}"
+            alt=""
+            loading="lazy"
+            srcset="
+              https://image.tmdb.org/t/p/w500${poster_path} 1x,
+              https://image.tmdb.org/t/p/w500${poster_path} 2x
+            "
+          />
+          <div class="card-info-section">
+            <h3 class="card-info-title">${original_title}</h3>
+            <div class="card-info">
+              <p class="card-info-text">
+                ${String(release_date).slice(0, 4)} | ${genre_ids}
+              </p>
+              <ul class="card-vote">
+                ${starIcons}
+              </ul>
+            </div>
           </div>
-        </div>
-      </a>
-
-    `
-    )
+        </a>
+      `;
+    })
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
   refs.cardsSectionBackphoto = document.querySelectorAll('.card-film');
