@@ -156,14 +156,11 @@ function createMarkup(data) {
         let starIcons = '';
         for (let i = 0; i < 5; i++) {
           if (i < starRatingRound) {
-            starIcons +=
-              '<img class="card-vote-icon" src="${starIconFull}" alt="Rating Stars" />';
+            starIcons += `<img class="card-vote-icon" src="${starIconFull}" alt="Rating Stars" />`;
           } else if (i === starRatingRound && starRatingRound % 1 !== 0) {
-            starIcons +=
-              '<img class="card-vote-icon" src="${starIconHalf}" alt="Rating Stars" />';
+            starIcons += `<img class="card-vote-icon" src="${starIconHalf}" alt="Rating Stars" />`;
           } else {
-            starIcons +=
-              '<img class="card-vote-icon" src="${starIconZero}" alt="Rating Stars" />';
+            starIcons += `<img class="card-vote-icon" src="${starIconZero}" alt="Rating Stars" />`;
           }
         }
 
