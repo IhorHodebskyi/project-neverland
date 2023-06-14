@@ -11,7 +11,7 @@ function addHeroText() {
       'Decorate your space, choose your films, and stock up on snacks for the full experience.';
   }
 }
-addHeroText()
+addHeroText();
 
 serviceFilm()
   .then(data => {
@@ -19,27 +19,22 @@ serviceFilm()
     const randomFilmIndex = Math.floor(Math.random() * allFilms.length);
     const filmInHero = allFilms[randomFilmIndex];
 
-    
-    
     if (!filmInHero) {
-    
       /*refs.homeHero.classList.add('is-hidden');
       refs.libraryHeroPlug.classList.add('is-hidden');*/
     }
-    refs.homeHeroFilmWraper.innerHTML =  createMarkupHero(filmInHero)
-    ;
+    refs.homeHeroFilmWraper.innerHTML = createMarkupHero(filmInHero);
 
-   /*refs.homeHero.classList.toggle('is-hidden');
-    refs.libraryHeroPlug.classList.toggle('is-hidden');
-    
     refs.trailerBtn = document.querySelector('.js-hero-trailer');
     refs.trailerBtn.addEventListener('click', trailerBtnClick);
 
+    /*refs.homeHero.classList.toggle('is-hidden');
+    refs.libraryHeroPlug.classList.toggle('is-hidden');
+    
     /*refs.heroTrailerBtn.setAttribute("id", `${firstFilm.id}`);
         refs.goToCatalogBtn.setAttribute("id", `${firstFilm.id}`);*/
   })
   .catch(err => console.log(err));
-
 
 function createMarkupHero({
   original_title,
@@ -74,4 +69,3 @@ function createMarkupHero({
         </div>
   `;
 }
-
