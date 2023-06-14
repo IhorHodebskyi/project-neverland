@@ -1,6 +1,6 @@
 :root {
     --white-color: #fff;
-    --black-color: #111;
+    --black-color: #000;
     --grey-whiteTheme-color: #595959;
     --secondaryBlack-color: #282828;
     --orange: #F87719;
@@ -78,7 +78,6 @@
     display: inline-block;
     width: 60px;
     height: 24px;
-    margin-left: auto;
   }
   
   .theme-switch__checkbox {

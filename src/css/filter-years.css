@@ -3,6 +3,8 @@
     --white: #fff;
     --black: #000;
     --orange:#F87719;
+    --primary-color: #111111;
+    --primary-text-color: #b7b7b7;
 }
 
 ul {
@@ -21,7 +23,7 @@ ul {
 .select-btn {
     position: relative;
     width: 95px;
-    height: 48px;
+    height: 40px;
     display: flex;
     gap: 12px;
     justify-content: center;
@@ -29,9 +31,8 @@ ul {
     border: 1px solid #FFFFFF;
     border-radius: 8px;
     cursor: pointer;
-    background-color: var(--black);
+    background-color: var(--primary-color);
     color: var(--grey);
-    z-index: 100;
 }
 
 .options {
@@ -45,7 +46,7 @@ ul {
     border-radius: 8px;
     overflow: auto;
     scrollbar-width: none;
-    background-color: var(--black);
+    background-color: var(--primary-color);
     z-index: 5;
     opacity: 1;
     
@@ -78,4 +79,18 @@ ul {
     translate: 0 -20px;
     transition: 0.4s;
     /* display: none; */
+}
+/* ---------------------- tablet -------------------------------- */
+
+@media screen and (min-width: 768px) {
+    .select-btn {
+        height: 44px;
+    }
+    }
+/*---------------------- tablet -------------------------------- */
+
+@media screen and (min-width: 1280px) {
+    .select-btn {
+        height: 48px;
+    }
 }

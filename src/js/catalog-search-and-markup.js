@@ -11,8 +11,11 @@ const WEEK_BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
 const container = document.getElementById('pagination');
 let page = pagination.getCurrentPage();
 let value = '';
-
+let DELTA_URL = WEEK_BASE_URL;
 container.style.display = 'none';
+
+const input = document.querySelector('.input-field');
+
 const spinnerEl = document.querySelector('.spinner');
 
 function showSpinner() {
@@ -26,17 +29,26 @@ function hideSpinner() {
 async function getMovies(page, value, year) {
   console.log(year);
   const rest = await axios.get(
-    `${BASE_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}&year=${year}`
+    `${DELTA_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}&year=${year}`
   );
   return rest;
 }
 
-async function getMoviesTrendingWeek(page) {
-  const rest = await axios.get(
-    `${WEEK_BASE_URL}?api_key=${API_KEY}&language=en-US&page=${page}&per_page=100`
-  );
-  console.log(rest);
-  return rest;
+// async function getMoviesTrendingWeek(page) {
+//   const rest = await axios.get(
+//     `${WEEK_BASE_URL}?api_key=${API_KEY}&language=en-US&page=${page}&per_page=100`
+//   );
+//   console.log(rest);
+//   return rest;
+// }
+
+input.addEventListener('input', onE);
+
+function onE(event) {
+  console.log(event.currentTarget.value);
+  if (event.currentTarget.value.length > 0) {
+    return (DELTA_URL = BASE_URL);
+  }
 }
 
 const form = document.querySelector('#search-form');
@@ -53,9 +65,9 @@ function onSubmit(e) {
   value = e.target.elements.search.value;
   const year = selectText.textContent;
   getFirstMovies(page, value, year);
-  console.log(value, page);
+  console.log(e.currentTarget);
 }
-
+getFirstMovies(page, value);
 async function getFirstMovies(page, value, year) {
   try {
     showSpinner();
@@ -114,103 +126,74 @@ pagination.on('afterMove', event => {
 //   }
 // }
 
-getEventsMoviesTrendingWeek(page);
+// getEventsMoviesTrendingWeek(page);
 
-async function getEventsMoviesTrendingWeek(page) {
-  console.log(page);
-  try {
-    const data = await getMoviesTrendingWeek(page);
-    console.log(data);
+// async function getEventsMoviesTrendingWeek(page) {
+//   console.log(page);
+//   try {
+//     const data = await getMoviesTrendingWeek(page);
+//     console.log(data);
 
-    list.innerHTML = '';
-    createMarkup(data.data.results);
-  } catch (error) {
-    console.log(error);
-  }
-}
+//     list.innerHTML = '';
+//     createMarkup(data.data.results);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 function createMarkup(data) {
   const cardMarkUp = data
     .map(
       ({
+        name,
         original_title,
         poster_path,
         vote_average,
         genre_ids,
         release_date,
         id,
-      }) =>
-        `
-      <a href="#" class="card-film" id="${id}">
-        <div class="card-backdrop"></div>
-        <img
-          class="card-img"
-          src="https://image.tmdb.org/t/p/w500${poster_path}"
-          alt=""
-          loading="lazy"
-          srcset="
-            https://image.tmdb.org/t/p/w500${poster_path} 1x,
-            https://image.tmdb.org/t/p/w500${poster_path} 2x
-          "
-        />
-        <div class="card-info-section">
-          <h3 class="card-info-title">${original_title}</h3>
-          <div class="card-info">
-            <p class="card-info-text">
-              ${String(release_date).slice(0, 4)} | ${genre_ids}
-            </p>
-            <ul class="card-vote">
-              <li class="card-vote-items">
-                <img
-                  class="card-vote-icon"
+      }) => {
+        const starRatingNumber = Number(vote_average);
+        const starRatingRound = Math.round(starRatingNumber);
 
-                  src="${starIconFull}"
+        let starIcons = '';
+        for (let i = 0; i < 5; i++) {
+          if (i < starRatingRound) {
+            starIcons += `<img class="card-vote-icon" src="${starIconFull}" alt="Rating Stars" />`;
+          } else if (i === starRatingRound && starRatingRound % 1 !== 0) {
+            starIcons += `<img class="card-vote-icon" src="${starIconHalf}" alt="Rating Stars" />`;
+          } else {
+            starIcons += `<img class="card-vote-icon" src="${starIconZero}" alt="Rating Stars" />`;
+          }
+        }
 
-                  alt="Rating Stars"
-                />
-              </li>
-              <li class="card-vote-items">
-                <img
-                  class="card-vote-icon"
-
-                  src="${starIconFull}"
-
-                  alt="Rating Stars"
-                />
-              </li>
-              <li class="card-vote-items">
-                <img
-                  class="card-vote-icon"
-
-                  src="${starIconFull}"
-
-                  alt="Rating Stars"
-                />
-              </li>
-              <li class="card-vote-items">
-                <img
-                  class="card-vote-icon"
-
-                  src="${starIconHalf}"
-
-                  alt="Rating Stars"
-                />
-              </li>
-              <li class="card-vote-items">
-                <img
-                  class="card-vote-icon"
-
-                  src="${starIconZero}"
-
-                  alt="Rating Stars"
-                />
-              </li>
-            </ul>
+        return `
+        <a href="#" class="card-film" id="${id}">
+          <div class="card-backdrop"></div>
+          <img
+            class="card-img"
+            src="https://image.tmdb.org/t/p/w500${poster_path}"
+            alt=""
+            loading="lazy"
+            srcset="
+              https://image.tmdb.org/t/p/w500${poster_path} 1x,
+              https://image.tmdb.org/t/p/w500${poster_path} 2x
+            "
+          />
+          <div class="card-info-section">
+            <h3 class="card-info-title">${original_title || name}</h3>
+            <div class="card-info">
+              <p class="card-info-text">
+                ${String(release_date).slice(0, 4)} | ${genre_ids}
+              </p>
+              <ul class="card-vote">
+                ${starIcons}
+              </ul>
+            </div>
           </div>
-        </div>
-      </a>
-
-    `
+        </a>
+      `;
+      }
     )
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
