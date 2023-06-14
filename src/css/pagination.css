@@ -1,0 +1,50 @@
+.tui-page-btn {
+  width: 40px;
+  height: 40px;
+  color: #ffffff;
+  padding: 11px;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: color 250ms linear, background 250ms linear, border 250ms linear,
+    border-color 250ms linear;
+}
+/* .tui-is-selected {
+  width: 40px;
+  height: 40px;
+  color: #ffffff;
+  padding: 11px;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: color 250ms linear, background 250ms linear, border 250ms linear,
+    border-color 250ms linear;
+} */
+/* 
+.tui-is-disabled {
+  width: 40px;
+  height: 40px;
+  color: #ffffff;
+  padding: 11px;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: color 250ms linear, background 250ms linear, border 250ms linear,
+    border-color 250ms linear;
+} */
+
+/* .tui-ico-ellip {
+  width: 40px;
+  height: 40px;
+  color: #ffffff;
+  padding: 11px;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: color 250ms linear, background 250ms linear, border 250ms linear,
+    border-color 250ms linear;
+} */
