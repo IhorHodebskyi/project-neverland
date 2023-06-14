@@ -162,7 +162,7 @@ async function createMarkup(data) {
         genre_ids,
         release_date,
         id,
-      }) => {
+      },i) => {
         const starRatingNumber = Number(vote_average);
         const starRatingRound = Math.round(starRatingNumber);
         const genresLine = await genreStr(genre_ids);
@@ -206,13 +206,22 @@ async function createMarkup(data) {
         </a>
       `;
       list.insertAdjacentHTML('beforeend', str);
+      if (data.length-1 === i){
+        refs.cardsSectionBackphoto = document.querySelectorAll('.card-film');
+        refs.cardsSectionBackphoto.forEach(el =>
+        el.addEventListener('click', handlerClickcardsSectionBackphoto)
+      );}
       }
       );
     
   //  list.insertAdjacentHTML('beforeend', cardMarkUp);
-  refs.cardsSectionBackphoto = document.querySelectorAll('.card-film');
-  refs.cardsSectionBackphoto.forEach(el =>
-    el.addEventListener('click', handlerClickcardsSectionBackphoto)
-  );
+  
+  //   refs.cardsSectionBackphoto = document.querySelector('.card-film');
+  //   console.log(refs.cardsSectionBackphoto);
+  //   refs.cardsSectionBackphoto.forEach(el =>
+  //   el.addEventListener('click', handlerClickcardsSectionBackphoto)
+  // );
+    
+  
   
 }
