@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { fetchAllGet } from './fetchAllGet'
 import { handlerClickcardsSectionBackphoto } from './modal-film';
 import { pagination } from './pagination';
 import { refs } from './refs';
@@ -8,6 +9,19 @@ import starIconZero from '../images/reitingzero.svg';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 const WEEK_BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
+
+const BASE_GENRE_URL = 'https://api.themoviedb.org';
+const ENDPOINT_GENRE = '/3/genre/movie/list';
+const respGenre = fetchAllGet(BASE_GENRE_URL, ENDPOINT_GENRE, API_KEY, '');
+
+async function genreStr(arr){
+  
+  const data = await respGenre;
+  console.log((arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0].name)).join(', '))
+  return arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0].name).join(', ');
+
+}
+
 const container = document.getElementById('pagination');
 let page = pagination.getCurrentPage();
 let value = '';
@@ -138,10 +152,10 @@ pagination.on('afterMove', event => {
 //   }
 // }
 
-function createMarkup(data) {
+async function createMarkup(data) {
   const cardMarkUp = data
     .map(
-      ({
+      async ({
         name,
         original_title,
         poster_path,
@@ -181,7 +195,9 @@ function createMarkup(data) {
             <h3 class="card-info-title">${original_title || name}</h3>
             <div class="card-info">
               <p class="card-info-text">
-                ${String(release_date).slice(0, 4)} | ${genre_ids}
+                ${String(release_date).slice(0, 4)} | ${await genreStr(
+                  genre_ids
+                )}
               </p>
               <ul class="card-vote">
                 ${starIcons}
