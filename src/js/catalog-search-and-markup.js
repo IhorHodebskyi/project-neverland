@@ -133,6 +133,7 @@ function createMarkup(data) {
   const cardMarkUp = data
     .map(
       ({
+        name,
         original_title,
         poster_path,
         vote_average,
@@ -140,21 +141,24 @@ function createMarkup(data) {
         release_date,
         id,
       }) => {
-      const starRatingNumber = Number(vote_average);
-      const starRatingRound = Math.round(starRatingNumber);
+        const starRatingNumber = Number(vote_average);
+        const starRatingRound = Math.round(starRatingNumber);
 
-      let starIcons = '';
-      for (let i = 0; i < 5; i++) {
-        if (i < starRatingRound) {
-          starIcons += '<img class="card-vote-icon" src="${starIconFull}" alt="Rating Stars" />';
-        } else if (i === starRatingRound && starRatingRound % 1 !== 0) {
-            starIcons += '<img class="card-vote-icon" src="${starIconHalf}" alt="Rating Stars" />';
+        let starIcons = '';
+        for (let i = 0; i < 5; i++) {
+          if (i < starRatingRound) {
+            starIcons +=
+              '<img class="card-vote-icon" src="${starIconFull}" alt="Rating Stars" />';
+          } else if (i === starRatingRound && starRatingRound % 1 !== 0) {
+            starIcons +=
+              '<img class="card-vote-icon" src="${starIconHalf}" alt="Rating Stars" />';
           } else {
-          starIcons += '<img class="card-vote-icon" src="${starIconZero}" alt="Rating Stars" />';
+            starIcons +=
+              '<img class="card-vote-icon" src="${starIconZero}" alt="Rating Stars" />';
+          }
         }
-      }
 
-      return `
+        return `
         <a href="#" class="card-film" id="${id}">
           <div class="card-backdrop"></div>
           <img
@@ -168,7 +172,7 @@ function createMarkup(data) {
             "
           />
           <div class="card-info-section">
-            <h3 class="card-info-title">${original_title}</h3>
+            <h3 class="card-info-title">${original_title || name}</h3>
             <div class="card-info">
               <p class="card-info-text">
                 ${String(release_date).slice(0, 4)} | ${genre_ids}
@@ -180,7 +184,8 @@ function createMarkup(data) {
           </div>
         </a>
       `;
-    })
+      }
+    )
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
   refs.cardsSectionBackphoto = document.querySelectorAll('.card-film');
