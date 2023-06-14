@@ -47,20 +47,21 @@ function createMarkupHero({
   const retinaImageUrl = `https://image.tmdb.org/t/p/original${backdrop_path}`;
 
   return `
-      <div
-        class="home-hero-film"
-        style="background-image: linear-gradient(90deg, rgba(17, 17, 17, 1) 33.63%, rgba(17, 17, 17, 0) 72.86%),
-            linear-gradient(-90deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%),
-            linear-gradient(0deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%),
-            linear-gradient(180deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%), url('${imageUrl}');
-          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            background-image: linear-gradient(90deg, rgba(17, 17, 17, 1) 33.63%, rgba(17, 17, 17, 0) 72.86%),
-            linear-gradient(-90deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%),
-            linear-gradient(0deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%),
-            linear-gradient(180deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%), url('${retinaImageUrl}');
-          <h2 class="home-hero-title">${original_title}</h2>
-          <p class="home-hero-rate">${vote_average}</p>
-          <p class="home-hero-overview">${overview}</p>
+      <div class="home-hero-film" style="
+        background-image: linear-gradient(90deg, rgba(17, 17, 17, 1) 33.63%, rgba(17, 17, 17, 0) 72.86%),
+                          linear-gradient(-90deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%),
+                          linear-gradient(0deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%),
+                          linear-gradient(180deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%),
+                          url('${imageUrl}');
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+          background-image: linear-gradient(90deg, rgba(17, 17, 17, 1) 33.63%, rgba(17, 17, 17, 0) 72.86%),
+                            linear-gradient(-90deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%),
+                            linear-gradient(0deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%),
+                            linear-gradient(180deg, rgba(17, 17, 17, 1) 1%, rgba(17, 17, 17, 0) 25%),
+                            url('${retinaImageUrl}');">
+        <h2 class="home-hero-title">${original_title}</h2>
+        <p class="home-hero-rate">${vote_average}</p>
+        <p class="home-hero-overview">${overview}</p>
         <div class="home-hero-btns">
           <button data-trailer-open type="button" class="hero-trailer-btn js-hero-trailer button-light" data-id="${id}">
             Watch trailer
