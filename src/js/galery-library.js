@@ -7,6 +7,14 @@ const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
 const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
 
+if(!JSON.parse(localStorage.getItem("favoriteFilm"))){
+  console.log(JSON.parse(localStorage.getItem("favoriteFilm")));
+  const str=`<div class="galery-library-text"><span>OOPS...</span><span>We are very sorry!</span><span>You don’t have any movies at your library.</span></div>`;
+  refs.galeryLibrary.insertAdjacentHTML('beforeend', str);
+  refs.galeryLibraryBtn.textContent="Search movie";
+}
+else 
+{
 const idFilm ={
     id: [...JSON.parse(localStorage.getItem("favoriteFilm")).id],
     id_9:[],
@@ -25,7 +33,12 @@ idFilm.id.map((el,i)=>{
 idFilm.id_9.push(idFilm.id_j)
 
 if(idFilm.id.length){
+  refs.galeryLibraryBtn.textContent="Load more";
   pageCardFilm(0);
+  if(idFilm.id_9.length===idFilm.page){
+    refs.galeryLibraryBtn.classList.toggle('hidden');
+    
+  }
 }
 
 function pageCardFilm(n){
@@ -109,9 +122,11 @@ refs.galeryLibraryBtn.addEventListener('click', handlerBtnLoad);
 function handlerBtnLoad(e){
   e.preventDefault();
   pageCardFilm(idFilm.page++);
+  // console.log(idFilm.id_9.length, idFilm.page);
   if(idFilm.id_9.length===idFilm.page){
     e.currentTarget.classList.toggle('hidden');
     e.currentTarget.removeEventListener('click', handlerBtnLoad);
     
-  }
+  } 
+}
 }
