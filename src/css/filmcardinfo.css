@@ -109,6 +109,11 @@
     font-size: 12px;
     line-height: 1.5; /* 18/12 */
   }
+
+  .card-vote-items {
+    width: 9.35px;
+    height: 8.75px;
+  }
 }
 
 /*---------------------- desktop -------------------------------- */
@@ -127,5 +132,10 @@
   .card-info-text {
     font-size: 20px;
     line-height: 1.15; /* 23/20 */
+  }
+
+  .card-vote-items {
+    width: 17px;
+    height: 16px;
   }
 }

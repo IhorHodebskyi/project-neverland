@@ -2,8 +2,9 @@ import axios from 'axios';
 import { handlerClickcardsSectionBackphoto } from './modal-film';
 import { pagination } from './pagination';
 import { refs } from './refs';
-import ratingStarFull from '../images/reitingfull.svg';
-
+import starIconFull from '../images/reitingfull.svg';
+import starIconHalf from '../images/reitinghalf.svg';
+import starIconZero from '../images/reitingzero.svg';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 const WEEK_BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
@@ -162,35 +163,45 @@ function createMarkup(data) {
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="${ratingStarFull}"
+
+                  src="${starIconFull}"
+
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="${ratingStarFull}"
+
+                  src="${starIconFull}"
+
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="${ratingStarFull}"
+
+                  src="${starIconFull}"
+
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="${ratingStarFull}"
+
+                  src="${starIconHalf}"
+
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="${ratingStarFull}"
+
+                  src="${starIconZero}"
+
                   alt="Rating Stars"
                 />
               </li>
