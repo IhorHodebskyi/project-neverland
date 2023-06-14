@@ -79,7 +79,7 @@
   padding: 0;
 }
 
-.card-vote-items {
+.card-vote-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,8 +110,8 @@
     line-height: 1.5; /* 18/12 */
   }
 
-  .card-vote-items {
-    width: 9.35px;
+  .card-vote-icon {
+    width: 9.37px;
     height: 8.75px;
   }
 }
@@ -134,7 +134,7 @@
     line-height: 1.15; /* 23/20 */
   }
 
-  .card-vote-items {
+  .card-vote-icon {
     width: 17px;
     height: 16px;
   }
