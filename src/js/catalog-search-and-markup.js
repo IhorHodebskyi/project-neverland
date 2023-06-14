@@ -2,6 +2,8 @@ import axios from 'axios';
 import { handlerClickcardsSectionBackphoto } from './modal-film';
 import { pagination } from './pagination';
 import { refs } from './refs';
+import ratingStarFull from '../images/reitingfull.svg';
+
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 const WEEK_BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
@@ -10,6 +12,16 @@ let page = pagination.getCurrentPage();
 let value = '';
 
 container.style.display = 'none';
+
+const spinnerEl = document.querySelector('.spinner');
+
+function showSpinner() {
+  spinnerEl.style.display = 'block';
+}
+
+function hideSpinner() {
+  spinnerEl.style.display = 'none';
+}
 
 async function getMovies(page, value, year) {
   const rest = await axios.get(
@@ -127,7 +139,6 @@ function createMarkup(data) {
         release_date,
         id,
       }) =>
-
         `
       <a href="#" class="card-film" id="${id}">
         <div class="card-backdrop"></div>
@@ -151,35 +162,35 @@ function createMarkup(data) {
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
@@ -192,9 +203,7 @@ function createMarkup(data) {
     )
     .join('');
   list.insertAdjacentHTML('beforeend', cardMarkUp);
-  refs.cardsSectionBackphoto = document.querySelectorAll(
-    '.card-film'
-  );
+  refs.cardsSectionBackphoto = document.querySelectorAll('.card-film');
   refs.cardsSectionBackphoto.forEach(el =>
     el.addEventListener('click', handlerClickcardsSectionBackphoto)
   );
@@ -205,14 +214,4 @@ function createMarkup(data) {
   //   'click',
   //   handlerClickcardsSectionBackphoto
   // );
-}
-
-const spinnerEl = document.querySelector('.spinner');
-
-function showSpinner() {
-  spinnerEl.style.display = 'block';
-}
-
-function hideSpinner() {
-  spinnerEl.style.display = 'none';
 }
