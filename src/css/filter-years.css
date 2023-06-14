@@ -3,6 +3,8 @@
     --white: #fff;
     --black: #000;
     --orange:#F87719;
+    --primary-brand-color: #000000;
+    --primary-text-color: #b7b7b7;
 }
 
 ul {
@@ -21,7 +23,7 @@ ul {
 .select-btn {
     position: relative;
     width: 95px;
-    height: 48px;
+    height: 40px;
     display: flex;
     gap: 12px;
     justify-content: center;

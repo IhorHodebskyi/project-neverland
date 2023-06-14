@@ -157,7 +157,11 @@
     row-gap: 28px;   
 }
 .close-icon {
-  top: 28%;
+  top: 34%;
+}
+.icon-clear-text{
+  width: 12px;
+  height: 12px;
 }
  }
 /*---------------------- desktop -------------------------------- */
@@ -196,7 +200,5 @@
 .flex-mobile{
   gap: 24px;
 }
-.close-icon {
-  top: 30%;
-}
+
 }
