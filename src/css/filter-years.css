@@ -80,3 +80,17 @@ ul {
     transition: 0.4s;
     /* display: none; */
 }
+/* ---------------------- tablet -------------------------------- */
+
+@media screen and (min-width: 768px) {
+    .select-btn {
+        height: 44px;
+    }
+    }
+/*---------------------- tablet -------------------------------- */
+
+@media screen and (min-width: 1280px) {
+    .select-btn {
+        height: 48px;
+    }
+}
