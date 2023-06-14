@@ -1,3 +1,4 @@
+import './js/pre-loader-spinner';
 import './js/month';
 import './js/hero';
 import './js/mobile-menu';
@@ -6,5 +7,5 @@ import './js/theme-switcher'
 import './js/weekly';
 import './js/modal-trailer';
 import './js/modal-footer';
-import './js/pre-loader-spinner';
+
 import './js/scroll-to-top';

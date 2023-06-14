@@ -13,7 +13,6 @@ let page = pagination.getCurrentPage();
 let value = '';
 
 container.style.display = 'none';
-
 const spinnerEl = document.querySelector('.spinner');
 
 function showSpinner() {
@@ -25,6 +24,7 @@ function hideSpinner() {
 }
 
 async function getMovies(page, value, year) {
+  console.log(year);
   const rest = await axios.get(
     `${BASE_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}&year=${year}`
   );
@@ -42,16 +42,16 @@ async function getMoviesTrendingWeek(page) {
 const form = document.querySelector('#search-form');
 const list = document.querySelector('.create-gallery');
 const oops = document.querySelector('.without-results-section');
-const selectBtnEl = document.querySelector('.select-btn');
+const selectText = document.querySelector('.select-text');
 
 form.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
   e.preventDefault();
   list.innerHTML = '';
-
+  
   value = e.target.elements.search.value;
-  const year = selectBtnEl.textContent;
+  const year = selectText.textContent;
   getFirstMovies(page, value, year);
   console.log(value, page);
 }
