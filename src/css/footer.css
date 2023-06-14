@@ -1,3 +1,6 @@
+.no_scroll {
+    overflow: hidden;
+}
 .footer {
     background-color: var(--primary-brand-color);
 }
@@ -127,13 +130,18 @@
 
 .team_modal_close_icon {
     fill: currentColor;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.team_modal_close_icon:hover,
+.team_modal_close_icon:focus {
+    fill: #F87719;
 }
 
 .team_title {
     text-align: center;
     text-transform: uppercase;
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 19px;
     color: #111111;
 }
 
@@ -209,6 +217,17 @@
         font-size: 16px;
         line-height: 1.19;
     }
+    /* ---------- modal ---------- */
+    .team_wrapper {
+        width: 580px;
+    }
+    .team_modal_close_btn {
+        top: 10px;
+        right: 10px;
+    }
+    .team_title {
+        font-size: 26px;
+    }
 }
 
 /* ----------------- descktop -------------------------------- */
@@ -217,4 +236,15 @@
         padding-top: 96px;
         padding-bottom: 80px;
     }
+    .team_wrapper {
+        width: 1175px;
+    }
+    .team_modal_close_btn {
+        top: 15px;
+        right: 15px;
+    }
+    .team_title {
+        font-size: 30px;
+    }
+
 }

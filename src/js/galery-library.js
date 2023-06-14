@@ -1,52 +1,28 @@
-import axios from 'axios';
-// import { createMarkupCard } from './createMarkupCard';
-import { refs } from './refs';
+import {fetchAllGet} from './fetchAllGet';
+import { refs } from "./refs";
+// import { createMarkup } from './catalog-search-and-markup';
+const BASE_URL = 'https://api.themoviedb.org';
+const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
+const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
 
-const API_KEY = '5bf13f442a6612ea903461e28536fdca';
-const BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
-
-let originalData = [];
-const randomIndex = Math.floor(Math.random() * 100);
-
-async function fetchTrendsOfWeek() {
-  const response = await axios.get(
-    `${BASE_URL}?api_key=${API_KEY}&language=en-US&page=${randomIndex}`
-  );
-  console.log(randomIndex);
-  originalData = response.data.results;
-  handleResponsive();
-
-  return originalData;
+const idFilm ={
+    id: [...JSON.parse(localStorage.getItem("favoriteFilm")).id],
 }
-// window.addEventListener('resize', handleResponsive);
-function handleResponsive() {
-  const screenWidth = window.innerWidth;
-  let slicedData = [];
-  console.log(slicedData);
-  // if (screenWidth < 768) {
-  //   return (slicedData = originalData.slice(0, 1));
-  // }
-  // slicedData = originalData.slice(0, 3);
-  slicedData = originalData.slice(0, 3);
-  createMarkupCard(slicedData);
+if(idFilm.id.length){
+    console.log(idFilm.id)
+    idFilm.id.map((el,i)=>{const ENDPOINT = `/3/movie/${el}`;
+    fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
+    .then(markUp)
+    .catch(console.log);
+    
+    })
+    
 }
-
-fetchTrendsOfWeek();
-
-export { fetchTrendsOfWeek };
-
-function createMarkupCard(cardresult) {
-  const cardMarkUp = cardresult
-    .map(
-      ({
-        original_title,
-        poster_path,
-        vote_average,
-        genre_ids,
-        release_date,
-        id,
-      }) =>
-        `<a href="#" class="card-film" id="${id}">
+function markUp(data){
+    const { original_title, poster_path, vote_average, genre_ids, release_date, id } = data.data;
+    const cardFilm = 
+        `
+      <div class="card-film" id="${id}">
         <div class="card-backdrop"></div>
         <img
           class="card-img"
@@ -103,9 +79,9 @@ function createMarkupCard(cardresult) {
             </ul>
           </div>
         </div>
-      </a>`
-    )
-    .join('');
+      </div>
 
-  refs.weeklyList.insertAdjacentHTML('beforeend', cardMarkUp);
+    `;
+    refs.galeryLibrary.insertAdjacentHTML('beforeend', cardFilm);
+    
 }

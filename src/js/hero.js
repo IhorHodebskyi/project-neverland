@@ -3,26 +3,35 @@ import { serviceFilm } from './fetchAllGet';
 import { refs } from './refs';
 import { trailerBtnClick } from './modal-trailer';
 
+function addHeroText() {
+  let width = refs.homeHeroFilmWraper.offsetWidth;
+  console.log(width);
+  if (width >= 768 && refs.homeHero) {
+    refs.homeHeroText.textContent +=
+      'Decorate your space, choose your films, and stock up on snacks for the full experience.';
+  }
+}
+addHeroText()
+
 serviceFilm()
   .then(data => {
     const allFilms = data.data.results;
     const randomFilmIndex = Math.floor(Math.random() * allFilms.length);
     const filmInHero = allFilms[randomFilmIndex];
 
-    /*const firstFilm = data.data.results[0];*/
+    
     
     if (!filmInHero) {
-      refs.homeHero.classList.toggle('is-hidden');
-      refs.libraryHeroPlug.classList.toggle('is-hidden');
+    
+      /*refs.homeHero.classList.add('is-hidden');
+      refs.libraryHeroPlug.classList.add('is-hidden');*/
     }
-    refs.homeHeroFilmWraper.insertAdjacentHTML(
-      'beforeend',
-      createMarkupHero(filmInHero)
-    );
+    refs.homeHeroFilmWraper.innerHTML =  createMarkupHero(filmInHero)
+    ;
 
-    refs.homeHero.classList.toggle('is-hidden');
+   /*refs.homeHero.classList.toggle('is-hidden');
     refs.libraryHeroPlug.classList.toggle('is-hidden');
-
+    
     refs.trailerBtn = document.querySelector('.js-hero-trailer');
     refs.trailerBtn.addEventListener('click', trailerBtnClick);
 
@@ -66,15 +75,3 @@ function createMarkupHero({
   `;
 }
 
-window.addEventListener('resize', addHeroText);
-
-function addHeroText() {
-  let width = refs.homeHeroFilmWraper.offsetWidth;
-  console.log(width);
-  if (width >= 768 && !refs.homeHero.classList.contains('is-hidden')) {
-    refs.homeHeroText.textContent +=
-      'Decorate your space, choose your films, and stock up on snacks for the full experience.';
-  }
-}
-
-//addHeroText();

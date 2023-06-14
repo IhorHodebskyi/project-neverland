@@ -1,7 +1,7 @@
 :root {
     --grey: #B7B7B7;
     --white: #fff;
-    --black: #111;
+    --black: #000;
     --orange:#F87719;
 }
 
@@ -12,6 +12,10 @@ ul {
 .select-text {
     color: var(--grey);
     user-select: none;
+    font-size: 14px;
+    font-weight: 500;
+        line-height: 1.14;
+        letter-spacing: 0em;
 }
 
 .select-btn {
@@ -75,3 +79,25 @@ ul {
     transition: 0.4s;
     /* display: none; */
 }
+/*---------------------- tablet -------------------------------- */
+
+@media screen and (min-width: 768px) {
+    
+.select-btn {
+        width: 105px;
+        height: 44px;
+        
+    }
+    }
+
+        /*---------------------- desktop -------------------------------- */
+        @media screen and (min-width: 1280px) {
+            .select-btn {
+                    width: 115px;
+                    height: 48px;
+            
+                }
+            .select-text{
+                font-size: 16px;
+            }    
+            }

@@ -1,5 +1,3 @@
-
-// import axios from 'axios';
 import {fetchAllGet} from './fetchAllGet';
 import { refs } from './refs';
 const BASE_GENRE_URL = 'https://api.themoviedb.org';

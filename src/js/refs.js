@@ -36,4 +36,6 @@ modalTrailerWwindow: document.querySelector('.modal-film-window'),
 footerBtnLink: document.querySelector('.footer_btn_link'),
 teamBackdrop: document.querySelector('.team_backdrop'),
 teamCloseBtn: document.querySelector('.team_modal_close_btn'),
+// ------------------------------galery-library--------------------------
+galeryLibrary: document.querySelector('.galery-library'),
 };
