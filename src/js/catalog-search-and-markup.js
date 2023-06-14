@@ -10,10 +10,10 @@ const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 const WEEK_BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
 const container = document.getElementById('pagination');
 let page = pagination.getCurrentPage();
-let value = '';
-
+let value = 'week';
+let DELTA_URL = WEEK_BASE_URL;
 container.style.display = 'none';
-
+const input = document.querySelector('.input-field');
 const spinnerEl = document.querySelector('.spinner');
 
 function showSpinner() {
@@ -26,17 +26,26 @@ function hideSpinner() {
 
 async function getMovies(page, value, year) {
   const rest = await axios.get(
-    `${BASE_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}&year=${year}`
+    `${DELTA_URL}?api_key=${API_KEY}&query=${value}&language=en-US&page=${page}&year=${year}`
   );
   return rest;
 }
 
-async function getMoviesTrendingWeek(page) {
-  const rest = await axios.get(
-    `${WEEK_BASE_URL}?api_key=${API_KEY}&language=en-US&page=${page}&per_page=100`
-  );
-  console.log(rest);
-  return rest;
+// async function getMoviesTrendingWeek(page) {
+//   const rest = await axios.get(
+//     `${WEEK_BASE_URL}?api_key=${API_KEY}&language=en-US&page=${page}&per_page=100`
+//   );
+//   console.log(rest);
+//   return rest;
+// }
+
+input.addEventListener('input', onE);
+
+function onE(event) {
+  console.log(event.currentTarget.value);
+  if (event.currentTarget.value.length > 0) {
+    return (DELTA_URL = BASE_URL);
+  }
 }
 
 const form = document.querySelector('#search-form');
@@ -53,9 +62,9 @@ function onSubmit(e) {
   value = e.target.elements.search.value;
   const year = selectBtnEl.textContent;
   getFirstMovies(page, value, year);
-  console.log(value, page);
+  console.log(e.currentTarget);
 }
-
+getFirstMovies(page, value);
 async function getFirstMovies(page, value, year) {
   try {
     showSpinner();
@@ -114,20 +123,20 @@ pagination.on('afterMove', event => {
 //   }
 // }
 
-getEventsMoviesTrendingWeek(page);
+// getEventsMoviesTrendingWeek(page);
 
-async function getEventsMoviesTrendingWeek(page) {
-  console.log(page);
-  try {
-    const data = await getMoviesTrendingWeek(page);
-    console.log(data);
+// async function getEventsMoviesTrendingWeek(page) {
+//   console.log(page);
+//   try {
+//     const data = await getMoviesTrendingWeek(page);
+//     console.log(data);
 
-    list.innerHTML = '';
-    createMarkup(data.data.results);
-  } catch (error) {
-    console.log(error);
-  }
-}
+//     list.innerHTML = '';
+//     createMarkup(data.data.results);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 function createMarkup(data) {
   const cardMarkUp = data
