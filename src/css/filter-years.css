@@ -33,7 +33,6 @@ ul {
     cursor: pointer;
     background-color: var(--black);
     color: var(--grey);
-    z-index: 100;
 }
 
 .options {
