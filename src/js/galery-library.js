@@ -1,5 +1,7 @@
 import {fetchAllGet} from './fetchAllGet';
 import { refs } from "./refs";
+import ratingStarFull from '../images/reitingfull.svg';
+
 // import { createMarkup } from './catalog-search-and-markup';
 const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
@@ -20,8 +22,7 @@ if(idFilm.id.length){
 }
 function markUp(data){
     const { original_title, poster_path, vote_average, genre_ids, release_date, id } = data.data;
-    const cardFilm = 
-        `
+    const cardFilm = `
       <div class="card-film" id="${id}">
         <div class="card-backdrop"></div>
         <img
@@ -44,35 +45,35 @@ function markUp(data){
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}g"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>

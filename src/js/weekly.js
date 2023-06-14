@@ -1,6 +1,7 @@
 import axios from 'axios';
 // import { createMarkupCard } from './createMarkupCard';
 import { refs } from './refs';
+import ratingStarFull from '../images/reitingfull.svg';
 
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
@@ -68,35 +69,35 @@ function createMarkupCard(cardresult) {
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
               <li class="card-vote-items">
                 <img
                   class="card-vote-icon"
-                  src="../../images/reitingfull.svg"
+                  src="${ratingStarFull}"
                   alt="Rating Stars"
                 />
               </li>
