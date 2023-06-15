@@ -17,7 +17,7 @@
 /* White */
     color: var(--primary-title-color);
 }
-.month-item-title-text > div > h3{
+.month-item-title-h3 {
     margin: 0 0 12px 0;
     font-weight: 500;
     font-size: 16px;
@@ -25,14 +25,14 @@
 /* Grey */
     color: var(--primary-vote-color);
 }
-.month-item-title > h3:first-child{
+.month-item-title-h3-main{
     /* margin: 0 0 28px 0; */
     font-weight: 500;
     font-size: 32px;
     line-height: 1.18;
     text-transform: uppercase;
 /* White */
-    color: var(--primary-vote-color);
+    color: var(--primary-title-color);
 }
 .month-vote {
     margin-left: 62px;
@@ -72,7 +72,8 @@
     /* Secondary black */
     color: var(--primary-title-color);
 }
-.month-item-title > p{
+
+.month-item-p{
     margin: 8px 0 16px 0;
     font-weight: 500;
     font-size: 16px;

@@ -2,27 +2,25 @@ const selectBtnEl = document.querySelector(".select-btn");
 const optionsEl = document.querySelector(".options")
 const bodyEl = document.querySelector(".body");
 const arrowEl = document.querySelector(".icon-arrow-down")
+import { themeDynamicElements, checkThemeForDynamikEl} from './theme-switcher';   // for theme 
+// const themeDynamicElements = document.querySelectorAll(".theme-dynamic-element")
 
 selectBtnEl.addEventListener("click", () => {
     optionsEl.classList.toggle("hidden")
     arrowEl.classList.toggle("animation")
 
-    createMarkupOption()
+    createMarkupOption();
+    checkThemeForDynamikEl(themeDynamicElements);
 })
+
 
 function createMarkupOption() {
     const currentYear = new Date().getFullYear();
     const oldestFilmYear = 1874;
     let optionsMarkup = '';
-    let whiteThemeClass = '';
-
-    const isWhiteTheme = localStorage.getItem("theme") === "light";
-    if(isWhiteTheme) {
-        whiteThemeClass = "light-theme__section--secondaryText";
-    } 
 
     for (let year = currentYear; year >= oldestFilmYear; year--) {
-        optionsMarkup += `<li class="option ${whiteThemeClass}">${year}</li>`;
+        optionsMarkup += `<li class="option theme-element theme-dynamic-element">${year}</li>`;
     }
 
     optionsEl.innerHTML = optionsMarkup;
@@ -36,3 +34,5 @@ optionsEl.addEventListener("click", (evt) => {
     selectBtnEl.firstElementChild.textContent = evt.target.textContent ;
     optionsEl.classList.toggle("hidden")
 })
+
+

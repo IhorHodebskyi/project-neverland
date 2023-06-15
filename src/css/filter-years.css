@@ -29,7 +29,7 @@ ul {
     border: 1px solid #FFFFFF;
     border-radius: 8px;
     cursor: pointer;
-    background-color: var(--black);
+    background-color: #111;
     color: var(--grey);
     z-index: 100;
 }
@@ -45,7 +45,7 @@ ul {
     border-radius: 8px;
     overflow: auto;
     scrollbar-width: none;
-    background-color: var(--black);
+    background-color: #111;
     z-index: 5;
     opacity: 1;
     
@@ -77,5 +77,4 @@ ul {
     opacity: 0;
     translate: 0 -20px;
     transition: 0.4s;
-    /* display: none; */
 }
