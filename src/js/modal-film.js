@@ -1,12 +1,51 @@
 import { fetchAllGet } from './fetchAllGet';
 import { refs } from './refs';
+import * as basicLightbox from 'basiclightbox';
+import 'basiclightbox/dist/basicLightbox.min.css';
+import iconClose from '../images/symbol-defs.svg';
+
 const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
+
 import { toggleStylesTheme } from './theme-switcher';
 const carta = '/8vvJwtpmqTwAkpDNHfGsphVNxYi.jpg';
 // fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
 // .then(markUp);
+
+
+let instance;
+
+function createModal(content) {
+  instance = basicLightbox.create(content, {
+    onClose: () => {
+      document.removeEventListener('keydown', onEscKeyPress);
+      document.body.style.overflow = '';
+    },
+    onShow: () => {
+      document.addEventListener('keydown', onEscKeyPress);
+      document.body.style.overflow = 'hidden';
+    },
+  });
+
+  instance.show();
+
+  const closeButtonModalCard = instance
+    .element()
+    .querySelector('.modal-film-btn-close');
+
+  if (closeButtonModalCard) {
+    closeButtonModalCard.addEventListener('click', () => {
+      instance.close();
+    });
+  }
+
+  const modalFilmBtn = instance.element().querySelector('.modal-film-btn');
+  if (modalFilmBtn) {
+    modalFilmBtn.addEventListener('click', handlerBtn);
+  }
+}
+
 
 function markUp(data) {
   const {
@@ -22,7 +61,6 @@ function markUp(data) {
     overview,
     genres,
   } = data.data;
-  // <img src="${BASE_IMG_URL_w500}${poster_path}" alt="${original_title}" />
 
   let whiteThemeText = '';
   let whiteThemeSecondaryText = '';
@@ -33,34 +71,58 @@ function markUp(data) {
     whiteThemeBtn = 'light-theme__modal--btn';
   }
 
-  const str = `<div class="modal-film-item" id="${id}" >
-                            <div class="modal-film-item-img" style="background-image: url(${BASE_IMG_URL_w500}${
-    poster_path || carta
-  }" alt="${original_title});background-repeat: no-repeat;background-size: contain;background-position: left;">
-                            </div>
-                            <div class="modal-film-item-title">
-                                <h3 class="modal-film-item-main-h3 ${whiteThemeText}">${title}</h3>
-                                        <h3 class="modal-film-item-h3 ${whiteThemeText}">Vote / Votes<span class="modal-film-vote ${whiteThemeText}">${vote_average}</span> / <span class="modal-film-votes ${whiteThemeText}">${vote_count}</span></h3>
-                                        <h3 class="modal-film-item-h3 ${whiteThemeText}">Popularity<span class="modal-film-popular ${whiteThemeText}">${parseFloat(
+<<
+  const str = `
+<div class="modal-film-window theme-element">
+  <button class="modal-film-btn-close">
+    <svg class="modal-film-icon-close theme-element">
+      <use href="${iconClose}#icon-x"></use>
+    </svg>
+  </button>
+  <div class="modal-film-item" id="${id}">
+    <div class="modal-film-item-wrap">
+      <img
+        class="modal-film-item-img"
+        src="${BASE_IMG_URL_w500}${poster_path}"
+        alt="${original_title}"
+        loading="lazy"
+      />
+    </div>
+    <div class="modal-film-item-content">
+      <h3 class="modal-film-item-title ${whiteThemeText}">${title}</h3>
+      <div class="modal-film-item-flex">
+        <p class="modal-film-item-text ${whiteThemeText}">Vote / Votes</p>
+        <p class="modal-film-vote ${whiteThemeText}"><span class="modal-film-votes">${vote_average}</span> <span class="modal-film-slash">/</span> <span class="modal-film-votes">${whiteThemeText}${vote_count}</span></p>
+      </div>
+      <div class="modal-film-item-flex">
+      <p class="modal-film-item-text ${whiteThemeText}">Popularity</p>
+      <p class="modal-film-popular ${whiteThemeText}">${parseFloat(
+
     popularity
-  ).toFixed(1)}</span></h3>
-                                        <h3 class="modal-film-item-h3 ${whiteThemeText}">Genre<span class="modal-film-genre ${whiteThemeText}">${genres
+  ).toFixed(1)}</p>
+      </div>
+      <div class="modal-film-item-flex modal-film-item-flex-two">
+      <p class="modal-film-item-text ${whiteThemeText}">Genre</p>
+      <p class="modal-film-genre ${whiteThemeText}">${genres
     .map(({ name }) => name)
-    .join(', ')}</span></h3>
-                                <p class="modal-film-item-p ${whiteThemeText}">About</p><span class="modal-film-text ${whiteThemeSecondaryText}">${overview}</span>
-                                <button type="submit" class="modal-film-btn button-card-modal ${whiteThemeBtn}">${textBtn(
-    id
-  )}</button>
-                            </div>
-                         </div>              
-                         `;
-  refs.modalTrailerWwindow.insertAdjacentHTML('beforeend', str);
-  refs.monthBtn = document.querySelector('.modal-film-btn');
-  refs.monthItem = document.querySelector('.modal-film-item');
-  refs.monthBtn.addEventListener('click', handlerBtn);
-  refs.modalFilmBtnClose.addEventListener('click', handlerBtnClose);
+    .join(', ')}</p>     
+      </div>
+      <p class="modal-film-item-about ${whiteThemeText}">About</p>
+      <p class="modal-film-desc ${whiteThemeSecondaryText}"
+        >${overview}</p
+      >
+      <button
+        type="submit"
+        class="modal-film-btn button-card-modal ${whiteThemeBtn}"
+      >
+        ${textBtn(id)}
+      </button>
+    </div>
+  </div>
+</div>`;
+
+  createModal(str);
 }
-refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
 
 function textBtn(id) {
   const idFilm = {
@@ -76,46 +138,30 @@ function textBtn(id) {
 
 function handlerBtn(e) {
   e.preventDefault();
-  const id = refs.monthItem.getAttribute('id');
+  const id = e.currentTarget.closest('.modal-film-item').id;
   const idFilm = {
     id: [],
   };
   if (localStorage.getItem('favoriteFilm')) {
     idFilm.id = [...JSON.parse(localStorage.getItem('favoriteFilm')).id];
   }
-  if (!idFilm.id.includes(id)) {
+  if (!idFilm.id.includes(id.toString())) {
     if (e.currentTarget.textContent === 'Add to my library') {
-      e.currentTarget.textContent = 'Remove from  my library';
+      e.currentTarget.textContent = 'Remove from my library';
     }
-    idFilm.id.push(id);
+    idFilm.id.push(id.toString());
     localStorage.setItem('favoriteFilm', JSON.stringify(idFilm));
   } else {
-    idFilm.id.splice(idFilm.id.indexOf(id), 1);
+    idFilm.id.splice(idFilm.id.indexOf(id.toString()), 1);
     localStorage.setItem('favoriteFilm', JSON.stringify(idFilm));
     e.currentTarget.textContent = 'Add to my library';
   }
 }
 
-document.addEventListener('keydown', evt => {
-  if (evt.key === 'Escape') {
-    refs.modalTrailerWwindow.textContent = '';
-    refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
-    refs.modalTrailerBackdrop.classList.add('visually-hidden');
+function onEscKeyPress(e) {
+  if (e.key === 'Escape') {
+    instance.close();
   }
-});
-
-function handlerBtnClose(e) {
-  e.preventDefault();
-
-  refs.modalTrailerWwindow.textContent = '';
-  // refs.modalTrailerWwindow.insertAdjacentHTML(
-  //   'beforeend',
-  //   `<button class="modal-film-btn-close"><svg class="modal-film-icon-close">
-  //       <use href="./images/symbol-defs.svg#icon-x"></use></svg></button>`
-  // );
-  refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
-  refs.modalTrailerBackdrop.classList.toggle('visually-hidden');
-  refs.body.classList.remove('no_scroll');
 }
 
 function handlerClickcardsSectionBackphoto(e) {
@@ -123,8 +169,6 @@ function handlerClickcardsSectionBackphoto(e) {
   fetchAllGet(BASE_URL, ENDPOINT, API_KEY, '&language=en-US&page=1')
     .then(markUp)
     .catch(console.log);
-  refs.modalTrailerBackdrop.classList.toggle('visually-hidden');
-  refs.body.classList.add('no_scroll');
 }
 
 export { handlerClickcardsSectionBackphoto };
