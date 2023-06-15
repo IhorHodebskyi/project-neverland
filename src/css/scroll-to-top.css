@@ -1,22 +1,19 @@
-.scroll-to-top {
-  position: fixed;
-  bottom: 120px;
-  right: 25px;
-  background-size: 50%;
-  background-color: rgba(248, 248, 248, 0.78);
+#scrollButton {
+  display: none;
+  cursor: pointer;
+  position: fixed; 
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  border-color: transparent;
-  width: 40px;
-  height: 40px;
-  opacity: 0;
-  visibility: hidden;
+  background-color: rgb(12, 12, 12);
+  color: white;
+  border: none;
 }
 
-.scroll-to-top.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.scroll-top-icon {
-  fill: aqua;
+#scrollButton:hover {
+  background-color: #F87719;
+  transition: .3s;
 }

@@ -3,22 +3,9 @@ import { refs } from './refs';
 const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
-
+import { toggleStylesTheme } from './theme-switcher';
 // fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
 // .then(markUp);
-
-if (localStorage.getItem('theme')) {
-  const root = document.querySelector(':root');
-  root.style.setProperty('--primary-title-color', '#111111');
-  root.style.setProperty('--primary-vote-color', '#111111');
-  root.style.setProperty('--primary-vote-color-text', '#282828');
-  root.style.setProperty('--primary-about-text', '#282828');
-  root.style.setProperty('--modal-film-bgrcol', '#FFFFFF');
-  root.style.setProperty(
-    '--modal-film-shadow',
-    '1px 1px 14px 4px rgba(0, 0, 0, 0.22)'
-  );
-}
 
 function markUp(data) {
   const {
@@ -35,23 +22,32 @@ function markUp(data) {
     genres,
   } = data.data;
   // <img src="${BASE_IMG_URL_w500}${poster_path}" alt="${original_title}" />
-  // console.log(`${BASE_IMG_URL_w500}${poster_path}`);
+
+  let whiteThemeText = '';
+  let whiteThemeSecondaryText = '';
+  let whiteThemeBtn = '';
+  if (localStorage.getItem('theme')) {
+    whiteThemeText = 'light-theme__text--black';
+    whiteThemeSecondaryText = 'light-theme__section--secondaryText';
+    whiteThemeBtn = 'light-theme__modal--btn';
+  }
+
   const str = `<div class="modal-film-item" id="${id}" >
                             <div class="modal-film-item-img" style="background-image: url(${BASE_IMG_URL_w500}${poster_path}" alt="${original_title});background-repeat: no-repeat;background-size: contain;background-position: left;">
                             </div>
                             <div class="modal-film-item-title">
-                                <h3>${title}</h3>
-                                        <h3>Vote / Votes<span class="modal-film-vote">${vote_average}</span> / <span class="modal-film-votes">${vote_count}</span></h3>
-                                        <h3>Popularity<span class="modal-film-popular">${parseFloat(
-                                          popularity
-                                        ).toFixed(1)}</span></h3>
-                                        <h3>Genre<span class="modal-film-genre">${genres
-                                          .map(({ name }) => name)
-                                          .join(', ')}</span></h3>
-                                <p>About</p><span class="modal-film-text">${overview}</span>
-                                <button type="submit" class="modal-film-btn button-card-modal">${textBtn(
-                                  id
-                                )}</button>
+                                <h3 class="modal-film-item-main-h3 ${whiteThemeText}">${title}</h3>
+                                        <h3 class="modal-film-item-h3 ${whiteThemeText}">Vote / Votes<span class="modal-film-vote ${whiteThemeText}">${vote_average}</span> / <span class="modal-film-votes ${whiteThemeText}">${vote_count}</span></h3>
+                                        <h3 class="modal-film-item-h3 ${whiteThemeText}">Popularity<span class="modal-film-popular ${whiteThemeText}">${parseFloat(
+    popularity
+  ).toFixed(1)}</span></h3>
+                                        <h3 class="modal-film-item-h3 ${whiteThemeText}">Genre<span class="modal-film-genre ${whiteThemeText}">${genres
+    .map(({ name }) => name)
+    .join(', ')}</span></h3>
+                                <p class="modal-film-item-p ${whiteThemeText}">About</p><span class="modal-film-text ${whiteThemeSecondaryText}">${overview}</span>
+                                <button type="submit" class="modal-film-btn button-card-modal ${whiteThemeBtn}">${textBtn(
+    id
+  )}</button>
                             </div>
                          </div>              
                          `;
@@ -62,6 +58,7 @@ function markUp(data) {
   refs.modalFilmBtnClose.addEventListener('click', handlerBtnClose);
 }
 refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
+
 function textBtn(id) {
   const idFilm = {
     id: [],
@@ -115,6 +112,7 @@ function handlerBtnClose(e) {
   // );
   refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
   refs.modalTrailerBackdrop.classList.toggle('visually-hidden');
+  refs.body.classList.remove('no_scroll');
 }
 
 function handlerClickcardsSectionBackphoto(e) {
@@ -123,6 +121,7 @@ function handlerClickcardsSectionBackphoto(e) {
     .then(markUp)
     .catch(console.log);
   refs.modalTrailerBackdrop.classList.toggle('visually-hidden');
+  refs.body.classList.add('no_scroll');
 }
 
 export { handlerClickcardsSectionBackphoto };

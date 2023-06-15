@@ -1,7 +1,13 @@
-.galery-library{
+/* .galery-library{
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+} */
+.color-link{
+    color: inherit;
+}
+.gallery-zero-res-btn{
+    margin-top: 20px;
 }
 .galery-library-btn{
     display: block;
@@ -23,3 +29,14 @@
     display: block;
     text-align: center;
 }
+
+ @media screen and (min-width: 768px) {
+    .galery-library {
+        display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            gap: 15px;
+            row-gap: 28px;
+     }
+    }    
+

@@ -1,12 +1,9 @@
 :root {
     --white-color: #fff;
-    --black-color: #111;
+    --black-color: #000;
     --grey-whiteTheme-color: #595959;
     --secondaryBlack-color: #282828;
-  }
-
-  body {
-    background-color: var(--black-color);
+    --orange: #F87719;
   }
 
   .animation {
@@ -29,11 +26,26 @@
   }
 
   .light-theme__text--black {
-    color: var(--black-color) !important;
+    color: var(--black-color);
   }
 
   .light-theme__section--secondaryText {
     color: var(--secondaryBlack-color);
+  }
+
+  .light-theme__modal--film {
+    background: var(--white-color);
+    box-shadow: 1px 1px 14px 4px rgba(0, 0, 0, 0.22);
+  }
+
+  .light-theme__modal--btn:hover {
+    background-color: var(--black-color);
+    color: var(--orange);
+  }
+
+  .light-theme__modal--btn {
+    background-color: var(--white-color);
+    color: var(--black-color);
   }
 
   .light-theme__input {
@@ -61,16 +73,11 @@
     stroke: var(--secondaryBlack-color);
   }
 
-  .light-theme__modal--btn {
-    color: var(--black-color);;
-  }
-
   .theme-switch {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 24px;
-    margin-left: auto;
   }
   
   .theme-switch__checkbox {
