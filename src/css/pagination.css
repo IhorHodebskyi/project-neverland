@@ -1,50 +1,156 @@
-.tui-page-btn {
-  width: 40px;
-  height: 40px;
-  color: #ffffff;
-  padding: 11px;
-  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  transition: color 250ms linear, background 250ms linear, border 250ms linear,
-    border-color 250ms linear;
+.tui-pagination {
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
-/* .tui-is-selected {
-  width: 40px;
-  height: 40px;
-  color: #ffffff;
-  padding: 11px;
-  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  transition: color 250ms linear, background 250ms linear, border 250ms linear,
-    border-color 250ms linear;
-} */
-/* 
-.tui-is-disabled {
-  width: 40px;
-  height: 40px;
-  color: #ffffff;
-  padding: 11px;
-  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  transition: color 250ms linear, background 250ms linear, border 250ms linear,
-    border-color 250ms linear;
-} */
 
-/* .tui-ico-ellip {
+@media screen and (min-width: 768px) {
+  .tui-pagination {
+    margin-top: 44px;
+    margin-bottom: 60px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tui-pagination {
+    margin-top: 60;
+    margin-bottom: 100px;
+  }
+}
+
+.btn + .btn {
+  margin-left: 10px;
+}
+
+.tui-pagination .tui-last,
+.tui-pagination .tui-first {
+  display: none;
+}
+
+.tui-pagination .tui-page-btn {
+  padding: 8px;
+  text-align: center;
+
   width: 40px;
   height: 40px;
-  color: #ffffff;
-  padding: 11px;
-  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  border: 1px solid;
   border-radius: 50%;
-  border: none;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+
+  color: #f8f8f8;
+
   cursor: pointer;
-  transition: color 250ms linear, background 250ms linear, border 250ms linear,
-    border-color 250ms linear;
-} */
+}
+
+body.light .tui-pagination .tui-page-btn {
+  color: #ffffff;
+  border: 1px solid #b7b7b7;
+}
+
+.tui-pagination .tui-ico-prev {
+  cursor: pointer;
+}
+
+.tui-pagination .tui-next,
+.tui-pagination .tui-prev {
+  border: none !important;
+}
+
+.tui-pagination .tui-prev-is-ellip,
+.tui-pagination .tui-next-is-ellip {
+  border: none !important;
+  padding: 9px 13px 15px 13px;
+}
+.tui-pagination .tui-ico-ellip {
+  background: url(../images/pagination/dots.svg) no-repeat 0 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+body.light .tui-pagination .tui-ico-ellip {
+  background: url(../images/pagination/dots-light.svg) no-repeat 0 0;
+}
+
+.tui-pagination .tui-is-selected {
+  background: linear-gradient(
+    141.22deg,
+    #ffc226 9.4%,
+    #f84119 91.91%
+  ) !important;
+  border: none !important;
+}
+
+/* ====================== Prev-button ======================*/
+
+.tui-pagination .tui-page-btn.tui-is-disabled.tui-prev {
+  padding: 6px;
+}
+
+.tui-pagination .tui-page-btn.tui-prev {
+  padding: 6px;
+}
+
+.tui-pagination .tui-page-btn.tui-is-disabled.tui-prev div {
+  background: url(../images/pagination/prev-arrow-disable.svg) no-repeat 0 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 28px;
+}
+
+body.light .tui-pagination .tui-page-btn.tui-is-disabled.tui-prev div {
+  background: url(../images/pagination/prev-arrow-light.svg) no-repeat 0 0;
+}
+
+.tui-pagination .tui-page-btn.tui-prev span {
+  background: url(../images/pagination/prev-arrow-enable.svg) no-repeat 0 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 28px;
+}
+
+body.light .tui-pagination .tui-page-btn.tui-prev span {
+  background: url(../images/pagination/prev-arrow-light.svg) no-repeat 0 0;
+}
+
+/* ====================== Next-button ======================*/
+
+.tui-pagination .tui-page-btn.tui-is-disabled.tui-next {
+  padding: 6px;
+}
+
+.tui-pagination .tui-page-btn.tui-next {
+  padding: 6px;
+}
+
+.tui-pagination .tui-page-btn.tui-is-disabled.tui-next div {
+  background: url(../images/pagination/next-arrow-disable.svg) no-repeat 0 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 28px;
+}
+
+body.light .tui-pagination .tui-page-btn.tui-is-disabled.tui-next div {
+  background: url(../images/pagination/next-arrow-light.svg) no-repeat 0 0;
+}
+
+.tui-pagination .tui-page-btn.tui-next span {
+  background: url(../images/pagination/next-arrow-enable.svg) no-repeat 0 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 28px;
+}
+
+body.light .tui-pagination .tui-page-btn.tui-next span {
+  background: url(../images/pagination/next-arrow-light.svg) no-repeat 0 0;
+}
