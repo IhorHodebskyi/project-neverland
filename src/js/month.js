@@ -25,7 +25,7 @@ fetchAllGet(BASE_UPCOMING_URL, ENDPOINT_UPCOMING, API_KEY,'&language=en-US&page=
 
 async function genreStr(arr){
         const data = await respGenre;
-        return arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0].name).join(', ');
+        return arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0]?.name).join(', ');
       
  }
 
@@ -114,4 +114,4 @@ function handlerBtn(e){
     
 }
 
-export { respGenre }
+export { genreStr }

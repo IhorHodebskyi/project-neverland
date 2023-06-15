@@ -2,7 +2,8 @@ import axios from 'axios';
 // import { createMarkupCard } from './createMarkupCard';
 import { refs } from './refs';
 import ratingStarFull from '../images/reitingfull.svg';
-
+import { genreStr } from './month';
+import { handlerClickcardsSectionBackphoto } from './modal-film';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
 
@@ -39,15 +40,16 @@ export { fetchTrendsOfWeek };
 function createMarkupCard(cardresult) {
   const cardMarkUp = cardresult
     .map(
-      ({
+      async({
         original_title,
         poster_path,
         vote_average,
         genre_ids,
         release_date,
         id,
-      }) =>
-        `<a href="#" class="card-film" id="${id}">
+      }, i) =>{
+        const genresLine = await genreStr(genre_ids); 
+        const str =`<a href="#" class="card-film" id="${id}">
         <div class="card-backdrop"></div>
         <img
           class="card-img"
@@ -63,7 +65,7 @@ function createMarkupCard(cardresult) {
           <h3 class="card-info-title">${original_title}</h3>
           <div class="card-info">
             <p class="card-info-text">
-              ${String(release_date).slice(0, 4)} | ${genre_ids}
+            ${genresLine} | ${String(release_date).slice(0, 4)}
             </p>
             <ul class="card-vote">
               <li class="card-vote-items">
@@ -104,9 +106,15 @@ function createMarkupCard(cardresult) {
             </ul>
           </div>
         </div>
-      </a>`
-    )
-    .join('');
-
-  refs.weeklyList.insertAdjacentHTML('beforeend', cardMarkUp);
+      </a>`;
+      refs.weeklyList.insertAdjacentHTML('beforeend', str);
+      if (2 === i){
+        refs.cardsSectionBackphoto = document.querySelectorAll('.card-film');
+        refs.cardsSectionBackphoto.forEach(el =>
+        el.addEventListener('click', handlerClickcardsSectionBackphoto)
+      );}
+      }
+    );
+      
+  // refs.weeklyList.insertAdjacentHTML('beforeend', cardMarkUp);
 }
