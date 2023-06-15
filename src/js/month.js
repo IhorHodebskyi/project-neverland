@@ -1,4 +1,4 @@
-import {fetchAllGet} from './fetchAllGet';
+import { fetchAllGet } from './fetchAllGet';
 import { refs } from './refs';
 const BASE_GENRE_URL = 'https://api.themoviedb.org';
 const ENDPOINT_GENRE = '/3/genre/movie/list';
@@ -12,31 +12,49 @@ const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 
 const respGenre = fetchAllGet(BASE_GENRE_URL, ENDPOINT_GENRE, API_KEY, '');
 
-if (localStorage.getItem("theme")){
-    const root = document.querySelector(':root');
-    root.style.setProperty('--primary-title-color', '#111111');
-    root.style.setProperty('--primary-vote-color', '#111111');
-    root.style.setProperty('--primary-vote-color-text', '#282828');
-    root.style.setProperty('--primary-about-text', '#282828');
-} 
+if (localStorage.getItem('theme')) {
+  const root = document.querySelector(':root');
+  root.style.setProperty('--primary-title-color', '#111111');
+  root.style.setProperty('--primary-vote-color', '#111111');
+  root.style.setProperty('--primary-vote-color-text', '#282828');
+  root.style.setProperty('--primary-about-text', '#282828');
+}
 
-fetchAllGet(BASE_UPCOMING_URL, ENDPOINT_UPCOMING, API_KEY,'&language=en-US&page=1')
-.then(markUp);
+fetchAllGet(
+  BASE_UPCOMING_URL,
+  ENDPOINT_UPCOMING,
+  API_KEY,
+  '&language=en-US&page=1'
+).then(markUp);
 
-async function genreStr(arr){
-        const data = await respGenre;
-        return arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0].name).join(', ');
-      
- }
+export async function genreStr(arr) {
+  const data = await respGenre;
+  return arr
+    .map(el => (el = data.data.genres.filter(({ id }) => id == el)[0].name))
+    .join(', ');
+}
 
-async function markUp(data){
-    
-    const randCard = Math.floor(Math.random() * 20);
-    data.data.results.map(async ({backdrop_path, poster_path, title, original_title, id, release_date, vote_average, vote_count, popularity, overview, genre_ids},i)=>{
-        if (i===randCard)
-        {
-            
-            const str = `<div class="month-item" id="${id}">
+async function markUp(data) {
+  const randCard = Math.floor(Math.random() * 20);
+  data.data.results.map(
+    async (
+      {
+        backdrop_path,
+        poster_path,
+        title,
+        original_title,
+        id,
+        release_date,
+        vote_average,
+        vote_count,
+        popularity,
+        overview,
+        genre_ids,
+      },
+      i
+    ) => {
+      if (i === randCard) {
+        const str = `<div class="month-item" id="${id}">
                             <div>
                             <div class="month-item-img">
                                 <picture>
@@ -69,47 +87,46 @@ async function markUp(data){
                                 )}</button>
                             </div>
                          </div>`;
-                        
-            refs.monthGalery.insertAdjacentHTML('beforeend', str);
-            refs.monthBtn = document.querySelector('.month-btn');
-            refs.monthItem = document.querySelector('.month-item');
-            refs.monthBtn.addEventListener('click', handlerBtn);
-            
-        }
-    });
-      
+
+        refs.monthGalery.insertAdjacentHTML('beforeend', str);
+        refs.monthBtn = document.querySelector('.month-btn');
+        refs.monthItem = document.querySelector('.month-item');
+        refs.monthBtn.addEventListener('click', handlerBtn);
+      }
+    }
+  );
 }
 
-function textBtn(id){
-    const idFilm ={
-        id: []
-    }
-    if (localStorage.getItem("favoriteFilm")){
-        idFilm.id = [...JSON.parse(localStorage.getItem("favoriteFilm")).id];
-               
-    }
-    return !idFilm.id.includes(id.toString()) ? 'Add to my library' : 'Remove from my library';
+function textBtn(id) {
+  const idFilm = {
+    id: [],
+  };
+  if (localStorage.getItem('favoriteFilm')) {
+    idFilm.id = [...JSON.parse(localStorage.getItem('favoriteFilm')).id];
+  }
+  return !idFilm.id.includes(id.toString())
+    ? 'Add to my library'
+    : 'Remove from my library';
 }
 
-function handlerBtn(e){
-    e.preventDefault();
-    const id = refs.monthItem.getAttribute('id');
-    const idFilm ={
-        id: []
+function handlerBtn(e) {
+  e.preventDefault();
+  const id = refs.monthItem.getAttribute('id');
+  const idFilm = {
+    id: [],
+  };
+  if (localStorage.getItem('favoriteFilm')) {
+    idFilm.id = [...JSON.parse(localStorage.getItem('favoriteFilm')).id];
+  }
+  if (!idFilm.id.includes(id)) {
+    if (e.currentTarget.textContent === 'Add to my library') {
+      e.currentTarget.textContent = 'Remove from  my library';
     }
-    if (localStorage.getItem("favoriteFilm")){
-        idFilm.id = [...JSON.parse(localStorage.getItem("favoriteFilm")).id];
-               
-    }
-    if(!idFilm.id.includes(id)){
-        if(e.currentTarget.textContent === 'Add to my library'){e.currentTarget.textContent = 'Remove from  my library';}
-        idFilm.id.push(id);
-        localStorage.setItem("favoriteFilm", JSON.stringify(idFilm));
-    }else {
-        idFilm.id.splice(idFilm.id.indexOf(id),1);
-        localStorage.setItem("favoriteFilm", JSON.stringify(idFilm));
-        e.currentTarget.textContent = 'Add to my library';
-    }
-    
-    
+    idFilm.id.push(id);
+    localStorage.setItem('favoriteFilm', JSON.stringify(idFilm));
+  } else {
+    idFilm.id.splice(idFilm.id.indexOf(id), 1);
+    localStorage.setItem('favoriteFilm', JSON.stringify(idFilm));
+    e.currentTarget.textContent = 'Add to my library';
+  }
 }
