@@ -1,53 +1,53 @@
-import {refs} from './refs';
+import { refs } from './refs';
 
 function onBtnClick(event) {
   event.preventDefault();
 
   refs.teamBackdrop.classList.remove('is-hidden');
-        document.body.classList.add('modal-open');
-        refs.body.classList.add('no_scroll');
+  document.body.classList.add('modal-open');
+  refs.body.classList.add('no_scroll');
 
-    eventAddFunc();
-};
+  eventAddFunc();
+}
 
 function eventAddFunc() {
-        document.addEventListener('keydown', onEscClick);
-    refs.teamBackdrop.addEventListener('click', onBackdropClick);
-    refs.teamCloseBtn.addEventListener('click', onCloseBtnClick);
-};
+  document.addEventListener('keydown', onEscClick);
+  refs.teamBackdrop.addEventListener('click', onBackdropClick);
+  refs.teamCloseBtn.addEventListener('click', onCloseBtnClick);
+}
 
 function closestBckdListner() {
-        document.removeEventListener('keydown', onEscClick);
-    refs.teamBackdrop.removeEventListener('click', onBackdropClick);
-    refs.teamCloseBtn.removeEventListener('click', onCloseBtnClick);
-  
-    refs.teamBackdrop.classList.add('is-hidden');
-        document.body.classList.remove('modal-open');
-        refs.body.classList.remove('no_scroll');
-};
+  document.removeEventListener('keydown', onEscClick);
+  refs.teamBackdrop.removeEventListener('click', onBackdropClick);
+  refs.teamCloseBtn.removeEventListener('click', onCloseBtnClick);
+
+  refs.teamBackdrop.classList.add('is-hidden');
+  document.body.classList.remove('modal-open');
+  refs.body.classList.remove('no_scroll');
+}
 
 function onEscClick(event) {
   event.preventDefault();
 
   if (event.code !== 'Escape') {
     return;
-    }
+  }
 
-    closestBckdListner();
-};
+  closestBckdListner();
+}
 
 function onBackdropClick(event) {
   if (event.target.closest('.team_wrapper')) {
     return;
-    }
+  }
 
-    closestBckdListner();
-};
+  closestBckdListner();
+}
 
 function onCloseBtnClick(event) {
   event.preventDefault();
 
-    closestBckdListner();
-};
+  closestBckdListner();
+}
 
 refs.footerBtnLink.addEventListener('click', onBtnClick);

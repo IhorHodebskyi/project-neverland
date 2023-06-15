@@ -239,9 +239,35 @@
     width: 375px;
     height: 478px;
   }
-  .modal-film-item-img {
-    width: 375px;
-    height: 478px;
+  
+  @media screen and (min-width: 320px), (max-width: 480) {
+        
+    .modal-film-btn-space {
+      padding: 52px 16px;
+      width: 280px;
+      height: 847px;
+      border-radius: 16px;
+      overflow: auto;
+      scrollbar-width: none;
+      scrollbar-color: hsl(0 0% 50%);
+      
+    }
+    .modal-film-btn-close{
+      top: 20px;
+      /* right: 40px; */
+    }
+    .modal-film-item-title{
+      width: 248px;
+    }
+    .modal-film-item-img > img{
+      width: 248px;
+      height: 315px;
+    }
+    .modal-film-item-img{
+      width: 248px;
+      height: 315px;
+    }
+
   }
   /* .modal-film-window,  */
   .modal-film-btn-space {
