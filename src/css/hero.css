@@ -91,10 +91,16 @@
 }
 
 .home-hero-rate {
-  width: 96px;
-  height: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
   margin: 0;
   margin-bottom: 16px;
+}
+
+.home-hero-rate-icon {
+  width: 15px;
+  height: 14px;
 }
 
 .home-hero-text {
@@ -186,9 +192,12 @@
   }
 
   .home-hero-rate {
-    width: 116px;
-    height: 20px;
     margin-bottom: 20px;
+  }
+
+  .home-hero-rate-icon {
+    width: 19px;
+    height: 18px;
   }
 
   .home-hero-text {
@@ -270,9 +279,12 @@
   }
 
   .home-hero-rate {
-    width: 140px;
-    height: 24px;
     margin-bottom: 28px;
+  }
+
+  .home-hero-rate-icon {
+    width: 23px;
+    height: 21px;
   }
 
   .home-hero-text {
