@@ -22,7 +22,6 @@ function markUp(data) {
     genres,
   } = data.data;
   // <img src="${BASE_IMG_URL_w500}${poster_path}" alt="${original_title}" />
-  console.log(`${BASE_IMG_URL_w500}${poster_path}`);
 
   let whiteThemeText = '';
   let whiteThemeSecondaryText = '';
@@ -106,11 +105,11 @@ function handlerBtnClose(e) {
   e.preventDefault();
 
   refs.modalTrailerWwindow.textContent = '';
-  refs.modalTrailerWwindow.insertAdjacentHTML(
-    'beforeend',
-    `<button class="modal-film-btn-close"><svg class="modal-film-icon-close">
-        <use href="./images/symbol-defs.svg#icon-x"></use></svg></button>`
-  );
+  // refs.modalTrailerWwindow.insertAdjacentHTML(
+  //   'beforeend',
+  //   `<button class="modal-film-btn-close"><svg class="modal-film-icon-close">
+  //       <use href="./images/symbol-defs.svg#icon-x"></use></svg></button>`
+  // );
   refs.modalFilmBtnClose = document.querySelector('.modal-film-btn-close');
   refs.modalTrailerBackdrop.classList.toggle('visually-hidden');
   refs.body.classList.remove('no_scroll');

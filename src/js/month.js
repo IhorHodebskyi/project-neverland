@@ -113,3 +113,5 @@ function handlerBtn(e){
     
     
 }
+
+export { respGenre }
