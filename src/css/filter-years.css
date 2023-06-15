@@ -31,7 +31,10 @@ ul {
     border: 1px solid #FFFFFF;
     border-radius: 8px;
     cursor: pointer;
-    background-color: var(--primary-color);
+
+    background-color: #111;
+
+
     color: var(--grey);
 }
 
@@ -46,7 +49,9 @@ ul {
     border-radius: 8px;
     overflow: auto;
     scrollbar-width: none;
-    background-color: var(--primary-color);
+
+    background-color: #111;
+
     z-index: 5;
     opacity: 1;
     
@@ -78,7 +83,6 @@ ul {
     opacity: 0;
     translate: 0 -20px;
     transition: 0.4s;
-    /* display: none; */
 }
 /* ---------------------- tablet -------------------------------- */
 

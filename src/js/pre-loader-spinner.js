@@ -1,6 +1,7 @@
 const spinnerEl = document.querySelector(".spinner");
 const bodyEl = document.querySelector(".body")
 const mainContentEl = document.querySelector(".main-content")
+mainContentEl.style.display = "none"
 spinnerEl.style.display = 'block';
 
 window.addEventListener('DOMContentLoaded', function() {
@@ -9,5 +10,5 @@ window.addEventListener('DOMContentLoaded', function() {
 
         spinnerEl.style.display = 'none';
         mainContentEl.style.display = "block"
-    }, 100); 
+    }, 500); 
 });

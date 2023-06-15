@@ -44,8 +44,9 @@
   }
 
   .light-theme__modal--btn {
-    background-color: var(--white-color);
+    background: var(--white-color);
     color: var(--black-color);
+    border: 1px solid black;
   }
 
   .light-theme__input {

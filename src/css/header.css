@@ -92,9 +92,9 @@ body.is-open {
   height: 32px;
 }
 
-.nav_list-current {
-    color: #F87719;
-  }
+.navbar_list_item .nav_list-current {
+    color: #F87719 ;
+}
 
 @media screen and (max-width: 767px) {
   .logo_text {

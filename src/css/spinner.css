@@ -1,12 +1,16 @@
 .spinner{ 
     display: none;
-    position: absolute; 
+    position: sticky; 
     left:50%; 
     top: 50%; 
     z-index:1;
     height:40px;
     width:40px;
     transform:translate(-50%,-50%)
+}
+
+.spiner-pre-loading{
+    position: absolute
 }
 
 [class^="ball-"]{
