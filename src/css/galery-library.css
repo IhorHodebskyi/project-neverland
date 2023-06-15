@@ -1,8 +1,7 @@
-/* .galery-library{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-} */
+:root {
+    --primary-color: #111111;
+    --primary-text-color: #b7b7b7;
+}
 .color-link{
     color: inherit;
 }
@@ -11,23 +10,64 @@
 }
 .galery-library-btn{
     display: block;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
 }
 .galery-library-text{
     margin-left: auto;
     margin-right: auto;
-    width: 584px;
-    height: 124px;
+    width: 280px;
+    height: 120px;
     font-weight: 400;
-    font-size: 32px;
+    font-size: 20px;
     text-align: center;
     color: var(--primary-title-color);
 }
 .galery-library-text > span{
     display: block;
     text-align: center;
+}
+.galery-library-select{
+    margin-bottom: 16px;
+
+    display: block;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--primary-text-color);
+        
+        padding-left: 16px;
+        padding-bottom: 12px;
+        padding-top: 12px;
+        width: 173px;
+        height: 40px;
+        border: 1px solid #ffffff;
+        border-radius: 8px;
+        background-color: inherit;      
+        
+}
+.galery-library-select option {
+        color: var(--primary-text-color);
+    
+        padding-left: 16px;
+        padding-bottom: 12px;
+        padding-top: 12px;
+        width: 173px;
+        height: 40px;
+        border: 1px solid #ffffff;
+        background-color: var(--primary-color);
+}
+
+.galery-library-select option :focus{
+    color: #f87719;
+}
+
+
+.galery-library-select:focus {
+box-shadow: 0 0 15px 5px #f87719;
+
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
  @media screen and (min-width: 768px) {
@@ -38,5 +78,38 @@
             gap: 15px;
             row-gap: 28px;
      }
+.galery-library-text{
+            width: 438px;
+            height: 104px;
+            font-weight: 400;
+            font-size: 24px;
+            text-align: center;
+        }
+.galery-library-btn{
+margin-top: 24px;
+}    
+.galery-library-select {
+    margin-bottom: 36px;
+    width: 144px;
+    height: 44px;
+    font-size: 16px;
+}
     }    
 
+        @media screen and (min-width: 1280px) {
+    .galery-library-text {
+                width: 584px;
+                    height: 124px;
+                    font-weight: 400;
+                    font-size: 32px;
+                    text-align: center;
+            }
+        .galery-library-btn {
+            margin-top: 28px;
+        }
+        .galery-library-select {
+            margin-bottom: 48px;
+            width: 260px;
+            height: 48px;
+        }
+        }
