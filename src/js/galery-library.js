@@ -4,20 +4,21 @@ import ratingStarFull from '../images/reitingfull.svg';
 
 const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
-const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
+// const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
 
 parseLocStor();
-
 refs.galeryLibrarySelect.addEventListener('change', handlerSelect);
 
 function handlerSelect(e){
+  refs.galeryLibraryBtn.classList.remove('visually-hidden');
   refs.galeryLibrary.textContent='';
   parseLocStor(e.currentTarget.value);
-  refs.galeryLibraryBtn.classList.remove('visually-hidden');
+  
+ 
 }
 
 function parseLocStor(genre='all'){
-
+  
 if(!JSON.parse(localStorage.getItem("favoriteFilm"))){
   const str=`<div class="galery-library-text"><span>OOPS...</span><span>We are very sorry!</span><span>You don’t have any movies at your library.</span></div>`;
   refs.galeryLibrary.insertAdjacentHTML('beforeend', str);
@@ -32,32 +33,67 @@ const idFilm ={
     page: 1,
 }
 
-idFilm.id.map((el,i)=>{
-  i++;
-  idFilm.id_j.push(el);
-  if(i%2===0){
-    idFilm.id_9.push(idFilm.id_j);
-    idFilm.id_j=[];
-  }
-});
-idFilm.id_9.push(idFilm.id_j)
+if(idFilm.id.length > 9){refs.galeryLibraryBtn.classList.remove('visually-hidden');}
+else refs.galeryLibraryBtn.classList.add('visually-hidden');
 
-if(idFilm.id.length){
-  refs.galeryLibraryBtn.textContent="Load more";
+function createMas(){
+  let m=[];
+  let j=[];
+  idFilm.id.map((el,i)=>{
+    i++;
+    m.push(el);
+    if(i%9===0){
+      j.push(m);
+      m=[];
+    }
+  });
+  j.push(m);
+  return j;
+}
+
+if(genre==='all'){
   pageCardFilm(0);
-  if(idFilm.id_9.length===idFilm.page){
-    refs.galeryLibraryBtn.classList.add('visually-hidden');
-    
-  }
+  
+}
+else {
+  idFilm.id.map((el,i)=>{const ENDPOINT = `/3/movie/${el}`
+  fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
+  .then(markUpSort)
+  .catch(console.log);
+  })
 }
 
 function pageCardFilm(n){
+      
+      idFilm.id_9 = createMas();
       idFilm.id_9[n].map((el,i)=>{const ENDPOINT = `/3/movie/${el}`;
       fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
       .then(markUp)
       .catch(console.log);
       })
   }
+
+function markUpSort(data){
+  let cardFilm='';
+  refs.galeryLibraryBtn.classList.add('visually-hidden');
+  const { original_title, poster_path, vote_average, genres, release_date, id } = data.data;
+  if(genres.map(({name})=>name).join(', ').toLowerCase().includes(genre)){
+    cardFilm = htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id);
+    refs.galeryLibrary.insertAdjacentHTML('beforeend', cardFilm);
+  }
+
+}
+
+function markUp(data){
+    const { original_title, poster_path, vote_average, genres, release_date, id } = data.data;
+    let cardFilm='';
+    if(genre==='all'){
+      cardFilm = htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id);
+      refs.galeryLibrary.insertAdjacentHTML('beforeend', cardFilm);
+    }
+        
+}
+
 function htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id){
   return `
   <div class="card-film" id="${id}">
@@ -121,23 +157,6 @@ function htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster
 
 `;
 }
-
-function markUp(data){
-  
-    const { original_title, poster_path, vote_average, genres, release_date, id } = data.data;
-    let cardFilm='';
-    if(genre==='all'){
-      cardFilm = htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id);
-      refs.galeryLibrary.insertAdjacentHTML('beforeend', cardFilm);
-    }
-    else if(genres.map(({name})=>name).join(', ').toLowerCase().includes(genre))
-    {
-    cardFilm = htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id); 
-    
-    }
-    
-}
-
 refs.galeryLibraryBtn.addEventListener('click', handlerBtnLoad);
 
 function handlerBtnLoad(e){
