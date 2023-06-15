@@ -55,19 +55,23 @@ function markUp(data) {
     genres,
   } = data.data;
 
+  let whiteThemIcon = '';
+  let whiteThemeModal = '';
   let whiteThemeText = '';
   let whiteThemeSecondaryText = '';
   let whiteThemeBtn = '';
   if (localStorage.getItem('theme')) {
+    whiteThemIcon = 'light-theme__search--icon';
+    whiteThemeModal = 'light-theme';
     whiteThemeText = 'light-theme__text--black';
     whiteThemeSecondaryText = 'light-theme__section--secondaryText';
     whiteThemeBtn = 'light-theme__modal--btn';
   }
 
   const str = `
-<div class="modal-film-window theme-element">
+<div class="modal-film-window ${whiteThemeModal}">
   <button class="modal-film-btn-close">
-    <svg class="modal-film-icon-close theme-element">
+    <svg class="modal-film-icon-close ${whiteThemIcon}">
       <use href="${iconClose}#icon-x"></use>
     </svg>
   </button>

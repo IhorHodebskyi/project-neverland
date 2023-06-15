@@ -35,6 +35,7 @@ export function toggleStylesTheme(themeElements) {
            element.classList.contains("header") ||
            element.classList.contains("footer") ||
            element.classList.contains("month-section") ||
+           element.classList.contains("modal-film-window") ||
            element.classList.contains("search-section")||
            element.classList.contains("mobile_menu_container")||
            element.classList.contains("without-results-section"):
