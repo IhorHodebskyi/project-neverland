@@ -6,27 +6,36 @@
     <title>Cinemania</title>
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="./sass/index.scss" />
     <link rel="stylesheet" href="./css/index.css" />
   </head>
   <body class="body theme-element">
+
+    <div class='spinner spiner-pre-loading'>
+      <span class='ball-1'></span>
+      <span class='ball-2'></span>
+      <span class='ball-3'></span>
+      <span class='ball-4'></span>
+      <span class='ball-5'></span>
+      <span class='ball-6'></span>
+      <span class='ball-7'></span>
+      <span class='ball-8'></span>
+  </div>
+
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/header/header.html"></include>
-    <main>
-      <include src="./partials/hero.html"></include>
-      <include src="./partials/weekly.html"></include>
-      <include src="./partials/month.html"></include>
-    </main>
-    <include src="./partials/footer/footer.html"></include>
-    <!-- <include src="./partials/modal-film.html"></include> -->
-    <include src="./partials/modal-trailer.html"></include>
-    <include src="./partials/scroll-to-top.html"></include>
+    <div class="main-content" style="display: none">
+      <include src="./partials/header/header.html"></include>
+      <main>
+        <include src="./partials/hero.html"></include>
+        <include src="./partials/weekly.html"></include>
+        <include src="./partials/month.html"></include>
+      </main>
+      <include src="./partials/footer/footer.html"></include>
+      <!-- <include src="./partials/modal-film.html"></include> -->
+      <include src="./partials/modal-trailer.html"></include>
+      <include src="./partials/modal-film.html"></include>
+      <include src="./partials/scroll-to-top.html"></include>
+    </div>
     <script type="module" src="./index.js"></script>
   </body>
 </html>

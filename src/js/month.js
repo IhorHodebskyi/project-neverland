@@ -6,28 +6,24 @@ const BASE_IMG_URL = 'https://image.tmdb.org/t/p/original/';
 const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
 const BASE_UPCOMING_URL = 'https://api.themoviedb.org';
 const ENDPOINT_UPCOMING = '/3/movie/upcoming';
-
+import { checkThemeForDynamikEl} from './theme-switcher';   // for theme 
+// console.log(varificationForDynamikEl);
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 // '057e36269a3ddafbb398756699f3ba82';
-
+// console.log(varificationForDynamikEl);
 const respGenre = fetchAllGet(BASE_GENRE_URL, ENDPOINT_GENRE, API_KEY, '');
 
-if (localStorage.getItem("theme")){
-    const root = document.querySelector(':root');
-    root.style.setProperty('--primary-title-color', '#111111');
-    root.style.setProperty('--primary-vote-color', '#111111');
-    root.style.setProperty('--primary-vote-color-text', '#282828');
-    root.style.setProperty('--primary-about-text', '#282828');
-} 
-
 fetchAllGet(BASE_UPCOMING_URL, ENDPOINT_UPCOMING, API_KEY,'&language=en-US&page=1')
-.then(markUp);
+.then(markUp).then(checkThemeForDynamikEl);
 
 async function genreStr(arr){
         const data = await respGenre;
+
         return arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0].name).join(', ');
-      
- }
+}
+
+
+
 
 async function markUp(data){
     
@@ -45,26 +41,26 @@ async function markUp(data){
                                 </picture>
                             </div></div>
                             <div class="month-item-title">
-                                <h3>${title}</h3>
+                                <h3 class="month-item-title-h3-main theme-dynamic-element theme-element">${title}</h3>
                                 <div class="month-item-title-text">
                                     <div>
-                                        <h3>Release date<span class="month-rel-date">${release_date.replaceAll(
+                                        <h3 class="month-item-title-h3 theme-dynamic-element theme-element">Release date<span class="month-rel-date">${release_date.replaceAll(
                                           '-',
                                           '.'
                                         )}</span></h3>
-                                        <h3>Vote / Votes<span class="month-vote">${vote_average}</span> / <span class="month-votes">${vote_count}</span></h3>
+                                        <h3 class="month-item-title-h3 theme-dynamic-element theme-element">Vote / Votes<span class="month-vote">${vote_average}</span> / <span class="month-votes">${vote_count}</span></h3>
                                     </div>
                                     <div>
-                                        <h3>Popularity<span class="month-popular">${parseFloat(
+                                        <h3 class="month-item-title-h3 theme-dynamic-element theme-element">Popularity<span class="month-popular">${parseFloat(
                                           popularity
                                         ).toFixed(1)}</span></h3>
-                                        <h3>Genre<span class="month-genre">${await genreStr(
+                                        <h3 class="month-item-title-h3 theme-dynamic-element theme-element">Genre<span class="month-genre">${await genreStr(
                                           genre_ids
                                         )}</span></h3>
                                     </div>
                                 </div>
-                                <p>About</p><span class="month-text">${overview}</span>
-                                <button type="submit" class="month-btn button-light">${textBtn(
+                                <p class="month-item-p theme-dynamic-element theme-element">About</p><span class="month-text theme-dynamic-element theme-element">${overview}</span>
+                                <button type="submit" class="month-btn theme-dynamic-element theme-element button-light">${textBtn(
                                   id
                                 )}</button>
                             </div>
@@ -114,4 +110,4 @@ function handlerBtn(e){
     
 }
 
-export { respGenre }
+export { genreStr }

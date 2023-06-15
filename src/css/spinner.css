@@ -9,6 +9,10 @@
     transform:translate(-50%,-50%)
 }
 
+.spiner-pre-loading{
+    position: absolute
+}
+
 [class^="ball-"]{
     position:absolute;
     display:block;
