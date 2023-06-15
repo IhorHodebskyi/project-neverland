@@ -71,7 +71,7 @@ function markUp(data) {
     whiteThemeBtn = 'light-theme__modal--btn';
   }
 
-<<
+
   const str = `
 <div class="modal-film-window theme-element">
   <button class="modal-film-btn-close">

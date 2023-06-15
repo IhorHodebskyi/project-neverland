@@ -21,10 +21,16 @@ function handlerSelect(e){
 function parseLocStor(genre='all'){
   
 if(!JSON.parse(localStorage.getItem("favoriteFilm"))){
+  refs.galeryLibraryBtn.addEventListener('click', handlerBtnLoad);
   const str=`<div class="galery-library-text"><span>OOPS...</span><span>We are very sorry!</span><span>You don’t have any movies at your library.</span></div>`;
   refs.galeryLibrary.insertAdjacentHTML('beforeend', str);
-  refs.galeryLibraryBtn.textContent = "Search movie";
-  refs.galeryLibrarySelect.classList.add('visually-hidden');
+  refs.galeryLibraryBtn.textContent="Search movie";
+
+  function handlerBtnLoad(e){
+    e.preventDefault();
+    e.currentTarget.removeEventListener('click', handlerBtnLoad);
+    location.href="./catalog.html"
+  }
 }
 else 
 { 
