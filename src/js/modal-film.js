@@ -4,6 +4,7 @@ const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
 import { toggleStylesTheme } from './theme-switcher';
+const carta = '/8vvJwtpmqTwAkpDNHfGsphVNxYi.jpg';
 // fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
 // .then(markUp);
 
@@ -33,7 +34,9 @@ function markUp(data) {
   }
 
   const str = `<div class="modal-film-item" id="${id}" >
-                            <div class="modal-film-item-img" style="background-image: url(${BASE_IMG_URL_w500}${poster_path}" alt="${original_title});background-repeat: no-repeat;background-size: contain;background-position: left;">
+                            <div class="modal-film-item-img" style="background-image: url(${BASE_IMG_URL_w500}${
+    poster_path || carta
+  }" alt="${original_title});background-repeat: no-repeat;background-size: contain;background-position: left;">
                             </div>
                             <div class="modal-film-item-title">
                                 <h3 class="modal-film-item-main-h3 ${whiteThemeText}">${title}</h3>
