@@ -1,10 +1,10 @@
 :root {
-  --primary-brand-color: #000000;
+  --primary-color: #111111;
   --primary-text-color: #b7b7b7;
 }
 
 .search-section {
-  background: var(--primary-brand-color);
+  background: var(--primary-color);
   margin-top: 40px;
 }
 
@@ -23,7 +23,7 @@
   height: 40px;
 }
 .input-field {
-  background-color: var(--primary-brand-color);
+  background-color: var(--primary-color);
   width: 224px;
   height: 40px;
   border: 1px solid #ffffff;
@@ -51,11 +51,11 @@
 .gallery-section {
   position: relative;
   margin-bottom: 20px;
-  background: var(--primary-brand-color);
+  background: var(--primary-color);
 }
 .without-results-section {
   margin-top: 48px;
-  background: var(--primary-brand-color);
+  background: var(--primary-color);
 }
 .without-results {
   margin: 0 auto;
@@ -157,7 +157,11 @@
     row-gap: 28px;   
 }
 .close-icon {
-  top: 28%;
+  top: 34%;
+}
+.icon-clear-text{
+  width: 12px;
+  height: 12px;
 }
  }
 /*---------------------- desktop -------------------------------- */
@@ -196,7 +200,5 @@
 .flex-mobile{
   gap: 24px;
 }
-.close-icon {
-  top: 30%;
-}
+
 }
