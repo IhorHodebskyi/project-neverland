@@ -24,7 +24,7 @@ fetchAllGet(
 
 async function genreStr(arr) {
     const data = await respGenre;
-    return arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0].name).join(', ');
+    return arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0]?.name).join(', ');
     // const data = await respGenre;
 
 //   return arr
