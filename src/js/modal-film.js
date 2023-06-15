@@ -8,19 +8,24 @@ const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
 
-import { toggleStylesTheme } from './theme-switcher';
-const carta = '/8vvJwtpmqTwAkpDNHfGsphVNxYi.jpg';
-// fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
-// .then(markUp);
-
-
 let instance;
+let scrollPosition;
 
 function createModal(content) {
+  scrollPosition = window.scrollY;
+
+  // document.body.style.position = 'fixed';
+  document.body.style.top = `-${scrollPosition}px`;
+  document.body.style.width = '100%';
+
   instance = basicLightbox.create(content, {
     onClose: () => {
       document.removeEventListener('keydown', onEscKeyPress);
       document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollPosition);
     },
     onShow: () => {
       document.addEventListener('keydown', onEscKeyPress);
@@ -46,7 +51,6 @@ function createModal(content) {
   }
 }
 
-
 function markUp(data) {
   const {
     backdrop_path,
@@ -71,7 +75,6 @@ function markUp(data) {
     whiteThemeBtn = 'light-theme__modal--btn';
   }
 
-<<
   const str = `
 <div class="modal-film-window theme-element">
   <button class="modal-film-btn-close">
@@ -97,7 +100,6 @@ function markUp(data) {
       <div class="modal-film-item-flex">
       <p class="modal-film-item-text ${whiteThemeText}">Popularity</p>
       <p class="modal-film-popular ${whiteThemeText}">${parseFloat(
-
     popularity
   ).toFixed(1)}</p>
       </div>
