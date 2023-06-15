@@ -2,14 +2,14 @@ const selectBtnEl = document.querySelector('.select-btn');
 const optionsEl = document.querySelector('.options');
 const bodyEl = document.querySelector('.body');
 const arrowEl = document.querySelector('.icon-arrow-down');
-import { themeDynamicElements, checkThemeForDynamikEl } from './theme-switcher'; // for theme
+import { checkThemeForDynamikEl } from './theme-switcher'; // for theme
 
 selectBtnEl.addEventListener('click', () => {
   optionsEl.classList.toggle('hidden');
   arrowEl.classList.toggle('animation');
 
   createMarkupOption();
-  checkThemeForDynamikEl(themeDynamicElements);
+  checkThemeForDynamikEl();
 });
 
 function createMarkupOption() {
