@@ -1,7 +1,7 @@
 import axios from 'axios';
-// import { createMarkupCard } from './createMarkupCard';
 import { refs } from './refs';
 import ratingStarFull from '../images/reitingfull.svg';
+import { handlerClickcardsSectionBackphoto } from './modal-film';
 
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
 const BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
@@ -109,4 +109,8 @@ function createMarkupCard(cardresult) {
     .join('');
 
   refs.weeklyList.insertAdjacentHTML('beforeend', cardMarkUp);
+  const weeklyCardFilms = document.querySelectorAll('.card-film');
+  weeklyCardFilms.forEach(cardFilm =>
+    cardFilm.addEventListener('click', handlerClickcardsSectionBackphoto)
+  );
 }
