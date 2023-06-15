@@ -13,6 +13,7 @@ const WEEK_BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
 const BASE_GENRE_URL = 'https://api.themoviedb.org';
 const ENDPOINT_GENRE = '/3/genre/movie/list';
 const respGenre = fetchAllGet(BASE_GENRE_URL, ENDPOINT_GENRE, API_KEY, '');
+const carta = '/8vvJwtpmqTwAkpDNHfGsphVNxYi.jpg';
 
 async function genreStr(arr) {
   const data = await respGenre;
@@ -155,6 +156,7 @@ pagination.on('afterMove', event => {
 // }
 
 async function createMarkup(data) {
+  console.log(data);
   data.map(
     async (
       {
@@ -189,12 +191,12 @@ async function createMarkup(data) {
           <div class="card-backdrop"></div>
           <img
             class="card-img"
-            src="https://image.tmdb.org/t/p/w500${poster_path}"
+            src="https://image.tmdb.org/t/p/w500${poster_path || carta}"
             alt=""
             loading="lazy"
             srcset="
-              https://image.tmdb.org/t/p/w500${poster_path} 1x,
-              https://image.tmdb.org/t/p/w500${poster_path} 2x
+              https://image.tmdb.org/t/p/w500${poster_path || carta} 1x,
+              https://image.tmdb.org/t/p/w500${poster_path || carta} 2x
             "
           />
           <div class="card-info-section">
