@@ -8,12 +8,13 @@ const API_KEY = '5bf13f442a6612ea903461e28536fdca'
 
 parseLocStor();
 refs.galeryLibrarySelect.addEventListener('change', handlerSelect);
+// refs.galeryLibrarySelect.classList.add('visually-hidden');
 
 function handlerSelect(e){
   refs.galeryLibraryBtn.classList.remove('visually-hidden');
   refs.galeryLibrary.textContent='';
   parseLocStor(e.currentTarget.value);
-  
+ 
  
 }
 
@@ -22,10 +23,11 @@ function parseLocStor(genre='all'){
 if(!JSON.parse(localStorage.getItem("favoriteFilm"))){
   const str=`<div class="galery-library-text"><span>OOPS...</span><span>We are very sorry!</span><span>You don’t have any movies at your library.</span></div>`;
   refs.galeryLibrary.insertAdjacentHTML('beforeend', str);
-  refs.galeryLibraryBtn.textContent="Search movie";
+  refs.galeryLibraryBtn.textContent = "Search movie";
+  refs.galeryLibrarySelect.classList.add('visually-hidden');
 }
 else 
-{
+{ 
 const idFilm ={
     id: [...JSON.parse(localStorage.getItem("favoriteFilm")).id],
     id_9:[],
