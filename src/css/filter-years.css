@@ -58,6 +58,10 @@ ul {
     transition: 0.4s;
 }
 
+.select-menu {
+    display: none;
+}
+
 .select-menu .options::-webkit-scrollbar {
     display: none;
 }
