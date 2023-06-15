@@ -6,12 +6,6 @@
     <title>Catalog</title>
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="./sass/index.scss" />
     <link rel="stylesheet" href="./css/index.css" />
   </head>
@@ -28,18 +22,17 @@
     </div>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
 
-    <div class="main-content" style="display: none;">
-    <include src="./partials/header/header.html"></include>
-    <main>
-      <include src="./partials/catalogPage/catalog-hero.html"></include>
-      <include src="./partials/catalogPage/gallery.html"></include>
-      <include src="./partials/catalogPage/pagination.html"></include>
-    </main>
-    <include src="./partials/footer/footer.html"></include>
-    <include src="./partials/modal-film.html"></include>
-    <include src="./partials/modal-trailer.html"></include>
-    <include src="./partials/scroll-to-top.html"></include>
-
+    <div class="main-content" style="display: none">
+      <include src="./partials/header/header.html"></include>
+      <main>
+        <include src="./partials/catalogPage/catalog-hero.html"></include>
+        <include src="./partials/catalogPage/gallery.html"></include>
+        <include src="./partials/catalogPage/pagination.html"></include>
+      </main>
+      <include src="./partials/footer/footer.html"></include>
+      <include src="./partials/modal-film.html"></include>
+      <include src="./partials/modal-trailer.html"></include>
+      <include src="./partials/scroll-to-top.html"></include>
     </div>
     <script type="module" src="./catalog.js"></script>
   </body>

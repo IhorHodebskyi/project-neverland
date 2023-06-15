@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { fetchAllGet } from './fetchAllGet'
+import { fetchAllGet } from './fetchAllGet';
 import { handlerClickcardsSectionBackphoto } from './modal-film';
 import { pagination } from './pagination';
 import { refs } from './refs';
@@ -13,11 +13,13 @@ const WEEK_BASE_URL = 'https://api.themoviedb.org/3/trending/all/week';
 const BASE_GENRE_URL = 'https://api.themoviedb.org';
 const ENDPOINT_GENRE = '/3/genre/movie/list';
 const respGenre = fetchAllGet(BASE_GENRE_URL, ENDPOINT_GENRE, API_KEY, '');
+const carta = '/8vvJwtpmqTwAkpDNHfGsphVNxYi.jpg';
 
-async function genreStr(arr){
+async function genreStr(arr) {
   const data = await respGenre;
-  return arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0]?.name).join(', ');
-
+  return arr
+    .map(el => (el = data.data.genres.filter(({ id }) => id == el)[0]?.name))
+    .join(', ');
 }
 
 const container = document.getElementById('pagination');
@@ -73,7 +75,7 @@ form.addEventListener('submit', onSubmit);
 function onSubmit(e) {
   e.preventDefault();
   list.innerHTML = '';
-  
+
   value = e.target.elements.search.value;
   const year = selectText.textContent;
   getFirstMovies(page, value, year);
@@ -154,7 +156,10 @@ pagination.on('afterMove', event => {
 // }
 
 async function createMarkup(data) {
-  data.map(async ({
+  console.log(data);
+  data.map(
+    async (
+      {
         name,
         original_title,
         poster_path,
@@ -162,34 +167,36 @@ async function createMarkup(data) {
         genre_ids,
         release_date,
         id,
-      },i) => {
-        const starRatingNumber = Number(vote_average);
-        const starRatingRound = Math.round(starRatingNumber);
-        const genresLine = await genreStr(genre_ids);
-      
-        let starIcons = '';
-        for (let i = 1; i <= 5; i++) {
-          let dubbleI = i * 2;
-          if (dubbleI <= starRatingRound) {
-            starIcons += `<img class="card-vote-icon" src="${starIconFull}" alt="Rating Stars" />`;
-          } else if (dubbleI % starRatingRound === 1) {
-            starIcons += `<img class="card-vote-icon" src="${starIconHalf}" alt="Rating Stars" />`;
-          } else {
-            starIcons += `<img class="card-vote-icon" src="${starIconZero}" alt="Rating Stars" />`;
-          }
-        }
+      },
+      i
+    ) => {
+      const starRatingNumber = Number(vote_average);
+      const starRatingRound = Math.round(starRatingNumber);
+      const genresLine = await genreStr(genre_ids);
 
-        const str = `
+      let starIcons = '';
+      for (let i = 1; i <= 5; i++) {
+        let dubbleI = i * 2;
+        if (dubbleI <= starRatingRound) {
+          starIcons += `<img class="card-vote-icon" src="${starIconFull}" alt="Rating Stars" />`;
+        } else if (dubbleI % starRatingRound === 1) {
+          starIcons += `<img class="card-vote-icon" src="${starIconHalf}" alt="Rating Stars" />`;
+        } else {
+          starIcons += `<img class="card-vote-icon" src="${starIconZero}" alt="Rating Stars" />`;
+        }
+      }
+
+      const str = `
         <a href="#" class="card-film" id="${id}">
           <div class="card-backdrop"></div>
           <img
             class="card-img"
-            src="https://image.tmdb.org/t/p/w500${poster_path}"
+            src="https://image.tmdb.org/t/p/w500${poster_path || carta}"
             alt=""
             loading="lazy"
             srcset="
-              https://image.tmdb.org/t/p/w500${poster_path} 1x,
-              https://image.tmdb.org/t/p/w500${poster_path} 2x
+              https://image.tmdb.org/t/p/w500${poster_path || carta} 1x,
+              https://image.tmdb.org/t/p/w500${poster_path || carta} 2x
             "
           />
           <div class="card-info-section">
@@ -206,22 +213,20 @@ async function createMarkup(data) {
         </a>
       `;
       list.insertAdjacentHTML('beforeend', str);
-      if (data.length-1 === i){
+      if (data.length - 1 === i) {
         refs.cardsSectionBackphoto = document.querySelectorAll('.card-film');
         refs.cardsSectionBackphoto.forEach(el =>
-        el.addEventListener('click', handlerClickcardsSectionBackphoto)
-      );}
+          el.addEventListener('click', handlerClickcardsSectionBackphoto)
+        );
       }
-      );
-    
+    }
+  );
+
   //  list.insertAdjacentHTML('beforeend', cardMarkUp);
-  
+
   //   refs.cardsSectionBackphoto = document.querySelector('.card-film');
   //   console.log(refs.cardsSectionBackphoto);
   //   refs.cardsSectionBackphoto.forEach(el =>
   //   el.addEventListener('click', handlerClickcardsSectionBackphoto)
   // );
-    
-  
-  
 }
