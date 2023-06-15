@@ -8,7 +8,5 @@ import './js/modal-trailer';
 import './js/theme-switcher';
 import './js/modal-film';
 import './js/filter-years';
-
 import './js/modal-footer';
-
 import './js/scroll-to-top';
