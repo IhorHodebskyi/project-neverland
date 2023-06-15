@@ -11,9 +11,11 @@ function createModal(content) {
   instance = basicLightbox.create(content, {
     onClose: () => {
       document.removeEventListener('keydown', onEscKeyPress);
+      document.body.style.overflow = '';
     },
     onShow: () => {
       document.addEventListener('keydown', onEscKeyPress);
+      document.body.style.overflow = 'hidden';
     },
   });
 

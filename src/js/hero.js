@@ -2,6 +2,7 @@ import axios from 'axios';
 import { serviceFilm } from './fetchAllGet';
 import { refs } from './refs';
 import { trailerBtnClick } from './modal-trailer';
+import { handlerClickcardsSectionBackphoto } from './modal-film';
 
 function addHeroText() {
   let width = refs.homeHeroFilmWraper.offsetWidth;
@@ -27,6 +28,9 @@ serviceFilm()
 
     refs.trailerBtn = document.querySelector('.js-hero-trailer');
     refs.trailerBtn.addEventListener('click', trailerBtnClick);
+
+    const heroOpenCard = document.querySelector('.hero-open-card');
+    heroOpenCard.addEventListener('click', handlerClickcardsSectionBackphoto);
 
     /*refs.homeHero.classList.toggle('is-hidden');
     refs.libraryHeroPlug.classList.toggle('is-hidden');
@@ -67,7 +71,7 @@ function createMarkupHero({
             <button data-trailer-open type="button" class="hero-trailer-btn js-hero-trailer button-light" data-id="${id}">
               Watch trailer
             </button>
-            <button data-gocatalog-open type="button" class="go-to-catalog-btn button-dark">
+            <button data-gocatalog-open type="button" class="go-to-catalog-btn hero-open-card button-dark" id="${id}">
               More details
             </button>
           </div>
