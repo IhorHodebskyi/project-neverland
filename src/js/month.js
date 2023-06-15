@@ -23,11 +23,13 @@ fetchAllGet(
   .then(checkThemeForDynamikEl);
 
 async function genreStr(arr) {
-  const data = await respGenre;
+    const data = await respGenre;
+    return arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0].name).join(', ');
+    // const data = await respGenre;
 
-  return arr
-    .map(el => (el = data.data.genres.filter(({ id }) => id == el)[0]))
-    .join('');
+//   return arr
+//     .map(el => (el = data.data.genres.filter(({ id }) => id == el)[0]))
+//     .join('');
 }
 
 async function markUp(data) {
