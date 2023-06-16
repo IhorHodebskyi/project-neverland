@@ -92,15 +92,20 @@
  .month-btn{
    display: flex;
  }
- 
-.month-item-img > picture > img , .month-item-img > picture{
-    display: block;
-    
-}
+
 .month-item-img{
     border-radius: 5px;
     overflow: hidden;
+    width: 280px;
+    height: 402px;
 } 
+
+.month-item-img > picture > img , .month-item-img > picture{
+    display: block;
+    object-fit: cover;
+    width: 100%;   
+}
+
 .month-rel-date{
     margin-left: 58px;
     font-weight: 500;
@@ -132,6 +137,13 @@
     .month-btn{
         margin: 20px 0 0 0; 
     }
+    
+    .month-item-img{
+    border-radius: 5px;
+    overflow: hidden;
+    width: 704px;
+    height: 400px;
+} 
         
   }
 
@@ -161,5 +173,12 @@
     .month-btn{   
         margin: 24px 0 0 0;
     }
+    
+    .month-item-img{
+    border-radius: 5px;
+    overflow: hidden;
+    width: 805px;
+    height: 458px;
+} 
   }
 

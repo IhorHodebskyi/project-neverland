@@ -70,6 +70,7 @@
   line-height: 1.67; /* 20/12 */
   color: rgba(183, 183, 183, 1);
   margin: 0;
+  max-width: 50%;
 }
 
 .card-vote {
