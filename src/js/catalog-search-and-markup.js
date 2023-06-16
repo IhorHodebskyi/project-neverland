@@ -22,7 +22,7 @@ async function genreStr(arr) {
     .join(', ');
 }
 
-const container = document.getElementById('pagination');
+const container = document.getElementById('pagination1');
 let page = pagination.getCurrentPage();
 let value = '';
 let DELTA_URL = WEEK_BASE_URL;
@@ -221,12 +221,5 @@ async function createMarkup(data) {
       }
     }
   );
-
-  //  list.insertAdjacentHTML('beforeend', cardMarkUp);
-
-  //   refs.cardsSectionBackphoto = document.querySelector('.card-film');
-  //   console.log(refs.cardsSectionBackphoto);
-  //   refs.cardsSectionBackphoto.forEach(el =>
-  //   el.addEventListener('click', handlerClickcardsSectionBackphoto)
-  // );
+ 
 }

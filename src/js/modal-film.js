@@ -1,5 +1,4 @@
 import { fetchAllGet } from './fetchAllGet';
-import { refs } from './refs';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import iconClose from '../images/symbol-defs.svg';
@@ -20,7 +19,7 @@ function createModal(content) {
 
   instance = basicLightbox.create(content, {
     onClose: () => {
-      document.removeEventListener('keydown', onEscKeyPress);
+      // document.removeEventListener('keydown', onEscKeyPress);
       document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.top = '';
@@ -144,6 +143,7 @@ function textBtn(id) {
 
 function handlerBtn(e) {
   e.preventDefault();
+  
   const id = e.currentTarget.closest('.modal-film-item').id;
   const idFilm = {
     id: [],
@@ -152,9 +152,10 @@ function handlerBtn(e) {
     idFilm.id = [...JSON.parse(localStorage.getItem('favoriteFilm')).id];
   }
   if (!idFilm.id.includes(id.toString())) {
-    if (e.currentTarget.textContent === 'Add to my library') {
-      e.currentTarget.textContent = 'Remove from my library';
-    }
+    e.currentTarget.textContent = 'Remove from my library';
+    // if (e.currentTarget.textContent === 'Add to my library') {
+      
+    // }
     idFilm.id.push(id.toString());
     localStorage.setItem('favoriteFilm', JSON.stringify(idFilm));
   } else {
