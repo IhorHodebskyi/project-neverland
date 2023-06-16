@@ -6,7 +6,11 @@ const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
 // const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
 
+// refs.galeryLibraryBtn.classList.add('visually-hidden');
+// console.log(refs.galeryLibraryBtn);
+
 parseLocStor();
+
 refs.galeryLibrarySelect.addEventListener('change', handlerSelect);
 // refs.galeryLibrarySelect.classList.add('visually-hidden');
 
@@ -43,8 +47,13 @@ const idFilm ={
     page: 1,
 }
 
-if(idFilm.id.length > 9){refs.galeryLibraryBtn.classList.remove('visually-hidden');}
-else refs.galeryLibraryBtn.classList.add('visually-hidden');
+if(idFilm.id.length > 9){
+  refs.galeryLibraryBtn.classList.remove('visually-hidden');
+}
+else {
+  // console.log("hjgjkghjgkjgh")  
+  refs.galeryLibraryBtn.classList.add('visually-hidden');
+}
 
 function createMas(){
   let m=[];
@@ -172,10 +181,10 @@ refs.galeryLibraryBtn.addEventListener('click', handlerBtnLoad);
 function handlerBtnLoad(e){
   e.preventDefault();
   pageCardFilm(idFilm.page++);
-  console.log("lksdjflkjd;lkfja")
+  // 
   if(idFilm.id_9.length===idFilm.page){
     e.currentTarget.classList.add('visually-hidden');
-    e.currentTarget.removeEventListener('click', handlerBtnLoad);
+    // e.currentTarget.removeEventListener('click', handlerBtnLoad);
     
   } 
 }
