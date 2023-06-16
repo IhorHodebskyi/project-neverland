@@ -96,6 +96,7 @@
 .month-item-img > picture > img , .month-item-img > picture{
     display: block;
     object-fit: cover;
+    max-width: 100%;
     
 }
 .month-item-img{
