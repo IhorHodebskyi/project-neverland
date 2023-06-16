@@ -95,6 +95,7 @@
  
 .month-item-img > picture > img , .month-item-img > picture{
     display: block;
+    object-fit: cover;
     
 }
 .month-item-img{
