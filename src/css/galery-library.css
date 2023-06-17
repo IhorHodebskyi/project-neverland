@@ -20,6 +20,23 @@
     clip: rect(0 0 0 0);
     overflow: hidden;
   }
+  .galery-library-btn-close > svg{
+    pointer-events: none;
+  }
+  .galery-library-btn-close{
+    position: absolute;
+    z-index: 2;
+    top: 5px;
+    right: 5px;
+    
+  } 
+  
+  .card-backdrop + span{
+    position: absolute;
+    top: 5px;
+    right: 35px;
+    color: #f87719;
+  }
   
 .galery-library-btn{
     display: block;
