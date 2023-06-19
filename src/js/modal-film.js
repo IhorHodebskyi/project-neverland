@@ -11,20 +11,11 @@ let instance;
 let scrollPosition;
 
 function createModal(content) {
-  scrollPosition = window.scrollY;
-
-  // document.body.style.position = 'fixed';
-  document.body.style.top = `-${scrollPosition}px`;
-  document.body.style.width = '100%';
 
   instance = basicLightbox.create(content, {
     onClose: () => {
-      // document.removeEventListener('keydown', onEscKeyPress);
+      document.removeEventListener('keydown', onEscKeyPress);
       document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      window.scrollTo(0, scrollPosition);
     },
     onShow: () => {
       document.addEventListener('keydown', onEscKeyPress);
