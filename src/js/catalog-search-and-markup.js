@@ -187,7 +187,7 @@ async function createMarkup(data) {
       }
 
       const str = `
-        <a href="#" class="card-film" id="${id}">
+        <div class="card-film" id="${id}">
           <div class="card-backdrop"></div>
           <img
             class="card-img"
@@ -210,7 +210,7 @@ async function createMarkup(data) {
               </ul>
             </div>
           </div>
-        </a>
+        </div>
       `;
       list.insertAdjacentHTML('beforeend', str);
       if (data.length - 1 === i) {
