@@ -1,18 +1,16 @@
 import {fetchAllGet} from './fetchAllGet';
 import { refs } from "./refs";
 import ratingStarFull from '../images/reitingfull.svg';
-
+import starIconFull from '../images/reitingfull.svg';
+import starIconHalf from '../images/reitinghalf.svg';
+import starIconZero from '../images/reitingzero.svg';
+import iconClose from '../images/symbol-defs.svg';
 const BASE_URL = 'https://api.themoviedb.org';
 const API_KEY = '5bf13f442a6612ea903461e28536fdca' 
-// const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
-
-// refs.galeryLibraryBtn.classList.add('visually-hidden');
-// console.log(refs.galeryLibraryBtn);
 
 parseLocStor();
 
 refs.galeryLibrarySelect.addEventListener('change', handlerSelect);
-// refs.galeryLibrarySelect.classList.add('visually-hidden');
 
 function handlerSelect(e){
   refs.galeryLibraryBtn.classList.remove('visually-hidden');
@@ -23,8 +21,7 @@ function handlerSelect(e){
 }
 
 function parseLocStor(genre='all'){
-  
-if(!JSON.parse(localStorage.getItem("favoriteFilm"))){
+if(!JSON.parse(localStorage.getItem("favoriteFilm"))?.id.length){
   refs.galeryLibraryBtn.addEventListener('click', handlerBtnLoad);
   const str=`<div class="galery-library-text"><span>OOPS...</span><span>We are very sorry!</span><span>You don’t have any movies at your library.</span></div>`;
   refs.galeryLibrary.insertAdjacentHTML('beforeend', str);
@@ -51,7 +48,6 @@ if(idFilm.id.length > 9){
   refs.galeryLibraryBtn.classList.remove('visually-hidden');
 }
 else {
-  // console.log("hjgjkghjgkjgh")  
   refs.galeryLibraryBtn.classList.add('visually-hidden');
 }
 
@@ -78,27 +74,75 @@ else {
   idFilm.id.map((el,i)=>{const ENDPOINT = `/3/movie/${el}`
   fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
   .then(markUpSort)
-  .catch(console.log);
+  .catch(console.log)
+  
   })
+}
+
+function finalyMarkUp(){
+      refs.galeryLibraryBtnClose = document.querySelectorAll('.galery-library-btn-close');
+      refs.galeryLibraryBtnCloseSpan = document.querySelectorAll('.card-backdrop + span')
+      refs.cardFilm1 = document.querySelectorAll('.card-film');
+      refs.galeryLibraryBtnClose.forEach((el,i)=>{
+        el.addEventListener('mouseover', (e)=>{
+          refs.galeryLibraryBtnCloseSpan[i].classList.toggle('visually-hidden');
+          }); 
+
+          el.addEventListener('mouseout', (e)=>{
+             refs.galeryLibraryBtnCloseSpan[i].classList.toggle('visually-hidden');
+            });
+          
+          el.addEventListener('click', (e)=>{handlerBtnClose(e, refs.cardFilm1[i].getAttribute('id'), i)});
+      });
+    
+}
+
+function handlerBtnClose(e, id, i)
+{
+  e.preventDefault();
+  if(e.target.nodeName === 'BUTTON'){
+    idFilm.id.splice(idFilm.id.indexOf(id), 1);
+    idFilm.id_9.splice(idFilm.id.indexOf(id), 1);
+    localStorage.setItem('favoriteFilm', JSON.stringify(idFilm));
+    refs.cardFilm1[i].classList.add('visually-hidden');
+  }
 }
 
 function pageCardFilm(n){
       
       idFilm.id_9 = createMas();
-      idFilm.id_9[n].map((el,i)=>{const ENDPOINT = `/3/movie/${el}`;
+      idFilm.id_9[n].map((el,i,arr)=>{const ENDPOINT = `/3/movie/${el}`;
       fetchAllGet(BASE_URL, ENDPOINT, API_KEY,'&language=en-US&page=1')
       .then(markUp)
-      .catch(console.log);
+      .catch(console.log)
+      .finally(()=>{if(i===(arr.length-1)){finalyMarkUp()}})
+     
       })
+      
   }
+  
 
-function markUpSort(data){
+function markUpSort(data,i){
   let cardFilm='';
   refs.galeryLibraryBtn.classList.add('visually-hidden');
   const { original_title, poster_path, vote_average, genres, release_date, id } = data.data;
+  const starRatingNumber = Number(vote_average);
+    const starRatingRound = Math.round(starRatingNumber);
+    let starIcons = '';
+      for (let i = 1; i <= 5; i++) {
+        let dubbleI = i * 2;
+        if (dubbleI <= starRatingRound) {
+          starIcons += `<img class="card-vote-icon" src="${starIconFull}" alt="Rating Stars" />`;
+        } else if (dubbleI % starRatingRound === 1) {
+          starIcons += `<img class="card-vote-icon" src="${starIconHalf}" alt="Rating Stars" />`;
+        } else {
+          starIcons += `<img class="card-vote-icon" src="${starIconZero}" alt="Rating Stars" />`;
+        }
+      }
   if(genres.map(({name})=>name).join(', ').toLowerCase().includes(genre)){
-    cardFilm = htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id);
+    cardFilm = htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id, starIcons);
     refs.galeryLibrary.insertAdjacentHTML('beforeend', cardFilm);
+    
   }
 
 }
@@ -106,17 +150,37 @@ function markUpSort(data){
 function markUp(data){
     const { original_title, poster_path, vote_average, genres, release_date, id } = data.data;
     let cardFilm='';
+    const starRatingNumber = Number(vote_average);
+    const starRatingRound = Math.round(starRatingNumber);
+    let starIcons = '';
+      for (let i = 1; i <= 5; i++) {
+        let dubbleI = i * 2;
+        if (dubbleI <= starRatingRound) {
+          starIcons += `<img class="card-vote-icon" src="${starIconFull}" alt="Rating Stars" />`;
+        } else if (dubbleI % starRatingRound === 1) {
+          starIcons += `<img class="card-vote-icon" src="${starIconHalf}" alt="Rating Stars" />`;
+        } else {
+          starIcons += `<img class="card-vote-icon" src="${starIconZero}" alt="Rating Stars" />`;
+        }
+      }
     if(genre==='all'){
-      cardFilm = htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id);
+      cardFilm = htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id, starIcons);
       refs.galeryLibrary.insertAdjacentHTML('beforeend', cardFilm);
+      
     }
         
 }
-
-function htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id){
+// modal-film-btn-close  modal-film-icon-close
+function htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster_path, id, starIcons){
   return `
   <div class="card-film" id="${id}">
     <div class="card-backdrop"></div>
+    <span class="visually-hidden">Delete from Library</span>
+    <button class="galery-library-btn-close modal-film-btn-close">
+    <svg class="modal-film-icon-close">
+      <use href="${iconClose}#icon-x"></use>
+    </svg>
+    </button>
     <img
       class="card-img"
       src="https://image.tmdb.org/t/p/w500${poster_path}"
@@ -134,53 +198,23 @@ function htmlMarkUp(ratingStarFull, genres, release_date, original_title, poster
         ${genres.map(({name})=>name).join(', ')} | ${String(release_date).slice(0, 4)}
         </p>
         <ul class="card-vote">
-          <li class="card-vote-items">
-            <img
-              class="card-vote-icon"
-              src="${ratingStarFull}"
-              alt="Rating Stars"
-            />
-          </li>
-          <li class="card-vote-items">
-            <img
-              class="card-vote-icon"
-              src="${ratingStarFull}g"
-              alt="Rating Stars"
-            />
-          </li>
-          <li class="card-vote-items">
-            <img
-              class="card-vote-icon"
-              src="${ratingStarFull}"
-              alt="Rating Stars"
-            />
-          </li>
-          <li class="card-vote-items">
-            <img
-              class="card-vote-icon"
-              src="${ratingStarFull}"
-              alt="Rating Stars"
-            />
-          </li>
-          <li class="card-vote-items">
-            <img
-              class="card-vote-icon"
-              src="${ratingStarFull}"
-              alt="Rating Stars"
-            />
-          </li>
+                ${starIcons}
         </ul>
+
       </div>
     </div>
   </div>
 
 `;
+
 }
 refs.galeryLibraryBtn.addEventListener('click', handlerBtnLoad);
 
 function handlerBtnLoad(e){
   e.preventDefault();
   pageCardFilm(idFilm.page++);
+   
+  
   // 
   if(idFilm.id_9.length===idFilm.page){
     e.currentTarget.classList.add('visually-hidden');
