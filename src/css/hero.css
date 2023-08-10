@@ -264,6 +264,8 @@
 
   .home-hero-film {
     height: 660px;
+    background-position: 200%;
+    background-size: contain;
   }
 
   .home-hero-content {
