@@ -1,8 +1,6 @@
-// import Pagination from './tui-pagination';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import '../css/pagination.css';
-// import './pagination.css';
 const container = document.getElementById('pagination1');
 const options = {
   // below default value of options

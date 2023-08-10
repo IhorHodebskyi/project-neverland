@@ -7,8 +7,6 @@ export const refs = {
 /*----------------------------HERO--------------------------*/
 
   homeHeroFilmWraper: document.querySelector('.hero-content'),
-  /*heroTrailerBtn: document.querySelector('.hero-trailer-btn'),
-  goToCatalogBtn: document.querySelector('.go-to-catalog-btn'),*/
   homeHero: document.querySelector('.home-hero-plug'),
   homeHeroFilmWraper: document.querySelector('.home-hero-container'),
   homeHeroText: document.querySelector('.home-hero-text'),
@@ -27,7 +25,6 @@ searchWrap: document.querySelector(".gallery"),
   weeklyList: document.querySelector('.weekly-list'),
 
 // -----------------------------Modal Film-----------------------------
-// modalFilmBtnClose: document.querySelector('.modal-film-btn-close'),
 modalTrailerBackdrop: document.querySelector('.modal-film-backdrop'),
 modalTrailerWwindow: document.querySelector('.modal-film-window'),
 

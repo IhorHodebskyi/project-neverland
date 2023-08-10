@@ -14,7 +14,7 @@ function createModal(content) {
       document.body.style.overflow = '';
     },
     onShow: () => {
-      document.addEventListener('keydown', onEscKeyPress);
+      document.addEventListener('keydown', onEscKeyPress, { passive: true });
       document.body.style.overflow = 'hidden';
     },
   });
