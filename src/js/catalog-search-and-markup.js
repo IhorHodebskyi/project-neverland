@@ -48,14 +48,6 @@ async function getMovies(page, value, year) {
   return rest;
 }
 
-// async function getMoviesTrendingWeek(page) {
-//   const rest = await axios.get(
-//     `${WEEK_BASE_URL}?api_key=${API_KEY}&language=en-US&page=${page}&per_page=100`
-//   );
-//   console.log(rest);
-//   return rest;
-// }
-
 input.addEventListener('input', onE);
 
 function onE(event) {
@@ -124,37 +116,6 @@ pagination.on('afterMove', event => {
   getEventsMovies(currentPage, value);
 });
 
-// async function getFirstMoviesTrendingWeek(page) {
-//   try {
-//     const data = await getMoviesTrendingWeek(page);
-//     console.log(data);
-//     console.log(data.data.results);
-//     if (!data) {
-//       oops.classList.remove('is-hidden');
-//       return;
-//     }
-//     createMarkup(data.data.results);
-//     pagination.reset(data.data.total_pages);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// getEventsMoviesTrendingWeek(page);
-
-// async function getEventsMoviesTrendingWeek(page) {
-//   console.log(page);
-//   try {
-//     const data = await getMoviesTrendingWeek(page);
-//     console.log(data);
-
-//     list.innerHTML = '';
-//     createMarkup(data.data.results);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
 async function createMarkup(data) {
   console.log(data);
   data.map(
@@ -221,5 +182,4 @@ async function createMarkup(data) {
       }
     }
   );
- 
 }

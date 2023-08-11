@@ -23,8 +23,6 @@ serviceFilm()
     const filmInHero = allFilms[randomFilmIndex];
 
     if (!filmInHero) {
-      /*refs.homeHero.classList.add('is-hidden');
-      refs.libraryHeroPlug.classList.add('is-hidden');*/
     }
     refs.homeHeroFilmWraper.innerHTML = createMarkupHero(filmInHero);
 
@@ -33,12 +31,6 @@ serviceFilm()
 
     const heroOpenCard = document.querySelector('.hero-open-card');
     heroOpenCard.addEventListener('click', handlerClickcardsSectionBackphoto);
-
-    /*refs.homeHero.classList.toggle('is-hidden');
-    refs.libraryHeroPlug.classList.toggle('is-hidden');
-    
-    /*refs.heroTrailerBtn.setAttribute("id", `${firstFilm.id}`);
-        refs.goToCatalogBtn.setAttribute("id", `${firstFilm.id}`);*/
   })
   .catch(err => console.log(err));
 

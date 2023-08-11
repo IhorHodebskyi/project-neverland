@@ -7,10 +7,7 @@ const BASE_IMG_URL_w500 = 'https://image.tmdb.org/t/p/w500/';
 const BASE_UPCOMING_URL = 'https://api.themoviedb.org';
 const ENDPOINT_UPCOMING = '/3/movie/upcoming';
 import { checkThemeForDynamikEl } from './theme-switcher'; // for theme
-// console.log(varificationForDynamikEl);
 const API_KEY = '5bf13f442a6612ea903461e28536fdca';
-// '057e36269a3ddafbb398756699f3ba82';
-// console.log(varificationForDynamikEl);
 const respGenre = fetchAllGet(BASE_GENRE_URL, ENDPOINT_GENRE, API_KEY, '');
 
 fetchAllGet(
@@ -23,13 +20,10 @@ fetchAllGet(
   .then(checkThemeForDynamikEl);
 
 async function genreStr(arr) {
-    const data = await respGenre;
-    return arr.map((el)=>el = data.data.genres.filter(({id})=>id == el)[0]?.name).join(', ');
-    // const data = await respGenre;
-
-//   return arr
-//     .map(el => (el = data.data.genres.filter(({ id }) => id == el)[0]))
-//     .join('');
+  const data = await respGenre;
+  return arr
+    .map(el => (el = data.data.genres.filter(({ id }) => id == el)[0]?.name))
+    .join(', ');
 }
 
 async function markUp(data) {

@@ -11,7 +11,6 @@ let instance;
 let scrollPosition;
 
 function createModal(content) {
-
   instance = basicLightbox.create(content, {
     onClose: () => {
       document.removeEventListener('keydown', onEscKeyPress);
@@ -134,7 +133,7 @@ function textBtn(id) {
 
 function handlerBtn(e) {
   e.preventDefault();
-  
+
   const id = e.currentTarget.closest('.modal-film-item').id;
   const idFilm = {
     id: [],
@@ -144,9 +143,7 @@ function handlerBtn(e) {
   }
   if (!idFilm.id.includes(id.toString())) {
     e.currentTarget.textContent = 'Remove from my library';
-    // if (e.currentTarget.textContent === 'Add to my library') {
-      
-    // }
+
     idFilm.id.push(id.toString());
     localStorage.setItem('favoriteFilm', JSON.stringify(idFilm));
   } else {
